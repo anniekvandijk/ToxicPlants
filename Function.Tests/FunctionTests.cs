@@ -13,15 +13,10 @@ namespace Function.Tests
         public async Task TestFunctionReturningSomething()
         {
             //Arrange
-            var request = Mock.Of<HttpRequestData>();
-            var executionContext = Mock.Of<FunctionContext>();
 
             //Act
-            var response = await Function.Run(request, executionContext);
 
             //Assert
-            Assert.AreEqual(200, response.StatusCode);
-            Assert.AreEqual("Welcome to Azure Functions!", response.Body);
         }
     }
 }
