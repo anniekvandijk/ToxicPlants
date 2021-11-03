@@ -1,6 +1,8 @@
 using Microsoft.Azure.Functions.Worker.Configuration;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Function
@@ -11,6 +13,10 @@ namespace Function
         {
             var host = new HostBuilder()
                 .ConfigureFunctionsWorkerDefaults()
+                .ConfigureServices(s =>
+                {
+                    s.AddSingleton<HttpClient>();
+                })
                 .Build();
 
             host.Run();

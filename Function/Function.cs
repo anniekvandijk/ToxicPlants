@@ -1,20 +1,23 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Function
 {
-    public static class Function
+    public class Function
     {
+        private readonly HttpClient _httpClient;
+        public Function(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+
         [Function("plantcheck")]
-        public static async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData request,
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData request,
             FunctionContext executionContext)
         {
             var logger = executionContext.GetLogger("PlantCheck");
@@ -23,16 +26,6 @@ namespace Function
             // read the body and check content
 
             // sent to plantnet
-            var PlantNetUrl = Environment.GetEnvironmentVariable("PlantNetUrl");
-            var client = new HttpClient();
-            var plantRequest = new HttpRequestMessage
-            {
-                RequestUri = new Uri(PlantNetUrl),
-                Method = HttpMethod.Post,
-            };
-
-            HttpResponseMessage plantnet = await client.SendAsync(plantRequest);
-            var plantnetContent = plantnet.Content.ReadAsStringAsync();
 
             // if content OK return OK and stuff
             var response = request.CreateResponse(HttpStatusCode.OK);
@@ -44,6 +37,20 @@ namespace Function
 
             // return
             return response;
+        }
+
+        public async Task<string> GetPlants()
+        {
+            var PlantNetUrl = Environment.GetEnvironmentVariable("PlantNetUrl");
+            
+            var plantRequest = new HttpRequestMessage
+            {
+                RequestUri = new Uri(PlantNetUrl),
+                Method = HttpMethod.Post,
+            };
+
+            HttpResponseMessage plantnet = await _httpClient.SendAsync(plantRequest);
+            return plantnet.Content.ReadAsStringAsync().Result;
         }
     }
 }
