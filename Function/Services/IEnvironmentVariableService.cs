@@ -2,6 +2,6 @@
 {
     public interface IEnvironmentVariableService
     {
-        public string GetPlantNetUrl { get; set; }
+        public string GetPlantNetUrl();
     }
 }

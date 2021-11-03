@@ -6,8 +6,8 @@ namespace Function
     public class EnvironmentVariableService : IEnvironmentVariableService
     {
 
-        private string plantNetUrl;
-        public string GetPlantNetUrl { get => plantNetUrl; set => plantNetUrl = Get("plantNetUrl"); }
+        public string GetPlantNetUrl()
+            => Get("plantNetUrl");
 
         private static string Get(string name)
         {
