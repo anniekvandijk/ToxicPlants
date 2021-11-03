@@ -1,3 +1,4 @@
+using Function.Services;
 using Microsoft.Azure.Functions.Worker.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ namespace Function
                 .ConfigureServices(s =>
                 {
                     s.AddSingleton<HttpClient>();
+                    s.AddTransient<IEnvironmentVariableService, EnvironmentVariableService>();
                 })
                 .Build();
 

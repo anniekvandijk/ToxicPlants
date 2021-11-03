@@ -1,3 +1,4 @@
+using Function.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Moq.Protected;
@@ -30,9 +31,14 @@ namespace Function.Tests
             // create the HttpClient
             var httpClient = new HttpClient(httpMessageHandlerMock.Object);
 
+            var environmentVariableService = new Mock<IEnvironmentVariableService>();
+            environmentVariableService
+                .Setup(x => x.GetPlantNetUrl)
+                .Returns("https://somewebpage.com");
+
             //Act
-            var function = new Function(httpClient);
-            var response = await function.GetPlants("http://localhost");
+            var function = new Function(httpClient, environmentVariableService.Object);
+            var response = await function.GetPlants();
 
             //Assert
             Assert.AreEqual(200, (int)response.StatusCode);

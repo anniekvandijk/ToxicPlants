@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Function.Services;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
@@ -11,9 +12,11 @@ namespace Function
     public class Function
     {
         private readonly HttpClient _httpClient;
-        public Function(HttpClient httpClient)
+        private readonly IEnvironmentVariableService _environmentVariableService;
+        public Function(HttpClient httpClient, IEnvironmentVariableService environmentVariableService)
         {
             _httpClient = httpClient;
+            _environmentVariableService = environmentVariableService;
         }
 
         [Function("plantcheck")]
@@ -24,14 +27,13 @@ namespace Function
             logger.LogInformation("C# HTTP trigger function processed a request.");
 
             // read the body and check content
-            var plantNetUrl = Environment.GetEnvironmentVariable("PlantNetUrl"); 
-            // sent to plantnet
+            var responseBody = SortAllOut(request);
 
             // if content OK return OK and stuff
             var response = request.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
-            await response.WriteStringAsync("Welcome to Azure Functions!");
+            await response.WriteStringAsync(responseBody);
 
             // if not OK return not OK
 
@@ -39,11 +41,17 @@ namespace Function
             return response;
         }
 
-        public async Task<HttpResponseMessage> GetPlants(string plantNetUrl)
+        private string SortAllOut(HttpRequestData request)
+        {
+
+            return "Welcome to Azure Functions!";
+        }
+
+        public async Task<HttpResponseMessage> GetPlants()
         {
             var plantRequest = new HttpRequestMessage
             {
-                RequestUri = new Uri(plantNetUrl),
+                RequestUri = new Uri(_environmentVariableService.GetPlantNetUrl),
                 Method = HttpMethod.Post,
             };
 
