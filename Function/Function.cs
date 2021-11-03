@@ -24,7 +24,7 @@ namespace Function
             logger.LogInformation("C# HTTP trigger function processed a request.");
 
             // read the body and check content
-
+            var plantNetUrl = Environment.GetEnvironmentVariable("PlantNetUrl"); 
             // sent to plantnet
 
             // if content OK return OK and stuff
@@ -39,18 +39,15 @@ namespace Function
             return response;
         }
 
-        public async Task<string> GetPlants()
+        public async Task<HttpResponseMessage> GetPlants(string plantNetUrl)
         {
-            var PlantNetUrl = Environment.GetEnvironmentVariable("PlantNetUrl");
-            
             var plantRequest = new HttpRequestMessage
             {
-                RequestUri = new Uri(PlantNetUrl),
+                RequestUri = new Uri(plantNetUrl),
                 Method = HttpMethod.Post,
             };
 
-            HttpResponseMessage plantnet = await _httpClient.SendAsync(plantRequest);
-            return plantnet.Content.ReadAsStringAsync().Result;
+            return await _httpClient.SendAsync(plantRequest);
         }
     }
 }
