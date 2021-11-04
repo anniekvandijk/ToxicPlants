@@ -33,11 +33,13 @@ namespace Function
             logger.LogInformation("C# HTTP trigger function processed a request.");
 
             // read the body and check content
-            MultipartFormDataContent multiPartContent = ParseRequestData(request).multiPartContent;
-            List<string> animalList = ParseRequestData(request).animalList;
-            
+            var parseResult = ParseRequestData(request);
+            MultipartFormDataContent multiPartContent = parseResult.multiPartContent;
+            List<string> animalList = parseResult.animalList;
+
             var plantNetHttpResponseMessage = await GetPlantNetPlants(multiPartContent);
-            
+            var responsem = plantNetHttpResponseMessage.Content.ReadAsStringAsync();
+
             // If response not ok
             // => quit
 
@@ -58,7 +60,7 @@ namespace Function
             // return
             return response;
         }
-         
+
         private (MultipartFormDataContent multiPartContent, List<string> animalList) ParseRequestData(HttpRequestData request)
         {
             var parsedFormBody = MultipartFormDataParser.ParseAsync(request.Body);
@@ -70,26 +72,20 @@ namespace Function
 
             foreach (var image in images)
             {
-                var fileContent = new ByteArrayContent(image.Data);
-                //Create content header
-                fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                var fileContent = new StreamContent(image.Data);
+                fileContent.Headers.ContentType = new MediaTypeHeaderValue(image.ContentType);
+                fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
                 {
                     Name = image.Name,
                     FileName = image.FileName
                 };
-
-                //Add file to the multipart request
                 multiPartContent.Add(fileContent);
             }
 
             foreach (var organ in organs)
             {
-                var param = new MultipartContent(organ.Data);
-                param.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-                {
-                    Name = organ.Name
-                };
-                multiPartContent.Add(param);
+                var keyValue = new KeyValuePair<string, string>(organ.Name, organ.Data);
+                multiPartContent.Add(new StringContent(keyValue.Value), keyValue.Key);
             }
 
             var animalList = new List<string>();
