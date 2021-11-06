@@ -5,7 +5,7 @@ namespace Function.Models
 {
     public class RequestData
     {
-        public List<FilePart> Files { get; set; }
-        public List<ParameterPart> Parameters { get; set; }
+        public List<FileData> Files { get; set; }
+        public List<ParameterData> Parameters { get; set; }
     }
 }

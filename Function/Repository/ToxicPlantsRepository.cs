@@ -7,26 +7,34 @@ namespace Function.Repository
 {
     public class ToxicPlantsRepository : IToxicPlantsRepository
     {
-        public List<ToxicPlant> GetByAnimalName(Animal animal)
+        private static readonly List<AnimalToxicPlant> animalToxicPlants = new();
+
+        public ToxicPlantsRepository()
         {
-            return GetTempList().SingleOrDefault(x => x.Animal == animal).ToxicPlants;
+            TempList();
         }
 
-
-        private List<AnimalToxicPlant> GetTempList()
+        public List<ToxicPlant> GetByAnimalName(Animal animal)
         {
-            var toxicPlantList = new List<AnimalToxicPlant>();
+            return animalToxicPlants.SingleOrDefault(x => x.Animal == animal).ToxicPlants;
+        }
 
+        public ToxicPlant GetToxicPlant(Animal animal, string plantName)
+        {
+            return GetByAnimalName(animal).SingleOrDefault(x => x.Name == plantName);
+        }
+
+        private static void TempList()
+        {
             var alpacalist = new List<ToxicPlant>();
             alpacalist.Add(new ToxicPlant { Name = "Adonis aestivalis", Animal = Animal.Alpaca, HowToxic = "very", Reference = "Alpacawereld" });
             alpacalist.Add(new ToxicPlant { Name = "Prunus serotina", Animal = Animal.Alpaca, HowToxic = "very", Reference = "Alpacawereld" });
             alpacalist.Add(new ToxicPlant { Name = "Rhodondendron", Animal = Animal.Alpaca, HowToxic = "very", Reference = "Alpacawereld" });
             alpacalist.Add(new ToxicPlant { Name = "Hyoscyamus niger", Animal = Animal.Alpaca, HowToxic = "very", Reference = "Alpacawereld" });
+            
             var animalToxicPlant = new AnimalToxicPlant { Animal = Animal.Alpaca, ToxicPlants = alpacalist };
 
-            toxicPlantList.Add(animalToxicPlant);
-
-            return toxicPlantList;
+            animalToxicPlants.Add(animalToxicPlant);
         }
     }
 }

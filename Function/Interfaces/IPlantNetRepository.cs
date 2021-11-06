@@ -6,6 +6,7 @@ namespace Function.Repository
 {
     public interface IPlantNetRepository
     {
-        public Task<List<Plant>> GetPlants(RequestData data);
+        public List<Plant> GetAll();
+        public Task AddAllAsync(RequestData data);
     }
 }

@@ -2,30 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Function.Models;
 using Function.Repository;
 using Function.Services;
+using Function.Utilities;
 using HttpMultipartParser;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Function
 {
     public class Function
     {
-        private readonly IPlantNetRepository _plantNetRepository;
+        private IPlantNetRepository _plantNetRepository;
+        private IAnimalRepository _animalRepository;
+        private IToxicPlantsRepository _toxicPlantsRepository;
 
-        public Function(IPlantNetRepository plantNetRepository)
+        public Function(IPlantNetRepository plantNetRepository, IAnimalRepository animalRepository, IToxicPlantsRepository toxicPlantsRepository)
         {
             _plantNetRepository = plantNetRepository;
+            _animalRepository = animalRepository;
+            _toxicPlantsRepository = toxicPlantsRepository;
         }
 
         //TODO: Alle error handling
@@ -38,10 +38,10 @@ namespace Function
             var logger = executionContext.GetLogger("PlantCheck");
             logger.LogInformation("C# HTTP trigger function processed a request.");
 
-            var parsedData = await ParseRequestData(request.Body);
-            var animals = AnimalList(parsedData);
-            var plants = await _plantNetRepository.GetPlants(parsedData);
-            var matchResult = MatchToxicPlantsForAnimals(plants, animals);
+            var parsedData = await RequestParser.Parse(request.Body);
+            _animalRepository.AddAll(parsedData);
+            await _plantNetRepository.AddAllAsync(parsedData);
+            var matchResult = MatchToxicPlantsForAnimals();
 
             // if content OK return OK and stuff
             var response = request.CreateResponse(HttpStatusCode.OK);
@@ -55,52 +55,19 @@ namespace Function
             return response;
         }
 
-        private string MatchToxicPlantsForAnimals(List<Plant> plants, List<Animal> animals)
+        private string MatchToxicPlantsForAnimals()
         {
+            foreach (var animal in _animalRepository.GetAll())
+            {
+                foreach(var plant in _plantNetRepository.GetAll())
+                {
+                    var ToxicPlant = _toxicPlantsRepository.GetToxicPlant(animal, plant.Name);
+                }
+            }
+
             return "nothing yet";
         }
 
-        private static async Task<RequestData> ParseRequestData(Stream requestData)
-        {
-            MultipartFormDataParser parstData = null;
-            try
-            {
-                parstData = await MultipartFormDataParser.ParseAsync(requestData);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-
-            var files = parstData.Files;
-            var parameters = parstData.Parameters;
-
-            return new RequestData
-            {
-                Files = new List<FilePart>(files),
-                Parameters = new List<ParameterPart>(parameters)
-            };
-        }
-
-        private static List<Animal> AnimalList(RequestData data)
-        {
-            var animals = data.Parameters.Where(x => x.Name == "animal");
-            var animalList = new List<Animal>();
-
-            foreach (var animal in animals)
-            {
-                if (Enum.TryParse(animal.Data, true, out Animal animalEnum))
-                {
-                    animalList.Add(animalEnum);
-                }
-                else
-                {
-                    // error?
-                }
-            }
-
-            return animalList;
-        }
 
     }
 }

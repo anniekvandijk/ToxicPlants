@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Function": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "PlantNet": "True"
+      }
+    },
+    "FunctionFakePlantNet": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "PlantNet": "False"
+      }
+    }
+  }
+}
