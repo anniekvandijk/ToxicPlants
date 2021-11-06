@@ -21,37 +21,20 @@ namespace Function.Services
             _environmentVariableService = environmentVariableService;
         }
 
-        public async Task<List<Plant>> GetPlantsAsync(RequestData data)
+        public async Task<string> GetPlantsAsync(RequestData data)
         {
             // Make call to PlantNet and get response
             var content = CreateMultipartFormDataContentAsync(data);
             var response = await MakePlantNetRequest(content);
-
-            var plantList = new List<Plant>();
-
             if (response.IsSuccessStatusCode)
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var json = JsonConvert.DeserializeObject(responseContent).ToString();
-                JObject jsonObject = JObject.Parse(json);
-                JArray results = (JArray)jsonObject["results"];
-                foreach (var result in results)
-                {
-                    var plant = new Plant
-                    {
-                        Name = (string)result["species"]["scientificName"],
-                        Score = (double)result["score"]
-                    };
-                    plantList.Add(plant);
-                }
+                return await response.Content.ReadAsStringAsync();
             }
             else
             {
-                // TODO: errorhandling
+                return null;
             }
-            return plantList;
         }
-
         private static MultipartFormDataContent CreateMultipartFormDataContentAsync(RequestData data)
         {
             var images = data.Files.Where(x => x.Name == "images");

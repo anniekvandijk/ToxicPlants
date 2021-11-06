@@ -7,7 +7,12 @@ namespace Function.Repository
 {
     public class AnimalRepository : IAnimalRepository
     {
-        private static readonly List<Animal> animals = new();
+        private readonly List<Animal> animals;
+
+        public AnimalRepository()
+        {
+            animals = new();
+        }
      
         public void Add(string animal)
         {

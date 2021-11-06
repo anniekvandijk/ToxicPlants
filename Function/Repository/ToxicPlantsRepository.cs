@@ -7,10 +7,11 @@ namespace Function.Repository
 {
     public class ToxicPlantsRepository : IToxicPlantsRepository
     {
-        private static readonly List<AnimalToxicPlant> animalToxicPlants = new();
+        private readonly List<AnimalToxicPlant> animalToxicPlants;
 
         public ToxicPlantsRepository()
         {
+            animalToxicPlants = new();
             TempList();
         }
 

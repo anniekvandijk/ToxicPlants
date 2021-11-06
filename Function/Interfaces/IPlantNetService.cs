@@ -6,6 +6,6 @@ namespace Function.Services
 {
     public interface IPlantNetService
     {
-        public Task<List<Plant>> GetPlantsAsync(RequestData data);
+        public Task<string> GetPlantsAsync(RequestData data);
     }
 }
