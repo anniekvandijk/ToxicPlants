@@ -17,6 +17,9 @@ namespace Function
                 {
                     s.AddSingleton<HttpClient>();
                     s.AddTransient<IEnvironmentVariableService, EnvironmentVariableService>();
+                    // When debugging, not always make a call to PlantNet.
+                    // So use profile 'FunctionFakePlantNet' when 
+                    // the call is not nessesary.
                     if (Environment.GetEnvironmentVariable("PlantNet") == "False")
                     {
                         s.AddTransient<IPlantNetService, FakePlantNetService>();

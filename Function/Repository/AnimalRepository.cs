@@ -18,11 +18,11 @@ namespace Function.Repository
         {
             if (Enum.TryParse(animal, true, out Animal animalEnum))
             {
-                animals.Add(animalEnum);
+                if (!animals.Contains(animalEnum)) animals.Add(animalEnum);
             }
             else
             {
-                // error?
+                throw new ArgumentException("Animal not supported");
             }
         }
 

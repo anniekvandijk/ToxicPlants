@@ -25,7 +25,7 @@ namespace Function.Repository
             return GetByAnimalName(animal).SingleOrDefault(x => x.Name == plantName);
         }
 
-        private static void TempList()
+        private void TempList()
         {
             var alpacalist = new List<ToxicPlant>();
             alpacalist.Add(new ToxicPlant { Name = "Adonis aestivalis", Animal = Animal.Alpaca, HowToxic = "very", Reference = "Alpacawereld" });

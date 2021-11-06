@@ -2,6 +2,7 @@
 {
     public enum Animal
     {
-        Alpaca
+        Alpaca,
+        Paard
     }
 }

@@ -24,4 +24,14 @@
     <ProjectReference Include="..\Function\Function.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestData\PlantNetResponse\PlantNetResultFile.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestData\Images\" />
+  </ItemGroup>
+
 </Project>
