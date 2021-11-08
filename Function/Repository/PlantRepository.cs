@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Function.Repository
 {
-    public class PlantNetRepository : IPlantNetRepository
+    public class PlantRepository : IPlantRepository
     {
-        private readonly IPlantNetService _plantNetService;
+        private readonly IPlantService _plantService;
         private readonly List<Plant> plants;
 
-        public PlantNetRepository(IPlantNetService plantNetService)
+        public PlantRepository(IPlantService plantService)
         {
-            _plantNetService = plantNetService;
+            _plantService = plantService;
             plants = new();
         }
 
@@ -25,7 +25,7 @@ namespace Function.Repository
 
         public async Task AddAllAsync(RequestData data)
         {
-            var responseContent = await _plantNetService.GetPlantsAsync(data);
+            var responseContent = await _plantService.GetPlantsAsync(data);
 
             var json = JsonConvert.DeserializeObject(responseContent).ToString();
             JObject jsonObject = JObject.Parse(json);

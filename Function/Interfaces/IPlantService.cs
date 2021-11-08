@@ -1,10 +1,9 @@
 ﻿using Function.Models;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Function.Services
 {
-    public interface IPlantNetService
+    public interface IPlantService
     {
         public Task<string> GetPlantsAsync(RequestData data);
     }

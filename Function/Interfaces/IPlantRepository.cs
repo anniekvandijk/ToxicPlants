@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Function.Repository
 {
-    public interface IPlantNetRepository
+    public interface IPlantRepository
     {
         public List<Plant> GetAll();
         public Task AddAllAsync(RequestData data);

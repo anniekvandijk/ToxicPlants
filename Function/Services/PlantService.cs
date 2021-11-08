@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Function.Services
 {
-    public class PlantNetService : IPlantNetService
+    public class PlantService : IPlantService
     {
         private readonly HttpClient _httpClient;
         private readonly IEnvironmentVariableService _environmentVariableService;
 
-        public PlantNetService(HttpClient httpClient, IEnvironmentVariableService environmentVariableService)
+        public PlantService(HttpClient httpClient, IEnvironmentVariableService environmentVariableService)
         {
             _httpClient = httpClient;
             _environmentVariableService = environmentVariableService;

@@ -17,13 +17,13 @@ namespace Function
 {
     public class Function
     {
-        private IPlantNetRepository _plantNetRepository;
+        private IPlantRepository _plantRepository;
         private IAnimalRepository _animalRepository;
         private IToxicPlantsRepository _toxicPlantsRepository;
 
-        public Function(IPlantNetRepository plantNetRepository, IAnimalRepository animalRepository, IToxicPlantsRepository toxicPlantsRepository)
+        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IToxicPlantsRepository toxicPlantsRepository)
         {
-            _plantNetRepository = plantNetRepository;
+            _plantRepository = plantRepository;
             _animalRepository = animalRepository;
             _toxicPlantsRepository = toxicPlantsRepository;
         }
@@ -40,7 +40,7 @@ namespace Function
 
             var parsedData = await RequestParser.Parse(request.Body);
             _animalRepository.AddAll(parsedData);
-            await _plantNetRepository.AddAllAsync(parsedData);
+            await _plantRepository.AddAllAsync(parsedData);
             var matchResult = MatchToxicPlantsForAnimals();
 
             // if content OK return OK and stuff
@@ -59,7 +59,7 @@ namespace Function
         {
             foreach (var animal in _animalRepository.GetAll())
             {
-                foreach(var plant in _plantNetRepository.GetAll())
+                foreach(var plant in _plantRepository.GetAll())
                 {
                     var ToxicPlant = _toxicPlantsRepository.GetToxicPlant(animal, plant.Name);
                 }
