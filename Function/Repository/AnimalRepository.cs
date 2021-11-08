@@ -1,8 +1,5 @@
 ﻿using Function.Models;
-using Function.Models.Request;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Function.Repository
 {
@@ -15,29 +12,12 @@ namespace Function.Repository
             animals = new();
         }
      
-        public void Add(string animal)
+        public void Add(Animal animal)
         {
-            if (Enum.TryParse(animal, true, out Animal animalEnum))
-            {
-                if (!animals.Contains(animalEnum)) animals.Add(animalEnum);
-            }
-            else
-            {
-                throw new ArgumentException("Animal not supported");
-            }
+            if (!animals.Contains(animal)) animals.Add(animal);
         }
 
-        public void AddAll(RequestData data)
-        {
-            var animals = data.Parameters.Where(x => x.Name == "animal");
-
-            foreach (var animal in animals)
-            {
-                Add(animal.Data);
-            }
-        }
-
-        public List<Animal> GetAll()
+        public List<Animal> Get()
         {
             return animals;
         }
