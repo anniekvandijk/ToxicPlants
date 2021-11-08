@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Function.Tests
 {
     [TestClass]
-    public class PlantNetServiceTests
+    public class PlantServiceTests
     {
         [TestMethod][Ignore]
         public async Task GetPlantsReturnsOK()
@@ -50,7 +50,7 @@ namespace Function.Tests
             var data = new RequestData();
 
             //Act
-            var plantNetService = new PlantNetService(httpClient, environmentVariableService.Object);
+            var plantNetService = new PlantService(httpClient, environmentVariableService.Object);
             var response = await plantNetService.GetPlantsAsync(data);
         }
     }

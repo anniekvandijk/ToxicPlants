@@ -20,14 +20,14 @@ namespace Function
                     // When debugging, not always make a call to PlantNet.
                     // So use profile 'FunctionFakePlantNet' when 
                     // the call is not nessesary.
-                    if (Environment.GetEnvironmentVariable("PlantNet") == "False")
+                    if (Environment.GetEnvironmentVariable("PlantCall") == "False")
                     {
-                        s.AddTransient<IPlantNetService, FakePlantNetService>();
+                        s.AddTransient<IPlantService, FakePlantService>();
                     } else
                     {
-                        s.AddTransient<IPlantNetService, PlantNetService>();
+                        s.AddTransient<IPlantService, PlantService>();
                     }
-                    s.AddTransient<IPlantNetRepository, PlantNetRepository>();
+                    s.AddTransient<IPlantRepository, PlantRepository>();
                     s.AddTransient<IAnimalRepository, AnimalRepository>();
                     s.AddTransient<IToxicPlantsRepository, ToxicPlantsRepository>();
                 })

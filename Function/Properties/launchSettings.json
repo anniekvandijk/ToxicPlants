@@ -3,13 +3,13 @@
     "Function": {
       "commandName": "Project",
       "environmentVariables": {
-        "PlantNet": "True"
+        "PlantCall": "True"
       }
     },
     "FunctionFakePlantNet": {
       "commandName": "Project",
       "environmentVariables": {
-        "PlantNet": "False"
+        "PlantCall": "False"
       }
     }
   }
