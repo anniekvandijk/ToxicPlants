@@ -1,7 +1,6 @@
-﻿using HttpMultipartParser;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Function.Models
+namespace Function.Models.Request
 {
     public class RequestData
     {

@@ -1,4 +1,5 @@
 ﻿using Function.Models;
+using Function.Models.Request;
 using Function.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -23,7 +24,7 @@ namespace Function.Tests
 
             // assert
             var animals = repo.GetAll();
-            Assert.AreEqual(1, animals.Count());
+            Assert.AreEqual(1, animals.Count);
         }
 
         [TestMethod]
@@ -38,7 +39,7 @@ namespace Function.Tests
 
             // assert
             var animals = repo.GetAll();
-            Assert.AreEqual(1, animals.Count());
+            Assert.AreEqual(1, animals.Count);
         }
 
         [TestMethod]
@@ -72,7 +73,7 @@ namespace Function.Tests
 
             // assert
             var animals = repo.GetAll();
-            Assert.AreEqual(2, animals.Count());
+            Assert.AreEqual(2, animals.Count);
         }
 
         [TestMethod]

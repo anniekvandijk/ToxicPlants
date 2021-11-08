@@ -1,4 +1,4 @@
-﻿namespace Function.Models
+﻿namespace Function.Models.Request
 {
     public class ParameterData
     {

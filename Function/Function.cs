@@ -1,14 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using Function.Models;
 using Function.Repository;
-using Function.Services;
 using Function.Utilities;
-using HttpMultipartParser;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
@@ -17,9 +10,9 @@ namespace Function
 {
     public class Function
     {
-        private IPlantRepository _plantRepository;
-        private IAnimalRepository _animalRepository;
-        private IToxicPlantRepository _toxicPlantsRepository;
+        private readonly IPlantRepository _plantRepository;
+        private readonly IAnimalRepository _animalRepository;
+        private readonly IToxicPlantRepository _toxicPlantsRepository;
 
         public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IToxicPlantRepository toxicPlantsRepository)
         {
