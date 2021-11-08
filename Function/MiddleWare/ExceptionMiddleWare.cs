@@ -14,8 +14,11 @@ namespace Function.MiddleWare
     {
         public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
         {
+            HttpRequestData httpRequestData = null;
+
             try
             {
+                httpRequestData = context.GetHttpRequestData();
                 // Code before function execution here
                 await next(context);
                 // Code after function execution here
@@ -25,8 +28,8 @@ namespace Function.MiddleWare
                 var log = context.GetLogger("PlantCheck");
                 log.LogWarning(ex, string.Empty);
 
-                HttpRequestData httpRequestData = context.GetHttpRequestData();
-                var response = httpRequestData.CreateResponse(HttpStatusCode.BadRequest);
+
+                HttpResponseData response = httpRequestData.CreateResponse(HttpStatusCode.BadRequest);
                 response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
                 await response.WriteStringAsync("Not ok");
