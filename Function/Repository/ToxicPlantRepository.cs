@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Function.Repository
 {
-    public class ToxicPlantsRepository : IToxicPlantsRepository
+    public class ToxicPlantRepository : IToxicPlantRepository
     {
         private readonly List<AnimalToxicPlant> animalToxicPlants;
 
-        public ToxicPlantsRepository()
+        public ToxicPlantRepository()
         {
             animalToxicPlants = new();
             TempList();
@@ -20,9 +20,9 @@ namespace Function.Repository
             return animalToxicPlants.SingleOrDefault(x => x.Animal == animal).ToxicPlants;
         }
 
-        public ToxicPlant GetToxicPlant(Animal animal, string plantName)
+        public ToxicPlant GetbyAnimalAndPlantName(Animal animal, Plant plant)
         {
-            return GetByAnimalName(animal).SingleOrDefault(x => x.Name == plantName);
+            return GetByAnimalName(animal).SingleOrDefault(x => x.Name == plant.Name);
         }
 
         private void TempList()

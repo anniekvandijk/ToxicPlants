@@ -29,7 +29,7 @@ namespace Function
                     }
                     s.AddTransient<IPlantRepository, PlantRepository>();
                     s.AddTransient<IAnimalRepository, AnimalRepository>();
-                    s.AddTransient<IToxicPlantsRepository, ToxicPlantsRepository>();
+                    s.AddTransient<IToxicPlantRepository, ToxicPlantRepository>();
                 })
                 .Build();
 

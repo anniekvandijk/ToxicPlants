@@ -19,9 +19,9 @@ namespace Function
     {
         private IPlantRepository _plantRepository;
         private IAnimalRepository _animalRepository;
-        private IToxicPlantsRepository _toxicPlantsRepository;
+        private IToxicPlantRepository _toxicPlantsRepository;
 
-        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IToxicPlantsRepository toxicPlantsRepository)
+        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IToxicPlantRepository toxicPlantsRepository)
         {
             _plantRepository = plantRepository;
             _animalRepository = animalRepository;
@@ -61,7 +61,7 @@ namespace Function
             {
                 foreach(var plant in _plantRepository.GetAll())
                 {
-                    var ToxicPlant = _toxicPlantsRepository.GetToxicPlant(animal, plant.Name);
+                    var ToxicPlant = _toxicPlantsRepository.GetbyAnimalAndPlantName(animal, plant);
                 }
             }
 
