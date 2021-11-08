@@ -1,3 +1,4 @@
+using Function.MiddleWare;
 using Function.Repository;
 using Function.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +13,7 @@ namespace Function
         public static void Main()
         {
             var host = new HostBuilder()
-                .ConfigureFunctionsWorkerDefaults()
+                .ConfigureFunctionsWorkerDefaults(e => { e.UseMiddleware<ExceptionMiddleware>(); })
                 .ConfigureServices(s =>
                 {
                     s.AddSingleton<HttpClient>();
