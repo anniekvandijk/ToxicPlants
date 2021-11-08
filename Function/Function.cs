@@ -59,7 +59,12 @@ namespace Function
 
         public void AddAnimals(RequestData data)
         {
-            var animals = data.Parameters.Where(x => x.Name == "animal");
+            var animals = data.Parameters.Where(x => x.Name == "animal").ToList();
+
+            if (animals.Count == 0)
+            {
+                throw new ApplicationException("No animal received");
+            }
 
             foreach (var animal in animals)
             {
@@ -69,7 +74,7 @@ namespace Function
                 }
                 else
                 {
-                    throw new ArgumentException("Animal not supported");
+                    throw new ApplicationException("Animal not supported");
                 }
             }
         }
