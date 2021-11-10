@@ -65,7 +65,7 @@ namespace Function.Services
         {
             var plantRequest = new HttpRequestMessage
             {
-                RequestUri = new Uri(_environmentVariableService.GetPlantNetUrl()),
+                RequestUri = new Uri(_environmentVariableService.GetPlantUrl()),
                 Method = HttpMethod.Post,
                 Content = content
             };

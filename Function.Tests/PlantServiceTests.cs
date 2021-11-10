@@ -44,7 +44,7 @@ namespace Function.Tests
 
             var environmentVariableService = new Mock<IEnvironmentVariableService>();
             environmentVariableService
-                .Setup(x => x.GetPlantNetUrl())
+                .Setup(x => x.GetPlantUrl())
                 .Returns("https://somewebpage.com");
 
             // create data
