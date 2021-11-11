@@ -24,7 +24,8 @@
 		"ms-vscode.azure-account",
 		"formulahendry.dotnet-test-explorer",
 		"ms-azuretools.vscode-azureresourcegroups",
-		"patcx.vscode-nuget-gallery"
+		"patcx.vscode-nuget-gallery",
+		"mhutchie.git-graph"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
