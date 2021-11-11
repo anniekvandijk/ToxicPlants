@@ -1,6 +1,9 @@
 # ToxicPlants
 Buildstatus   
-![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnet.yml/badge.svg?branch=master)
+![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnet.yml/badge.svg?branch=master)   
+Code coverage   
+[![codecov](https://codecov.io/gh/Animundo/ToxicPlants/branch/master/graph/badge.svg?token=LKYYZ9E0MH)](https://codecov.io/gh/Animundo/ToxicPlants)
+
 
 ## Usage
 
