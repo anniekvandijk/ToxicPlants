@@ -1,4 +1,5 @@
 # ToxicPlants
+Buildstatus   
 ![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnet.yml/badge.svg?branch=master)
 
 ## Usage
