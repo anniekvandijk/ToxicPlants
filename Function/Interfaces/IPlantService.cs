@@ -1,7 +1,7 @@
-﻿using Function.Models.Request;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Function.Models.Request;
 
-namespace Function.Services
+namespace Function.Interfaces
 {
     public interface IPlantService
     {

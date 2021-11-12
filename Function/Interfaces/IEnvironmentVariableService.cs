@@ -1,4 +1,4 @@
-﻿namespace Function.Services
+﻿namespace Function.Interfaces
 {
     public interface IEnvironmentVariableService
     {

@@ -3,6 +3,7 @@ using Function.Models.Request;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using Function.Interfaces;
 
 namespace Function.Services
 {

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Function.Interfaces;
 using Function.Models;
 using Function.Models.Request;
 using Function.Repository;
@@ -12,6 +13,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Sentry;
 
 namespace Function
 {
@@ -40,6 +42,7 @@ namespace Function
         {
             logger = executionContext.GetLogger("PlantCheck");
             logger.LogInformation("C# HTTP trigger function processed a request.");
+            logger.LogError("Sentry Test no init");
 
             var parsedData = await RequestParser.Parse(request.Body);
             AddAnimals(parsedData);

@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Net.Http;
+using Function.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Function
 {
@@ -13,9 +15,13 @@ namespace Function
         public static void Main()
         {
             var host = new HostBuilder()
-                .ConfigureFunctionsWorkerDefaults(e => 
-                { 
+                .ConfigureFunctionsWorkerDefaults(e =>
+                {
                     e.UseMiddleware<ExceptionMiddleware>();
+                })
+                .ConfigureLogging(g =>
+                {
+                    g.AddSentry();
                 })
                 .ConfigureServices(s =>
                 {

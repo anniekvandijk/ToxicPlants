@@ -1,16 +1,16 @@
-﻿using Function.Services;
-using System;
+﻿using System;
+using Function.Interfaces;
 
-namespace Function
+namespace Function.Services
 {
     public class EnvironmentVariableService : IEnvironmentVariableService
     {
 
         public string GetPlantUrl()
-            => Get("plantUrl");
+            => Get("PLANT_URL");
 
         public string GetSentryDsn()
-            => Get("SentryDsn");
+            => Get("SENTRY_DSN");
 
         private static string Get(string name)
         {

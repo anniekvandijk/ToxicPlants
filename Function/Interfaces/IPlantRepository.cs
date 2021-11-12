@@ -1,7 +1,7 @@
-﻿using Function.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Function.Models;
 
-namespace Function.Repository
+namespace Function.Interfaces
 {
     public interface IPlantRepository
     {

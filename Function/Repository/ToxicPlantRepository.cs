@@ -1,6 +1,7 @@
 ﻿using Function.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Function.Interfaces;
 
 namespace Function.Repository
 {
