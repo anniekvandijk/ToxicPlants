@@ -3,8 +3,6 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -12,6 +10,13 @@ namespace Function.MiddleWare
 {
     public class ExceptionMiddleware : IFunctionsWorkerMiddleware
     {
+        private ILogger<ExceptionMiddleware> logger;
+
+        public ExceptionMiddleware(ILogger<ExceptionMiddleware> logger)
+        {
+            this.logger = logger;
+        }
+
         public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
         {
             HttpRequestData httpRequestData = null;
@@ -25,8 +30,7 @@ namespace Function.MiddleWare
             }
             catch (Exception ex)
             {
-                var log = context.GetLogger("PlantCheck");
-                log.LogWarning(ex, string.Empty);
+                logger.LogError(ex, string.Empty);
 
 
                 HttpResponseData response = httpRequestData.CreateResponse(HttpStatusCode.BadRequest);

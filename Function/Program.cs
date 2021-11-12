@@ -13,13 +13,16 @@ namespace Function
         public static void Main()
         {
             var host = new HostBuilder()
-                .ConfigureFunctionsWorkerDefaults(e => { e.UseMiddleware<ExceptionMiddleware>(); })
+                .ConfigureFunctionsWorkerDefaults(e => 
+                { 
+                    e.UseMiddleware<ExceptionMiddleware>();
+                })
                 .ConfigureServices(s =>
                 {
                     s.AddSingleton<HttpClient>();
                     s.AddTransient<IEnvironmentVariableService, EnvironmentVariableService>();
-                    // When debugging, not always make a call to PlantNet.
-                    // So use profile 'FunctionFakePlantNet' when 
+                    // When debugging, not always make a call to a plants Api.
+                    // So use profile 'FunctionFakePlantCall' when 
                     // the call is not nessesary.
                     if (Environment.GetEnvironmentVariable("PlantCall") == "False")
                     {

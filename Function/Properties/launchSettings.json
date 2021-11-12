@@ -6,7 +6,7 @@
         "PlantCall": "True"
       }
     },
-    "FunctionFakePlantNet": {
+    "FunctionFakePlantCall": {
       "commandName": "Project",
       "environmentVariables": {
         "PlantCall": "False"

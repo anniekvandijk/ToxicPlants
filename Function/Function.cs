@@ -21,6 +21,7 @@ namespace Function
         private readonly IAnimalRepository _animalRepository;
         private readonly IToxicPlantRepository _toxicPlantsRepository;
         private readonly IPlantService _plantService;
+        private ILogger logger;
 
         public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IToxicPlantRepository toxicPlantsRepository, IPlantService plantService)
         {
@@ -37,7 +38,7 @@ namespace Function
         public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData request,
             FunctionContext executionContext)
         {
-            var logger = executionContext.GetLogger("PlantCheck");
+            logger = executionContext.GetLogger("PlantCheck");
             logger.LogInformation("C# HTTP trigger function processed a request.");
 
             var parsedData = await RequestParser.Parse(request.Body);

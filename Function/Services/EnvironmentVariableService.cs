@@ -9,9 +9,13 @@ namespace Function
         public string GetPlantUrl()
             => Get("plantUrl");
 
+        public string GetSentryDsn()
+            => Get("SentryDsn");
+
         private static string Get(string name)
         {
             return Environment.GetEnvironmentVariable(name);
         }
+
     }
 }
