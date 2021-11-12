@@ -1,4 +1,4 @@
-﻿using Function.Models;
+﻿using System;
 using Function.Models.Request;
 using System.IO;
 using System.Reflection;
@@ -11,7 +11,9 @@ namespace Function.Services
     {
         public async Task<string> GetPlantsAsync(RequestData data)
         {
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Utilities\PlantNetResultFile.json");
+            var path = 
+                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new InvalidOperationException("File not found")
+                    , @"Utilities\PlantNetResultFile.json");
             return await File.ReadAllTextAsync(path);
         }
     }

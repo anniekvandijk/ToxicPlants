@@ -6,21 +6,21 @@ namespace Function.Repository
 {
     public class AnimalRepository : IAnimalRepository
     {
-        private readonly List<Animal> animals;
+        private readonly List<Animal> _animals;
 
         public AnimalRepository()
         {
-            animals = new();
+            _animals = new();
         }
      
         public void Add(Animal animal)
         {
-            if (!animals.Contains(animal)) animals.Add(animal);
+            if (!_animals.Contains(animal)) _animals.Add(animal);
         }
 
         public List<Animal> Get()
         {
-            return animals;
+            return _animals;
         }
     }
 }

@@ -6,21 +6,21 @@ namespace Function.Repository
 {
     public class PlantRepository : IPlantRepository
     {
-        private readonly List<Plant> plants;
+        private readonly List<Plant> _plants;
 
         public PlantRepository()
         {
-            plants = new();
+            _plants = new();
         }
 
         public List<Plant> Get()
         {
-            return plants;
+            return _plants;
         }
 
         public void Add(Plant plant)
         {
-            plants.Add(plant);
+            _plants.Add(plant);
         }
     }
 }

@@ -9,9 +9,6 @@ namespace Function.Services
         public string GetPlantUrl()
             => Get("PLANT_URL");
 
-        public string GetSentryDsn()
-            => Get("SENTRY_DSN");
-
         private static string Get(string name)
         {
             return Environment.GetEnvironmentVariable(name);

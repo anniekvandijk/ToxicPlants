@@ -5,15 +5,12 @@ using System.Threading.Tasks;
 using Function.Interfaces;
 using Function.Models;
 using Function.Models.Request;
-using Function.Repository;
-using Function.Services;
 using Function.Utilities;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Sentry;
 
 namespace Function
 {
@@ -23,7 +20,7 @@ namespace Function
         private readonly IAnimalRepository _animalRepository;
         private readonly IToxicPlantRepository _toxicPlantsRepository;
         private readonly IPlantService _plantService;
-        private ILogger logger;
+        private ILogger _logger;
 
         public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IToxicPlantRepository toxicPlantsRepository, IPlantService plantService)
         {
@@ -33,16 +30,12 @@ namespace Function
             _plantService = plantService;
         }
 
-        //TODO: Alle error handling
-        //TODO: Unittests
-
         [Function("plantcheck")]
         public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData request,
             FunctionContext executionContext)
         {
-            logger = executionContext.GetLogger("PlantCheck");
-            logger.LogInformation("C# HTTP trigger function processed a request.");
-            logger.LogError("Sentry Test no init");
+            _logger = executionContext.GetLogger("PlantCheck");
+            _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             var parsedData = await RequestParser.Parse(request.Body);
             AddAnimals(parsedData);
@@ -88,8 +81,8 @@ namespace Function
             var responseContent = await _plantService.GetPlantsAsync(data);
 
             var json = JsonConvert.DeserializeObject(responseContent).ToString();
-            JObject jsonObject = JObject.Parse(json);
-            JArray results = (JArray)jsonObject["results"];
+            var jsonObject = JObject.Parse(json);
+            var results = (JArray)jsonObject["results"];
             
             foreach (var result in results)
             {

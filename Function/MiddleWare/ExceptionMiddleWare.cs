@@ -10,11 +10,11 @@ namespace Function.MiddleWare
 {
     public class ExceptionMiddleware : IFunctionsWorkerMiddleware
     {
-        private ILogger<ExceptionMiddleware> logger;
+        private readonly ILogger<ExceptionMiddleware> _logger;
 
         public ExceptionMiddleware(ILogger<ExceptionMiddleware> logger)
         {
-            this.logger = logger;
+            _logger = logger;
         }
 
         public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
@@ -30,7 +30,7 @@ namespace Function.MiddleWare
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, string.Empty);
+                _logger.LogError(ex, string.Empty);
 
 
                 HttpResponseData response = httpRequestData.CreateResponse(HttpStatusCode.BadRequest);

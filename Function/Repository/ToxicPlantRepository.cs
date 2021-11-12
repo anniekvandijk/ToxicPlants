@@ -7,17 +7,17 @@ namespace Function.Repository
 {
     public class ToxicPlantRepository : IToxicPlantRepository
     {
-        private readonly List<AnimalToxicPlant> animalToxicPlants;
+        private readonly List<AnimalToxicPlant> _animalToxicPlants;
 
         public ToxicPlantRepository()
         {
-            animalToxicPlants = new();
+            _animalToxicPlants = new();
             TempList();
         }
 
         public List<ToxicPlant> GetByAnimalName(Animal animal)
         {
-            return animalToxicPlants
+            return _animalToxicPlants
                 .SingleOrDefault(x => x.Animal == animal)
                 .ToxicPlants;
         }
@@ -40,7 +40,7 @@ namespace Function.Repository
 
             var animalToxicPlant = new AnimalToxicPlant { Animal = Animal.Alpaca, ToxicPlants = alpacalist };
 
-            animalToxicPlants.Add(animalToxicPlant);
+            _animalToxicPlants.Add(animalToxicPlant);
         }
     }
 }
