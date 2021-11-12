@@ -6,10 +6,19 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  AZURE_WEBAPP_NAME: ToxicPlantsFunction
+  WORKING_DIRECTORY: Function
+  OUTPUT: Dotnetpublishfolder
+
 jobs:
   build-and-deploy:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
     steps:
     - uses: actions/checkout@v2
@@ -28,10 +37,10 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
     - name: dotnet publish
-      run: dotnet publish --configuration Release --output 'dotnetpublishfolder'
+      run: dotnet publish --configuration Release --output '${{ env.OUTPUT }}'
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: ToxicPlantsFunction
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.SCM_CREDENTIALS }}
-        package: 'Function/dotnetpublishfolder'
+        package: '${{ env.WORKING_DIRECTORY }}/${{ env.OUTPUT }}'
