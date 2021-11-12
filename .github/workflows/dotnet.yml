@@ -1,4 +1,4 @@
-name: .NET
+name: Build, test and publish to Azure
 
 on:
   push:
@@ -24,11 +24,14 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
-    - uses: Azure/functions-action@v1
-      id: fa
+      run: dotnet test --no-restore --verbosity normal
+    - name: dotnet publish
+      run: dotnet publish --configuration Release --output 'dotnetpublishfolder'
+    - name: Deploy to Azure WebApp
+      uses: azure/webapps-deploy@v2
       with:
         app-name: ToxicPlantsFunction
         publish-profile: ${{ secrets.SCM_CREDENTIALS }}
+        package: 'Function/dotnetpublishfolder'
