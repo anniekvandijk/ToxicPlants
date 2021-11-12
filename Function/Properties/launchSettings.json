@@ -1,15 +1,12 @@
 {
   "profiles": {
     "Function": {
-      "commandName": "Project",
-      "environmentVariables": {
-        "PlantCall": "True"
-      }
+      "commandName": "Project"
     },
     "FunctionFakePlantCall": {
       "commandName": "Project",
       "environmentVariables": {
-        "PlantCall": "False"
+        "MOCK_PLANTCALL": "True"
       }
     }
   }

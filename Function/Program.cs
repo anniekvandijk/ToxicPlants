@@ -30,7 +30,7 @@ namespace Function
                     // When debugging, not always make a call to a plants Api.
                     // So use profile 'FunctionFakePlantCall' when 
                     // the call is not nessesary.
-                    if (Environment.GetEnvironmentVariable("PlantCall") == "False")
+                    if (Environment.GetEnvironmentVariable("MOCK_PLANTCALL") == "True")
                     {
                         s.AddTransient<IPlantService, FakePlantService>();
                     } else
