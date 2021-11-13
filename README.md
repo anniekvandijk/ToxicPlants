@@ -1,8 +1,8 @@
 # ToxicPlants
  
 | Branch | Status |
-| develop  | ![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnet.yml/badge.svg?branch=mdevelop) |
-| main  | ![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnet.yml/badge.svg?branch=main) |
+| develop  | ![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnetdevelop.yml/badge.svg?branch=develop) |
+| main  | ![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnetmain.yml/badge.svg?branch=main) |
 
 
 ## Usage
