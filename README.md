@@ -1,6 +1,8 @@
 # ToxicPlants
-  
-![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnet.yml/badge.svg?branch=master)
+ 
+| Branch | Status |
+| develop  | ![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnet.yml/badge.svg?branch=mdevelop) |
+| main  | ![Actions build and test](https://github.com/animundo/ToxicPlants/actions/workflows/dotnet.yml/badge.svg?branch=main) |
 
 
 ## Usage
