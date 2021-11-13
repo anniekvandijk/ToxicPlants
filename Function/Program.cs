@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Net.Http;
 using Function.Interfaces;
+using Function.MiddleWare.ExceptionHandler;
 using Microsoft.Extensions.Logging;
 
 namespace Function
@@ -17,7 +18,7 @@ namespace Function
             var host = new HostBuilder()
                 .ConfigureFunctionsWorkerDefaults(e =>
                 {
-                    e.UseMiddleware<ExceptionMiddleware>();
+                    e.UseMiddleware<ExceptionHandlerMiddleware>();
                 })
                 .ConfigureLogging(g =>
                 {

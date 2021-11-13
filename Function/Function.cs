@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Function.Interfaces;
+using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
 using Function.Models.Request;
 using Function.Utilities;
@@ -60,7 +61,7 @@ namespace Function
 
             if (animals.Count == 0)
             {
-                throw new ApplicationException("No animal received");
+                throw new RequestDataException("No animal received");
             }
 
             foreach (var animal in animals)
@@ -71,7 +72,7 @@ namespace Function
                 }
                 else
                 {
-                    throw new ApplicationException("Animal not supported");
+                    throw new RequestDataException("Animal not supported");
                 }
             }
         }
