@@ -7,6 +7,7 @@ using System;
 using System.Net.Http;
 using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
+using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace Function
@@ -19,7 +20,9 @@ namespace Function
                 .ConfigureFunctionsWorkerDefaults(e =>
                 {
                     e.UseMiddleware<ExceptionHandlerMiddleware>();
+                    e.UseNewtonsoftJson();
                 })
+                .ConfigureOpenApi()
                 .ConfigureLogging(g =>
                 {
                     g.AddSentry();
@@ -42,6 +45,7 @@ namespace Function
                     s.AddTransient<IAnimalRepository, AnimalRepository>();
                     s.AddTransient<IToxicPlantRepository, ToxicPlantRepository>();
                 })
+
                 .Build();
 
             host.Run();
