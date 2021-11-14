@@ -10,7 +10,6 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Function.Interfaces;
 
 namespace Function.Tests
 {
@@ -43,16 +42,11 @@ namespace Function.Tests
             // create the HttpClient
             var httpClient = new HttpClient(httpMessageHandlerMock.Object);
 
-            var environmentVariableService = new Mock<IEnvironmentVariableService>();
-            environmentVariableService
-                .Setup(x => x.GetPlantUrl())
-                .Returns("https://somewebpage.com");
-
             // create data
             var data = new RequestData();
 
             //Act
-            var plantNetService = new PlantService(httpClient, environmentVariableService.Object);
+            var plantNetService = new FakePlantService();
             var response = await plantNetService.GetPlantsAsync(data);
         }
     }

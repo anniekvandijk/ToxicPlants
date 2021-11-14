@@ -4,27 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Function.Interfaces;
 
 namespace Function.Services
 {
-    public class PlantService : IPlantService
+    public class PlantNetService : IPlantService
     {
         private readonly HttpClient _httpClient;
-        private readonly IEnvironmentVariableService _environmentVariableService;
 
-        public PlantService(HttpClient httpClient, IEnvironmentVariableService environmentVariableService)
+        public PlantNetService(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            _environmentVariableService = environmentVariableService;
         }
 
         public async Task<string> GetPlantsAsync(RequestData data)
         {
             // Make call to PlantNet and get response
             var content = CreateMultipartFormDataContentAsync(data);
-            var response = await MakePlantNetRequest(content);
+            var language = GetLanguage(data);
+            var response = await MakePlantNetRequest(content, language);
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadAsStringAsync();
@@ -62,11 +61,24 @@ namespace Function.Services
             return multiPartContent;
         }
 
-        private async Task<HttpResponseMessage> MakePlantNetRequest(MultipartFormDataContent content)
+        private static string GetLanguage(RequestData data)
         {
+            var language = data.Language;
+            if (language == null)
+            {
+                language = "nl";
+            }
+
+            return language;
+        }
+
+        private async Task<HttpResponseMessage> MakePlantNetRequest(MultipartFormDataContent content, string language)
+        {
+            var url = $"{Environment.GetEnvironmentVariable("PLANTNET_URL")}&lang={language}";
+
             var plantRequest = new HttpRequestMessage
             {
-                RequestUri = new Uri(_environmentVariableService.GetPlantUrl()),
+                RequestUri = new Uri(url),
                 Method = HttpMethod.Post,
                 Content = content
             };

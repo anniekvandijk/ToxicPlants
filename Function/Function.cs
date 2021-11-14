@@ -2,10 +2,11 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
 using Function.Models.Request;
+using Function.Repository;
+using Function.Services;
 using Function.Utilities;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
@@ -22,11 +23,11 @@ namespace Function
     {
         private readonly IPlantRepository _plantRepository;
         private readonly IAnimalRepository _animalRepository;
-        private readonly IToxicPlantRepository _toxicPlantsRepository;
+        private readonly IPlantAnimalRepository _toxicPlantsRepository;
         private readonly IPlantService _plantService;
         private ILogger _logger;
 
-        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IToxicPlantRepository toxicPlantsRepository, IPlantService plantService)
+        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantAnimalRepository toxicPlantsRepository, IPlantService plantService)
         {
             _plantRepository = plantRepository;
             _animalRepository = animalRepository;
@@ -41,7 +42,7 @@ namespace Function
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "application/json", bodyType: typeof(string), Summary = "The response", Description = "This returns the response")]
 
         [Function("plantcheck")]
-        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData request,
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = "v1/plantcheck")] HttpRequestData request,
             FunctionContext executionContext)
         {
             _logger = executionContext.GetLogger("PlantCheck");
@@ -54,9 +55,14 @@ namespace Function
 
             // if content OK return OK and stuff
             var response = request.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+            //response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
-            await response.WriteStringAsync(matchResult);
+            const string fakeContent =
+@"{
+    ""Animal"": ""Alpaca"",
+    ""ScientificName"": ""Test"",
+}";
+            await response.WriteStringAsync(fakeContent);
 
             // if not OK return not OK
 
@@ -98,7 +104,7 @@ namespace Function
             {
                 var plant = new Plant
                 {
-                    Name = (string)result["species"]["scientificName"],
+                    ScientificName = (string)result["species"]["scientificName"],
                     Score = (double)result["score"]
                 };
                 _plantRepository.Add(plant);

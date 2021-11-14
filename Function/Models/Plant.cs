@@ -1,8 +1,11 @@
-﻿namespace Function.Models
+﻿using System.Collections.Generic;
+
+namespace Function.Models
 {
     public class Plant
     {
-        public string Name { get; set; }
+        public string ScientificName { get; set; }
+        public List<PlantCommonName> CommonNames { get; set; }
         public double Score { get; set; }
     }
 }

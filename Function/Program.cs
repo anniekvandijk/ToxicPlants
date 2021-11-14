@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Net.Http;
-using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
 using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
 using Microsoft.Extensions.Logging;
@@ -30,7 +29,6 @@ namespace Function
                 .ConfigureServices(s =>
                 {
                     s.AddSingleton<HttpClient>();
-                    s.AddTransient<IEnvironmentVariableService, EnvironmentVariableService>();
                     // When debugging, not always make a call to a plants Api.
                     // So use profile 'FunctionFakePlantCall' when 
                     // the call is not nessesary.
@@ -39,11 +37,11 @@ namespace Function
                         s.AddTransient<IPlantService, FakePlantService>();
                     } else
                     {
-                        s.AddTransient<IPlantService, PlantService>();
+                        s.AddTransient<IPlantService, PlantNetService>();
                     }
                     s.AddTransient<IPlantRepository, PlantRepository>();
                     s.AddTransient<IAnimalRepository, AnimalRepository>();
-                    s.AddTransient<IToxicPlantRepository, ToxicPlantRepository>();
+                    s.AddTransient<IPlantAnimalRepository, PlantAnimalRepository>();
                 })
 
                 .Build();
