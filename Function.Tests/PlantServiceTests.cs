@@ -1,4 +1,3 @@
-using Function.Models;
 using Function.Models.Request;
 using Function.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -16,7 +15,8 @@ namespace Function.Tests
     [TestClass]
     internal class PlantServiceTests
     {
-        [TestMethod][Ignore]
+        [TestMethod]
+        [Ignore]
         public async Task GetPlantsReturnsOK()
         {
             //Arrange
@@ -35,7 +35,8 @@ namespace Function.Tests
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
                     ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(new HttpResponseMessage { 
+                .ReturnsAsync(new HttpResponseMessage
+                {
                     StatusCode = HttpStatusCode.OK,
                     Content = new StringContent(expectedResponseBody)
                 });

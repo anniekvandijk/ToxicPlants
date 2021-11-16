@@ -1,11 +1,10 @@
-﻿using System;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Azure.Functions.Worker;
+﻿using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Function.MiddleWare.ExceptionHandler
 {
@@ -22,7 +21,7 @@ namespace Function.MiddleWare.ExceptionHandler
             catch (Exception ex)
             {
                 logger.LogError(ex, ex.Message);
-                
+
                 var statuscode = HttpStatusCode.InternalServerError;
 
                 if (ex.InnerException != null)

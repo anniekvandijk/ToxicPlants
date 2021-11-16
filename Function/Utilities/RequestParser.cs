@@ -41,7 +41,7 @@ namespace Function.Utilities
             }
 
             var parameterList = new List<ParameterData>();
-            foreach(var parameter in parameters)
+            foreach (var parameter in parameters)
             {
                 var parameterData = new ParameterData
                 {

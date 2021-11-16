@@ -32,9 +32,9 @@ namespace Function.Repository
             _plantAnimals
                 .Where(x => x.PlantName == plant.ScientificName).ToList();
 
-        public PlantAnimal GetbyAnimalAndPlantName(Animal animal, Plant plant) => 
+        public PlantAnimal GetbyAnimalAndPlantName(Animal animal, Plant plant) =>
             _plantAnimals.SingleOrDefault(x => x.Animal == animal && x.PlantName == plant.ScientificName);
-        
+
 
         private void TempList()
         {

@@ -1,14 +1,13 @@
-using Function.MiddleWare;
+using Function.MiddleWare.ExceptionHandler;
 using Function.Repository;
 using Function.Services;
+using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
-using Function.MiddleWare.ExceptionHandler;
-using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
-using Microsoft.Extensions.Logging;
 
 [assembly: InternalsVisibleTo("Function.Tests")]
 
@@ -38,7 +37,8 @@ namespace Function
                     if (Environment.GetEnvironmentVariable("MOCK_PLANTCALL") == "True")
                     {
                         s.AddTransient<IPlantService, FakePlantService>();
-                    } else
+                    }
+                    else
                     {
                         s.AddTransient<IPlantService, PlantNetService>();
                     }

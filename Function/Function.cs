@@ -1,7 +1,3 @@
-using System;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
 using Function.Models.Request;
@@ -16,6 +12,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Function
 {
@@ -99,7 +99,7 @@ namespace Function
             var json = JsonConvert.DeserializeObject(responseContent).ToString();
             var jsonObject = JObject.Parse(json);
             var results = (JArray)jsonObject["results"];
-            
+
             foreach (var result in results)
             {
                 var plant = new Plant
@@ -115,7 +115,7 @@ namespace Function
         {
             foreach (var animal in _animalRepository.Get())
             {
-                foreach(var plant in _plantRepository.Get())
+                foreach (var plant in _plantRepository.Get())
                 {
                     var ToxicPlant = _toxicPlantsRepository.GetbyAnimalAndPlantName(animal, plant);
                 }

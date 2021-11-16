@@ -21,6 +21,6 @@ namespace Function.Repository
         }
 
         public List<Animal> Get() => _animals;
-        
+
     }
 }
