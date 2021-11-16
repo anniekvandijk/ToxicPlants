@@ -6,6 +6,7 @@ namespace Function.Repository
 {
     internal interface IPlantAnimalRepository
     {
+        void Add(PlantAnimal plantAnimal);
         List<PlantAnimal> Get();
         List<PlantAnimal> GetByAnimalName(Animal animal);
         List<PlantAnimal> GetByPlantName(Plant plant);
@@ -19,7 +20,11 @@ namespace Function.Repository
         public PlantAnimalRepository()
         {
             _plantAnimals = new();
-            TempList();
+        }
+
+        public void Add(PlantAnimal plantAnimal)
+        {
+            _plantAnimals.Add(plantAnimal);
         }
 
         public List<PlantAnimal> Get() => _plantAnimals;
@@ -34,36 +39,5 @@ namespace Function.Repository
 
         public PlantAnimal GetbyAnimalAndPlantName(Animal animal, Plant plant) =>
             _plantAnimals.SingleOrDefault(x => x.Animal == animal && x.PlantName == plant.ScientificName);
-
-
-        private void TempList()
-        {
-            _plantAnimals.AddRange(
-
-                new List<PlantAnimal>
-                {
-
-                    new()
-                    {
-                        PlantName = "Adonis aestivalis", Animal = Animal.Alpaca, HowToxic = "very",
-                        Reference = "Alpacawereld"
-                    },
-                    new()
-                    {
-                        PlantName = "Prunus serotina", Animal = Animal.Alpaca, HowToxic = "very",
-                        Reference = "Alpacawereld"
-                    },
-                    new()
-                    {
-                        PlantName = "Rhodondendron", Animal = Animal.Alpaca, HowToxic = "very",
-                        Reference = "Alpacawereld"
-                    },
-                    new()
-                    {
-                        PlantName = "Hyoscyamus niger", Animal = Animal.Alpaca, HowToxic = "very",
-                        Reference = "Alpacawereld"
-                    }
-                });
-        }
     }
 }

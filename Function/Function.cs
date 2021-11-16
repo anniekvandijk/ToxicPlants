@@ -23,15 +23,15 @@ namespace Function
     {
         private readonly IPlantRepository _plantRepository;
         private readonly IAnimalRepository _animalRepository;
-        private readonly IPlantAnimalRepository _toxicPlantsRepository;
+        private readonly IPlantAnimalRepository _plantAnimalRepository;
         private readonly IPlantService _plantService;
         private ILogger _logger;
 
-        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantAnimalRepository toxicPlantsRepository, IPlantService plantService)
+        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantAnimalRepository plantAnimalRepository, IPlantService plantService)
         {
             _plantRepository = plantRepository;
             _animalRepository = animalRepository;
-            _toxicPlantsRepository = toxicPlantsRepository;
+            _plantAnimalRepository = plantAnimalRepository;
             _plantService = plantService;
         }
 
@@ -47,6 +47,8 @@ namespace Function
         {
             _logger = executionContext.GetLogger("PlantCheck");
             _logger.LogInformation("C# HTTP trigger function processed a request.");
+
+            _logger.LogInformation(_plantAnimalRepository.Get().Count.ToString());
 
             var parsedData = await RequestParser.Parse(request.Body);
             AddAnimals(parsedData);
@@ -117,7 +119,7 @@ namespace Function
             {
                 foreach (var plant in _plantRepository.Get())
                 {
-                    var ToxicPlant = _toxicPlantsRepository.GetbyAnimalAndPlantName(animal, plant);
+                    var ToxicPlant = _plantAnimalRepository.GetbyAnimalAndPlantName(animal, plant);
                 }
             }
 

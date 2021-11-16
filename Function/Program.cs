@@ -42,13 +42,15 @@ namespace Function
                     {
                         s.AddTransient<IPlantService, PlantNetService>();
                     }
+
+                    s.AddTransient<IPlantAnimalService, PlantAnimalService>();
                     s.AddTransient<IPlantRepository, PlantRepository>();
                     s.AddTransient<IAnimalRepository, AnimalRepository>();
                     s.AddTransient<IPlantAnimalRepository, PlantAnimalRepository>();
                 })
 
                 .Build();
-
+            
             host.Run();
         }
     }
