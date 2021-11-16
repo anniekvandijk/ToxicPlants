@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Function.Services
 {
-    public class FakePlantService : IPlantService
+    internal class FakePlantService : IPlantService
     {
         public async Task<string> GetPlantsAsync(RequestData data)
         {

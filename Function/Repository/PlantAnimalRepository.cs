@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Function.Repository
 {
-    public interface IPlantAnimalRepository
+    internal interface IPlantAnimalRepository
     {
         List<PlantAnimal> Get();
         List<PlantAnimal> GetByAnimalName(Animal animal);
@@ -12,7 +12,7 @@ namespace Function.Repository
         PlantAnimal GetbyAnimalAndPlantName(Animal animal, Plant plant);
     }
 
-    public class PlantAnimalRepository : IPlantAnimalRepository
+    internal class PlantAnimalRepository : IPlantAnimalRepository
     {
         private readonly List<PlantAnimal> _plantAnimals;
 

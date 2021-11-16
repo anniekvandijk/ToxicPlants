@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Function
 {
-    public class Function
+    internal class Function
     {
         private readonly IPlantRepository _plantRepository;
         private readonly IAnimalRepository _animalRepository;

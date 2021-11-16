@@ -13,7 +13,7 @@ namespace Function.MiddleWare.ExceptionHandler
 	/// https://github.com/Azure/azure-functions-dotnet-worker/issues/530#issuecomment-918473952
 	/// </summary>
 
-	public static class FunctionContextExtensions
+    internal static class FunctionContextExtensions
     {
 		/// <summary>
 		/// Returns the HttpRequestData from the function context if it exists.

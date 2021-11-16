@@ -2,7 +2,7 @@
 
 namespace Function.Models
 {
-    public class PlantAnimal
+    internal class PlantAnimal
     {
         public Animal Animal { get; set; }
         public string PlantName { get; set; }

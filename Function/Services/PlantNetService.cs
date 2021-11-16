@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Function.Services
 {
-    public class PlantNetService : IPlantService
+    internal class PlantNetService : IPlantService
     {
         private readonly HttpClient _httpClient;
 

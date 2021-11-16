@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace Function.Tests
 {
     [TestClass]
-    public class PlantServiceTests
+    internal class PlantServiceTests
     {
         [TestMethod][Ignore]
         public async Task GetPlantsReturnsOK()

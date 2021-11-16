@@ -1,6 +1,6 @@
 ﻿namespace Function.UseCases
 {
-    public class HandleRequestDataPlantCheckV1
+    internal class HandleRequestDataPlantCheckV1
     {
 
     }

@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Function.MiddleWare.ExceptionHandler
 {
-    public class ExceptionHandlerMiddleware : IFunctionsWorkerMiddleware
+    internal class ExceptionHandlerMiddleware : IFunctionsWorkerMiddleware
     {
         public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
         {

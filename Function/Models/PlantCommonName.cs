@@ -1,6 +1,6 @@
 ﻿namespace Function.Models
 {
-    public class PlantCommonName
+    internal class PlantCommonName
     {
         public string Name { get; set; }
     }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Function.Repository
 {
-    public interface IPlantRepository
+    internal interface IPlantRepository
     {
         List<Plant> Get();
         void Add(Plant plant);
     }
 
-    public class PlantRepository : IPlantRepository
+    internal class PlantRepository : IPlantRepository
     {
         private readonly List<Plant> _plants;
 

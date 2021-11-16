@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Function.Utilities
 {
-    public static class RequestParser
+    internal static class RequestParser
     {
         public static async Task<RequestData> Parse(Stream requestData)
         {

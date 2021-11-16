@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Function.Models.Request
 {
-    public class FileData
+    internal class FileData
         {
             public Stream Data { get; set;  }
             public string FileName { get; set;  }

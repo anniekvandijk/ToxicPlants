@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Function.Tests
 {
     [TestClass]
-    public class AnimalRepositoryTests
+    internal class AnimalRepositoryTests
     {
         [TestMethod]
         public void AddAnimal()
