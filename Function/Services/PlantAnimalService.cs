@@ -29,7 +29,7 @@ namespace Function.Services
 
                     new()
                     {
-                        PlantName = "Adonis aestivalis", Animal = Animal.Alpaca, HowToxic = "very",
+                        PlantName = "Anthriscus sylvestris (L.) Hoffm.", Animal = Animal.Alpaca, HowToxic = "very",
                         Reference = "Alpacawereld"
                     },
                     new()

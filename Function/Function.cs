@@ -34,9 +34,8 @@ namespace Function
             _logger = executionContext.GetLogger("PlantCheck");
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-            var result = await _handleRequestData.HandleRequest(request);
-
-
+            var resultBody = await _handleRequestData.HandleRequest(request);
+            
             // if content OK return OK and stuff
             var response = request.CreateResponse(HttpStatusCode.OK);
             //response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
@@ -46,7 +45,7 @@ namespace Function
     ""Animal"": ""Alpaca"",
     ""ScientificName"": ""Test"",
 }";
-            await response.WriteStringAsync(fakeContent);
+            await response.WriteStringAsync(resultBody);
 
             // if not OK return not OK
 

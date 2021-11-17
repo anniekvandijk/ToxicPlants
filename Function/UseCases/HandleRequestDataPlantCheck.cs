@@ -8,6 +8,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,8 +39,9 @@ namespace Function.UseCases
             var parsedData = await RequestParser.Parse(request.Body);
             AddAnimals(parsedData);
             await AddPlants(parsedData);
-            var matchResult = MatchToxicPlantsForAnimals();
-            return matchResult;
+            var result = MatchToxicPlantsForAnimals();
+            var json = JsonConvert.SerializeObject(result);
+            return json;
         }
 
         private void AddAnimals(RequestData data)
@@ -83,17 +85,22 @@ namespace Function.UseCases
             }
         }
 
-        private string MatchToxicPlantsForAnimals()
+        private List<PlantAnimal> MatchToxicPlantsForAnimals()
         {
+            List<PlantAnimal> plantAnimals = new List<PlantAnimal>();
             foreach (var animal in _animalRepository.Get())
             {
                 foreach (var plant in _plantRepository.Get())
                 {
                     var ToxicPlant = _plantAnimalRepository.GetbyAnimalAndPlantName(animal, plant);
+                    if (ToxicPlant != null)
+                    {
+                        plantAnimals.Add(ToxicPlant);
+                    }
                 }
             }
 
-            return "nothing yet";
+            return plantAnimals;
         }
 
 
