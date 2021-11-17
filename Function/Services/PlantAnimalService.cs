@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Function.Models;
+﻿using Function.Models;
 using Function.Repository;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Function.Services
 {

@@ -1,6 +1,7 @@
 using Function.MiddleWare.ExceptionHandler;
 using Function.Repository;
 using Function.Services;
+using Function.UseCases;
 using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -45,14 +46,15 @@ namespace Function
                     // One instance of a service which gets all toxoc plants data and adds it to the repository
                     s.AddSingleton<IPlantAnimalRepository, PlantAnimalRepository>();
                     s.AddSingleton<IPlantAnimalService, PlantAnimalService>();
+                    s.AddScoped<IHandleRequestData, HandleRequestDataPlantCheck>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();
                 })
 
                 .Build();
-        
-                
-            
+
+
+
             host.Run();
         }
     }
