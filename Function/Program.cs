@@ -36,20 +36,22 @@ namespace Function
                     // the call is not nessesary.
                     if (Environment.GetEnvironmentVariable("MOCK_PLANTCALL") == "True")
                     {
-                        s.AddTransient<IPlantService, FakePlantService>();
+                        s.AddSingleton<IPlantService, FakePlantService>();
                     }
                     else
                     {
-                        s.AddTransient<IPlantService, PlantNetService>();
+                        s.AddSingleton<IPlantService, PlantNetService>();
                     }
-
-                    s.AddTransient<IPlantAnimalService, PlantAnimalService>();
-                    s.AddTransient<IPlantRepository, PlantRepository>();
-                    s.AddTransient<IAnimalRepository, AnimalRepository>();
-                    s.AddTransient<IPlantAnimalRepository, PlantAnimalRepository>();
+                    // One instance of a service which gets all toxoc plants data and adds it to the repository
+                    s.AddSingleton<IPlantAnimalRepository, PlantAnimalRepository>();
+                    s.AddSingleton<IPlantAnimalService, PlantAnimalService>();
+                    s.AddScoped<IPlantRepository, PlantRepository>();
+                    s.AddScoped<IAnimalRepository, AnimalRepository>();
                 })
 
                 .Build();
+        
+                
             
             host.Run();
         }

@@ -27,7 +27,7 @@ namespace Function
         private readonly IPlantService _plantService;
         private ILogger _logger;
 
-        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantAnimalRepository plantAnimalRepository, IPlantService plantService)
+        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantAnimalRepository plantAnimalRepository, IPlantService plantService, IPlantAnimalService plantAnimalService)
         {
             _plantRepository = plantRepository;
             _animalRepository = animalRepository;
