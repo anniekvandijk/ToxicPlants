@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Function.MiddleWare.ExceptionHandler
 {
@@ -18,6 +19,7 @@ namespace Function.MiddleWare.ExceptionHandler
             {
                 await next(context);
             }
+
             catch (Exception ex)
             {
                 logger.LogError(ex, ex.Message);
@@ -28,14 +30,17 @@ namespace Function.MiddleWare.ExceptionHandler
                 {
                     var exceptionType = ex.InnerException.GetType();
 
-                    if (exceptionType == typeof(RequestDataException))
+                    // Request is not valid
+                    if (exceptionType == typeof(RequestException))
                     {
                         statuscode = HttpStatusCode.BadRequest;
                     }
+                    await SetResponse(context, logger, statuscode, ex.InnerException);
                 }
-
-                await SetResponse(context, logger, statuscode, ex);
-
+                else
+                {
+                    await SetResponse(context, logger, statuscode, ex);
+                }
             }
         }
 
@@ -43,13 +48,24 @@ namespace Function.MiddleWare.ExceptionHandler
         {
             var request = context.GetHttpRequestData(logger);
             var response = request?.CreateResponse(statusCode);
+            response.Headers.Add("Content-Type", "application/json; charset=utf-8");
 
-#if DEBUG
-            await response.WriteStringAsync(ex.StackTrace);
-#else
-            await response.WriteAsJsonAsync("not ok");
-#endif
+            var body = new ExceptionResponse
+            {
+                HttpStatusCode = statusCode,
+                Message = ex.Message,
+                ErrorCode = 999
+            };
+
+            await response.WriteStringAsync(JsonConvert.SerializeObject(body));
             context.SetHttpResponseData(response, logger);
         }
+    }
+
+    internal class ExceptionResponse
+    {
+        public HttpStatusCode HttpStatusCode { get; set; }
+        public int ErrorCode { get; set; }
+        public string Message { get; set; }
     }
 }

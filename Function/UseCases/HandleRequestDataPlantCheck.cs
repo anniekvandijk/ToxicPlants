@@ -37,20 +37,21 @@ namespace Function.UseCases
         public async Task<string> HandleRequest(HttpRequestData request)
         {
             var parsedData = await RequestParser.Parse(request.Body);
-            AddAnimals(parsedData);
-            await AddPlants(parsedData);
+            var addAnimals = AddAnimals(parsedData);
+            var addPlants = AddPlants(parsedData);
+            await Task.WhenAll(addAnimals, addPlants);
             var result = MatchToxicPlantsForAnimals();
             var json = JsonConvert.SerializeObject(result);
             return json;
         }
 
-        private void AddAnimals(RequestData data)
+        private async Task AddAnimals(RequestData data)
         {
             var animals = data.Parameters.Where(x => x.Name == "animal").ToList();
 
             if (animals.Count == 0)
             {
-                throw new RequestDataException("No animal received");
+                throw new RequestException("No animal received");
             }
 
             foreach (var animal in animals)
@@ -61,7 +62,7 @@ namespace Function.UseCases
                 }
                 else
                 {
-                    throw new RequestDataException("Animal not supported");
+                    throw new RequestException("Animal not supported");
                 }
             }
         }

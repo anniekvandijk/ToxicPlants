@@ -2,14 +2,14 @@
 
 namespace Function.MiddleWare.ExceptionHandler
 {
-    internal class RequestDataException : Exception
+    internal class RequestException : Exception
     {
-        public RequestDataException(string message)
+        public RequestException(string message)
             : base(message)
         {
         }
 
-        public RequestDataException(string message, Exception inner)
+        public RequestException(string message, Exception inner)
             : base(message, inner)
         {
         }

@@ -35,21 +35,12 @@ namespace Function
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             var resultBody = await _handleRequestData.HandleRequest(request);
-            
-            // if content OK return OK and stuff
             var response = request.CreateResponse(HttpStatusCode.OK);
-            //response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+            
+            response.Headers.Add("Content-Type", "application/json; charset=utf-8");
 
-            const string fakeContent =
-@"{
-    ""Animal"": ""Alpaca"",
-    ""ScientificName"": ""Test"",
-}";
             await response.WriteStringAsync(resultBody);
 
-            // if not OK return not OK
-
-            // return
             return response;
         }
     }
