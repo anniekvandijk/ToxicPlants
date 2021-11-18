@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 [assembly: InternalsVisibleTo("Function.Tests")]
 
@@ -32,6 +33,15 @@ namespace Function
                 })
                 .ConfigureServices(s =>
                 {
+                    s.AddControllers().AddJsonOptions(x =>
+                    {
+                        // serialize enums as strings in api responses (e.g. Role)
+                        x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+
+                        // ignore omitted parameters on models to enable optional params (e.g. User update)
+                        x.JsonSerializerOptions.IgnoreNullValues = true;
+                    });
+
                     s.AddSingleton<HttpClient>();
                     // When debugging, not always make a call to a plants Api.
                     // So use profile 'FunctionFakePlantCall' when 

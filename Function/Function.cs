@@ -1,3 +1,4 @@
+using Function.Interfaces;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
@@ -7,7 +8,6 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Function.Interfaces;
 
 namespace Function
 {

@@ -4,11 +4,10 @@ using Function.Models;
 using Function.Models.Request;
 using Function.Utilities;
 using Microsoft.Azure.Functions.Worker.Http;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Function.UseCases
@@ -35,7 +34,7 @@ namespace Function.UseCases
             var addPlants = AddPlants(parsedData);
             await Task.WhenAll(addAnimals, addPlants);
             var result = MatchToxicPlantsForAnimals();
-            var json = JsonConvert.SerializeObject(result);
+            var json = JsonSerializer.Serialize(result);
             return json;
         }
 
@@ -65,16 +64,20 @@ namespace Function.UseCases
         {
             var responseContent = await _plantService.GetPlantsAsync(data);
 
-            var json = JsonConvert.DeserializeObject(responseContent).ToString();
-            var jsonObject = JObject.Parse(json);
-            var results = (JArray)jsonObject["results"];
+            var json = JsonSerializer.Deserialize<JsonElement>(responseContent);
+            json.TryGetProperty("results", out var results);
 
-            foreach (var result in results)
+            foreach (var result in results.EnumerateArray())
             {
+                result.TryGetProperty("species", out var species);
+                species.TryGetProperty("scientificName", out var scientificName);
+
+                result.TryGetProperty("score", out var score);
+
                 var plant = new Plant
                 {
-                    ScientificName = (string)result["species"]["scientificName"],
-                    Score = (double)result["score"]
+                    ScientificName = scientificName.GetString(),
+                    Score = score.GetDouble()
                 };
                 _plantRepository.Add(plant);
             }

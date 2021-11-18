@@ -2,9 +2,9 @@
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Function.MiddleWare.ExceptionHandler
@@ -50,14 +50,21 @@ namespace Function.MiddleWare.ExceptionHandler
             var response = request?.CreateResponse(statusCode);
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");
 
+#if DEBUG
+            var stackTrace = ex.StackTrace;
+#else
+            var stackTrace = null;
+#endif
+
             var body = new ExceptionResponse
             {
                 HttpStatusCode = statusCode,
                 Message = ex.Message,
-                ErrorCode = 999
+                ErrorCode = 999,
+                StackTrace = stackTrace
             };
 
-            await response.WriteStringAsync(JsonConvert.SerializeObject(body));
+            await response.WriteStringAsync(JsonSerializer.Serialize(body));
             context.SetHttpResponseData(response, logger);
         }
     }
@@ -67,5 +74,6 @@ namespace Function.MiddleWare.ExceptionHandler
         public HttpStatusCode HttpStatusCode { get; set; }
         public int ErrorCode { get; set; }
         public string Message { get; set; }
+        public string StackTrace { get; set; }
     }
 }

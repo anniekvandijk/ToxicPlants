@@ -49,7 +49,7 @@ namespace Function.Services
                 _toxicPlantAnimalRepository.Add(plantAnimal);
             }
 
-            _logger.LogDebug("Data toxic plants loaded");
+            _logger.LogDebug("Data toxic plants loaded. Total nr of toxic plants: {_}", _toxicPlantAnimalRepository.Get().Count);
         }
     }
 }
