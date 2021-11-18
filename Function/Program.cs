@@ -1,3 +1,4 @@
+using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
 using Function.Repository;
 using Function.Services;
@@ -44,8 +45,8 @@ namespace Function
                         s.AddSingleton<IPlantService, PlantNetService>();
                     }
                     // One instance of a service which gets all toxoc plants data and adds it to the repository
-                    s.AddSingleton<IPlantAnimalRepository, PlantAnimalRepository>();
-                    s.AddSingleton<IPlantAnimalService, PlantAnimalService>();
+                    s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
+                    s.AddSingleton<IToxicPlantAnimalService, ToxicPlantAnimalService>();
                     s.AddScoped<IHandleRequestData, HandleRequestDataPlantCheck>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();

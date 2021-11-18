@@ -1,7 +1,7 @@
 ﻿using Function.Models.Request;
 using System.Threading.Tasks;
 
-namespace Function.Services
+namespace Function.Interfaces
 {
     internal interface IPlantService
     {

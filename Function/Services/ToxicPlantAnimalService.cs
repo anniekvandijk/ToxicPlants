@@ -1,30 +1,25 @@
-﻿using Function.Models;
-using Function.Repository;
+﻿using Function.Interfaces;
+using Function.Models;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
 namespace Function.Services
 {
-    internal interface IPlantAnimalService
+    internal class ToxicPlantAnimalService : IToxicPlantAnimalService
     {
-        void LoadPlantAnimalData();
-    }
+        private readonly IToxicPlantAnimalRepository _toxicPlantAnimalRepository;
+        private readonly ILogger<ToxicPlantAnimalService> _logger;
 
-    internal class PlantAnimalService : IPlantAnimalService
-    {
-        private readonly IPlantAnimalRepository _plantAnimalRepository;
-        private readonly ILogger<PlantAnimalService> _logger;
-
-        public PlantAnimalService(IPlantAnimalRepository plantAnimalRepository, ILogger<PlantAnimalService> logger)
+        public ToxicPlantAnimalService(IToxicPlantAnimalRepository toxicPlantAnimalRepository, ILogger<ToxicPlantAnimalService> logger)
         {
-            _plantAnimalRepository = plantAnimalRepository;
+            _toxicPlantAnimalRepository = toxicPlantAnimalRepository;
             _logger = logger;
             LoadPlantAnimalData();
         }
 
         public void LoadPlantAnimalData()
         {
-            var plantAnimalList = new List<PlantAnimal>
+            var plantAnimalList = new List<ToxicPlantAnimal>
                 {
 
                     new()
@@ -51,7 +46,7 @@ namespace Function.Services
 
             foreach (var plantAnimal in plantAnimalList)
             {
-                _plantAnimalRepository.Add(plantAnimal);
+                _toxicPlantAnimalRepository.Add(plantAnimal);
             }
 
             _logger.LogDebug("Data toxic plants loaded");

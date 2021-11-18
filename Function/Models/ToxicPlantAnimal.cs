@@ -1,6 +1,6 @@
 ﻿namespace Function.Models
 {
-    internal class PlantAnimal
+    internal class ToxicPlantAnimal
     {
         public Animal Animal { get; set; }
         public string PlantName { get; set; }

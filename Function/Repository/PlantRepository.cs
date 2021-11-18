@@ -1,14 +1,9 @@
-﻿using Function.Models;
+﻿using Function.Interfaces;
+using Function.Models;
 using System.Collections.Generic;
 
 namespace Function.Repository
 {
-    internal interface IPlantRepository
-    {
-        List<Plant> Get();
-        void Add(Plant plant);
-    }
-
     internal class PlantRepository : IPlantRepository
     {
         private readonly List<Plant> _plants;

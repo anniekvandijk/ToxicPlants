@@ -1,5 +1,3 @@
-using Function.Services;
-using Function.UseCases;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
@@ -9,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using Function.Interfaces;
 
 namespace Function
 {
@@ -17,7 +16,7 @@ namespace Function
         private readonly IHandleRequestData _handleRequestData;
         private ILogger _logger;
 
-        public Function(IPlantAnimalService plantAnimalService, IHandleRequestData handleRequestData)
+        public Function(IToxicPlantAnimalService toxicPlantAnimalService, IHandleRequestData handleRequestData)
         {
             _handleRequestData = handleRequestData;
         }
@@ -35,8 +34,9 @@ namespace Function
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             var resultBody = await _handleRequestData.HandleRequest(request);
+
             var response = request.CreateResponse(HttpStatusCode.OK);
-            
+
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");
 
             await response.WriteStringAsync(resultBody);

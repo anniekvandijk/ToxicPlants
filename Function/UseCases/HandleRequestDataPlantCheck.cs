@@ -1,8 +1,7 @@
-﻿using Function.MiddleWare.ExceptionHandler;
+﻿using Function.Interfaces;
+using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
 using Function.Models.Request;
-using Function.Repository;
-using Function.Services;
 using Function.Utilities;
 using Microsoft.Azure.Functions.Worker.Http;
 using Newtonsoft.Json;
@@ -14,24 +13,19 @@ using System.Threading.Tasks;
 
 namespace Function.UseCases
 {
-    internal interface IHandleRequestData
-    {
-        Task<string> HandleRequest(HttpRequestData request);
-    }
-
     internal class HandleRequestDataPlantCheck : IHandleRequestData
     {
         private readonly IPlantRepository _plantRepository;
         private readonly IAnimalRepository _animalRepository;
         private readonly IPlantService _plantService;
-        private readonly IPlantAnimalRepository _plantAnimalRepository;
+        private readonly IToxicPlantAnimalRepository _toxicPlantAnimalRepository;
 
-        public HandleRequestDataPlantCheck(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantService plantService, IPlantAnimalRepository plantAnimalRepository)
+        public HandleRequestDataPlantCheck(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantService plantService, IToxicPlantAnimalRepository toxicPlantAnimalRepository)
         {
             _plantRepository = plantRepository;
             _animalRepository = animalRepository;
             _plantService = plantService;
-            _plantAnimalRepository = plantAnimalRepository;
+            _toxicPlantAnimalRepository = toxicPlantAnimalRepository;
         }
 
         public async Task<string> HandleRequest(HttpRequestData request)
@@ -86,22 +80,22 @@ namespace Function.UseCases
             }
         }
 
-        private List<PlantAnimal> MatchToxicPlantsForAnimals()
+        private List<ToxicPlantAnimal> MatchToxicPlantsForAnimals()
         {
-            List<PlantAnimal> plantAnimals = new List<PlantAnimal>();
+            var toxicPlantsAnimal = new List<ToxicPlantAnimal>();
             foreach (var animal in _animalRepository.Get())
             {
                 foreach (var plant in _plantRepository.Get())
                 {
-                    var ToxicPlant = _plantAnimalRepository.GetbyAnimalAndPlantName(animal, plant);
+                    var ToxicPlant = _toxicPlantAnimalRepository.GetbyAnimalAndPlantName(animal, plant);
                     if (ToxicPlant != null)
                     {
-                        plantAnimals.Add(ToxicPlant);
+                        toxicPlantsAnimal.Add(ToxicPlant);
                     }
                 }
             }
 
-            return plantAnimals;
+            return toxicPlantsAnimal;
         }
 
 

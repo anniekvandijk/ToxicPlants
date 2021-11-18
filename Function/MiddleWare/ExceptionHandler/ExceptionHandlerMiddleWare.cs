@@ -2,10 +2,10 @@
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace Function.MiddleWare.ExceptionHandler
 {
