@@ -53,7 +53,7 @@ namespace Function.MiddleWare.ExceptionHandler
 #if DEBUG
             var stackTrace = ex.StackTrace;
 #else
-            var stackTrace = null;
+            string stackTrace = null;
 #endif
 
             var body = new ExceptionResponse
