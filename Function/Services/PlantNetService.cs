@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Function.MiddleWare.ExceptionHandler;
 
 namespace Function.Services
 {
@@ -23,16 +25,10 @@ namespace Function.Services
             // Make call to PlantNet and get response
             var content = CreateMultipartFormDataContentAsync(data);
             var language = GetLanguage(data);
-            var response = await MakePlantNetRequest(content, language);
-            if (response.IsSuccessStatusCode)
-            {
-                return await response.Content.ReadAsStringAsync();
-            }
-            else
-            {
-                return null;
-            }
+            return await MakePlantNetRequest(content, language);
+
         }
+
         private static MultipartFormDataContent CreateMultipartFormDataContentAsync(RequestData data)
         {
             var images = data.Files.Where(x => x.Name == "images");
@@ -72,7 +68,7 @@ namespace Function.Services
             return language;
         }
 
-        private async Task<HttpResponseMessage> MakePlantNetRequest(MultipartFormDataContent content, string language)
+        private async Task<string> MakePlantNetRequest(MultipartFormDataContent content, string language)
         {
             var url = $"{Environment.GetEnvironmentVariable("PLANTNET_URL")}&lang={language}";
 
@@ -83,7 +79,33 @@ namespace Function.Services
                 Content = content
             };
 
-            return await _httpClient.SendAsync(plantRequest);
+            var response =  await _httpClient.SendAsync(plantRequest);
+            var result = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return result;
+            }
+            else
+            {
+                var json = JsonSerializer.Deserialize<JsonElement>(result);
+
+                int statusCode;
+                string error;
+                string message;
+                try
+                {
+                    statusCode = json.GetProperty("statusCode").GetInt16();
+                    error = json.GetProperty("error").GetString();
+                    message = json.GetProperty("message").GetString();
+                }
+                catch (Exception)
+                {
+                    throw new PlantCallException($"Something went wrong with the request. Statuscode = {response.ReasonPhrase}({response.StatusCode})");
+                }
+
+                throw new PlantCallException ($"Something went wrong with the request. Message: {message}");
+            }
         }
     }
 }

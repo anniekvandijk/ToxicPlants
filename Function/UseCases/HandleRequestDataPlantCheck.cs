@@ -30,15 +30,15 @@ namespace Function.UseCases
         public async Task<string> HandleRequest(HttpRequestData request)
         {
             var parsedData = await RequestParser.Parse(request.Body);
-            var addAnimals = AddAnimals(parsedData);
             var addPlants = AddPlants(parsedData);
-            await Task.WhenAll(addAnimals, addPlants);
+            AddAnimals(parsedData);
+            await Task.WhenAll(addPlants);
             var result = MatchToxicPlantsForAnimals();
             var json = JsonSerializer.Serialize(result);
             return json;
         }
 
-        private async Task AddAnimals(RequestData data)
+        private void AddAnimals(RequestData data)
         {
             var animals = data.Parameters.Where(x => x.Name == "animal").ToList();
 

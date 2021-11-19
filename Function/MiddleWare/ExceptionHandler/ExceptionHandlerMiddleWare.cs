@@ -35,7 +35,13 @@ namespace Function.MiddleWare.ExceptionHandler
                     {
                         statuscode = HttpStatusCode.BadRequest;
                     }
-                    await SetResponse(context, logger, statuscode, ex.InnerException);
+                    await SetResponse(context, logger, statuscode, ex.InnerException, 1);
+                    
+                    if (exceptionType == typeof(PlantCallException))
+                    {
+                        statuscode = HttpStatusCode.BadRequest;
+                    }
+                    await SetResponse(context, logger, statuscode, ex.InnerException, 2);
                 }
                 else
                 {
@@ -44,7 +50,7 @@ namespace Function.MiddleWare.ExceptionHandler
             }
         }
 
-        private static async Task SetResponse(FunctionContext context, ILogger<ExceptionHandlerMiddleware> logger, HttpStatusCode statusCode, Exception ex)
+        private static async Task SetResponse(FunctionContext context, ILogger<ExceptionHandlerMiddleware> logger, HttpStatusCode statusCode, Exception ex, int errorCode = 0)
         {
             var request = context.GetHttpRequestData(logger);
             var response = request?.CreateResponse(statusCode);
@@ -60,7 +66,7 @@ namespace Function.MiddleWare.ExceptionHandler
             {
                 HttpStatusCode = statusCode,
                 Message = ex.Message,
-                ErrorCode = 999,
+                ErrorCode = errorCode,
                 StackTrace = stackTrace
             };
 
