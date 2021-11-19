@@ -14,11 +14,7 @@ namespace Function.UseCases
     {
         public static async Task<HttpResponseData> SetResponse(HttpRequestData request, string resultBody)
         {
-            var response = request.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-            await response.WriteStringAsync(resultBody);
-
-            return response;
+            return await Create(request, HttpStatusCode.OK, resultBody);
         }
 
         public static async Task SetExceptionResponse(FunctionContext context, ILogger<ExceptionHandlerMiddleware> logger, HttpStatusCode statusCode, Exception ex)
@@ -30,10 +26,10 @@ namespace Function.UseCases
                 ErrorCode = 999
             };
 
+            var serialize = JsonSerializer.Serialize(body);
+
             var request = context.GetHttpRequestData(logger);
-            var response = request.CreateResponse(statusCode);
-            response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-            await response.WriteStringAsync(JsonSerializer.Serialize(body));
+            var response = await Create(request, statusCode, serialize);
             context.SetHttpResponseData(response, logger);
         }
 
@@ -50,11 +46,19 @@ namespace Function.UseCases
                 ErrorCode = errorCode
             };
 
+            var serialize = JsonSerializer.Serialize(body);
+
             var request = context.GetHttpRequestData(logger);
+            var response = await Create(request, statusCode, serialize);
+            context.SetHttpResponseData(response, logger);
+        }
+
+        private static async Task<HttpResponseData> Create(HttpRequestData request, HttpStatusCode statusCode, string body)
+        {
             var response = request.CreateResponse(statusCode);
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-            await response.WriteStringAsync(JsonSerializer.Serialize(body));
-            context.SetHttpResponseData(response, logger);
+            await response.WriteStringAsync(body);
+            return response;
         }
     }
 }

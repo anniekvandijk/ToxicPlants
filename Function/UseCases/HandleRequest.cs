@@ -28,7 +28,7 @@ namespace Function.UseCases
             _toxicPlantAnimalRepository = toxicPlantAnimalRepository;
         }
 
-        public async Task<string> HandleRequest(HttpRequestData request)
+        public async Task<string> Handle(HttpRequestData request)
         {
             var parsedData = await RequestParser.Parse(request.Body);
             var addPlants = AddPlants(parsedData);

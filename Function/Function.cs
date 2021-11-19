@@ -36,7 +36,7 @@ namespace Function
 
             // If something goes wrong, all is handled by the ExceptionHandlerMiddleware
 
-            var resultBody = await _handleRequest.HandleRequest(request);
+            var resultBody = await _handleRequest.Handle(request);
             return await HandleResponse.SetResponse(request, resultBody);
         }
     }
