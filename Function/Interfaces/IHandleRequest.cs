@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Function.Interfaces
 {
-    internal interface IHandleRequestData
+    internal interface IHandleRequest
     {
         Task<string> HandleRequest(HttpRequestData request);
     }

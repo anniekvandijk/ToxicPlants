@@ -57,7 +57,7 @@ namespace Function
                     // One instance of a service which gets all toxoc plants data and adds it to the repository
                     s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
                     s.AddSingleton<IToxicPlantAnimalService, ToxicPlantAnimalService>();
-                    s.AddScoped<IHandleRequestData, HandleRequestDataPlantCheck>();
+                    s.AddScoped<IHandleRequest, HandleRequest>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();
                 })

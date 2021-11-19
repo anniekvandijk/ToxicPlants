@@ -1,4 +1,5 @@
 using Function.Interfaces;
+using Function.UseCases;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
@@ -13,12 +14,12 @@ namespace Function
 {
     internal class Function
     {
-        private readonly IHandleRequestData _handleRequestData;
+        private readonly IHandleRequest _handleRequest;
         private ILogger _logger;
 
-        public Function(IToxicPlantAnimalService toxicPlantAnimalService, IHandleRequestData handleRequestData)
+        public Function(IToxicPlantAnimalService toxicPlantAnimalService, IHandleRequest handleRequest)
         {
-            _handleRequestData = handleRequestData;
+            _handleRequest = handleRequest;
         }
 
         [OpenApiOperation(operationId: "post_plants", tags: new[] { "greeting" }, Summary = "Greetings", Description = "This shows a welcome message.", Visibility = OpenApiVisibilityType.Important)]
@@ -35,13 +36,8 @@ namespace Function
 
             // If something goes wrong, all is handled by the ExceptionHandlerMiddleware
 
-            var resultBody = await _handleRequestData.HandleRequest(request);
-         
-            var response = request.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-            await response.WriteStringAsync(resultBody);
-
-            return response;
+            var resultBody = await _handleRequest.HandleRequest(request);
+            return await HandleResponse.SetResponse(request, resultBody);
         }
     }
 }

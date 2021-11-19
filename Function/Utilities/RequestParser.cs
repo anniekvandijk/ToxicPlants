@@ -1,11 +1,11 @@
-﻿using Function.Models.Request;
+﻿using Function.MiddleWare.ExceptionHandler;
+using Function.Models.Request;
 using HttpMultipartParser;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Threading.Tasks;
-using Function.MiddleWare.ExceptionHandler;
 
 namespace Function.Utilities
 {
@@ -20,7 +20,7 @@ namespace Function.Utilities
             }
             catch (Exception ex)
             {
-                throw new RequestException("Error parsing multipartformdata", ex);
+                ProgramError.CreateProgramError(HttpStatusCode.BadRequest, "Error parsing multipartformdata", ex, 1);
             }
 
             var files = parstData.Files;

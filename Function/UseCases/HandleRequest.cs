@@ -7,19 +7,20 @@ using Microsoft.Azure.Functions.Worker.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Function.UseCases
 {
-    internal class HandleRequestDataPlantCheck : IHandleRequestData
+    internal class HandleRequest : IHandleRequest
     {
         private readonly IPlantRepository _plantRepository;
         private readonly IAnimalRepository _animalRepository;
         private readonly IPlantService _plantService;
         private readonly IToxicPlantAnimalRepository _toxicPlantAnimalRepository;
 
-        public HandleRequestDataPlantCheck(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantService plantService, IToxicPlantAnimalRepository toxicPlantAnimalRepository)
+        public HandleRequest(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantService plantService, IToxicPlantAnimalRepository toxicPlantAnimalRepository)
         {
             _plantRepository = plantRepository;
             _animalRepository = animalRepository;
@@ -44,7 +45,7 @@ namespace Function.UseCases
 
             if (animals.Count == 0)
             {
-                throw new RequestException("No animal received");
+                ProgramError.CreateProgramError(HttpStatusCode.BadRequest, "No animal found");
             }
 
             foreach (var animal in animals)
@@ -55,8 +56,7 @@ namespace Function.UseCases
                 }
                 else
                 {
-                    throw new RequestException("Animal not supported");
-
+                    ProgramError.CreateProgramError(HttpStatusCode.BadRequest, "Animal not supported");
                 }
             }
         }

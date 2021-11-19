@@ -1,12 +1,10 @@
-﻿using Microsoft.Azure.Functions.Worker;
-using Microsoft.Azure.Functions.Worker.Http;
+﻿using Function.UseCases;
+using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
-using System.Text.Json;
 using System.Threading.Tasks;
-using Function.Models.Response;
 
 namespace Function.MiddleWare.ExceptionHandler
 {
@@ -25,52 +23,15 @@ namespace Function.MiddleWare.ExceptionHandler
             {
                 logger.LogError(ex, ex.Message);
 
-                var statuscode = HttpStatusCode.InternalServerError;
-
-                if (ex.InnerException != null)
+                if (ex.InnerException != null && ex.InnerException.GetType() == typeof(ProgramError))
                 {
-                    var exceptionType = ex.InnerException.GetType();
-
-                    // Request is not valid
-                    if (exceptionType == typeof(RequestException))
-                    {
-                        statuscode = HttpStatusCode.BadRequest;
-                    }
-                    await SetResponse(context, logger, statuscode, ex.InnerException);
-                    
-                    if (exceptionType == typeof(PlantCallException))
-                    {
-                        statuscode = HttpStatusCode.BadRequest;
-                    }
-                    await SetResponse(context, logger, statuscode, ex.InnerException);
+                    await HandleResponse.SetProgramErrorResponse(context, logger, ex.InnerException);
                 }
                 else
                 {
-                    await SetResponse(context, logger, statuscode, ex);
+                    await HandleResponse.SetExceptionResponse(context, logger, HttpStatusCode.InternalServerError, ex);
                 }
             }
-        }
-
-        private static async Task SetResponse(FunctionContext context, ILogger<ExceptionHandlerMiddleware> logger, HttpStatusCode statusCode, Exception ex)
-        {
-            var request = context.GetHttpRequestData(logger);
-            var response = request.CreateResponse(statusCode);
-            response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-
-#if DEBUG
-            var stackTrace = ex.StackTrace;
-#else
-            string stackTrace = null;
-#endif
-            var body = new ErrorResponse
-            {
-                HttpStatusCode = statusCode,
-                Message = ex.Message,
-                ErrorCode = ex.HResult
-            };
-
-            await response.WriteStringAsync(JsonSerializer.Serialize(body));
-            context.SetHttpResponseData(response, logger);
         }
     }
 }

@@ -1,13 +1,14 @@
 ﻿using Function.Interfaces;
+using Function.MiddleWare.ExceptionHandler;
 using Function.Models.Request;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Function.MiddleWare.ExceptionHandler;
 
 namespace Function.Services
 {
@@ -79,7 +80,7 @@ namespace Function.Services
                 Content = content
             };
 
-            var response =  await _httpClient.SendAsync(plantRequest);
+            var response = await _httpClient.SendAsync(plantRequest);
             var result = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
@@ -90,21 +91,20 @@ namespace Function.Services
             {
                 var json = JsonSerializer.Deserialize<JsonElement>(result);
 
-                int statusCode;
-                string error;
-                string message;
+                HttpStatusCode statusCode = HttpStatusCode.InternalServerError;
+                string message = null;
+
                 try
                 {
-                    statusCode = json.GetProperty("statusCode").GetInt16();
-                    error = json.GetProperty("error").GetString();
+                    statusCode = (HttpStatusCode)json.GetProperty("statusCode").GetInt16();
                     message = json.GetProperty("message").GetString();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw new PlantCallException($"Something went wrong with the request. Statuscode = {response.ReasonPhrase}({response.StatusCode})");
+                    ProgramError.CreateProgramError(statusCode, "Something went wrong with the request", ex, 1);
                 }
-
-                throw new PlantCallException ($"Something went wrong with the request. Message: {message}");
+                ProgramError.CreateProgramError(statusCode, message, 1);
+                return null;
             }
         }
     }
