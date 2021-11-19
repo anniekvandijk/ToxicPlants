@@ -4,9 +4,9 @@ using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Function.Models.Response;
 
 namespace Function.MiddleWare.ExceptionHandler
 {
@@ -62,7 +62,7 @@ namespace Function.MiddleWare.ExceptionHandler
 #else
             string stackTrace = null;
 #endif
-            var body = new ExceptionResponse
+            var body = new ErrorResponse
             {
                 HttpStatusCode = statusCode,
                 Message = ex.Message,
@@ -72,12 +72,5 @@ namespace Function.MiddleWare.ExceptionHandler
             await response.WriteStringAsync(JsonSerializer.Serialize(body));
             context.SetHttpResponseData(response, logger);
         }
-    }
-
-    internal class ExceptionResponse
-    {
-        public HttpStatusCode HttpStatusCode { get; set; }
-        public int ErrorCode { get; set; }
-        public string Message { get; set; }
     }
 }
