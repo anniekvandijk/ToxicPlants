@@ -56,6 +56,7 @@ namespace Function.UseCases
                 else
                 {
                     throw new RequestException("Animal not supported");
+
                 }
             }
         }

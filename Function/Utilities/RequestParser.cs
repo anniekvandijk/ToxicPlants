@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using Function.MiddleWare.ExceptionHandler;
 
 namespace Function.Utilities
 {
@@ -17,9 +18,9 @@ namespace Function.Utilities
             {
                 parstData = await MultipartFormDataParser.ParseAsync(requestData);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Debug.WriteLine(e);
+                throw new RequestException("Error parsing multipartformdata", ex);
             }
 
             var files = parstData.Files;

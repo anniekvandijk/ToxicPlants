@@ -4,6 +4,7 @@ using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -35,13 +36,13 @@ namespace Function.MiddleWare.ExceptionHandler
                     {
                         statuscode = HttpStatusCode.BadRequest;
                     }
-                    await SetResponse(context, logger, statuscode, ex.InnerException, 1);
+                    await SetResponse(context, logger, statuscode, ex.InnerException);
                     
                     if (exceptionType == typeof(PlantCallException))
                     {
                         statuscode = HttpStatusCode.BadRequest;
                     }
-                    await SetResponse(context, logger, statuscode, ex.InnerException, 2);
+                    await SetResponse(context, logger, statuscode, ex.InnerException);
                 }
                 else
                 {
@@ -50,10 +51,10 @@ namespace Function.MiddleWare.ExceptionHandler
             }
         }
 
-        private static async Task SetResponse(FunctionContext context, ILogger<ExceptionHandlerMiddleware> logger, HttpStatusCode statusCode, Exception ex, int errorCode = 0)
+        private static async Task SetResponse(FunctionContext context, ILogger<ExceptionHandlerMiddleware> logger, HttpStatusCode statusCode, Exception ex)
         {
             var request = context.GetHttpRequestData(logger);
-            var response = request?.CreateResponse(statusCode);
+            var response = request.CreateResponse(statusCode);
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");
 
 #if DEBUG
@@ -61,13 +62,11 @@ namespace Function.MiddleWare.ExceptionHandler
 #else
             string stackTrace = null;
 #endif
-
             var body = new ExceptionResponse
             {
                 HttpStatusCode = statusCode,
                 Message = ex.Message,
-                ErrorCode = errorCode,
-                StackTrace = stackTrace
+                ErrorCode = ex.HResult
             };
 
             await response.WriteStringAsync(JsonSerializer.Serialize(body));
@@ -80,6 +79,5 @@ namespace Function.MiddleWare.ExceptionHandler
         public HttpStatusCode HttpStatusCode { get; set; }
         public int ErrorCode { get; set; }
         public string Message { get; set; }
-        public string StackTrace { get; set; }
     }
 }

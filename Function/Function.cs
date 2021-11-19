@@ -33,12 +33,12 @@ namespace Function
             _logger = executionContext.GetLogger("PlantCheck");
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
+            // If something goes wrong, all is handled by the ExceptionHandlerMiddleware
+
             var resultBody = await _handleRequestData.HandleRequest(request);
-
+         
             var response = request.CreateResponse(HttpStatusCode.OK);
-
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");
-
             await response.WriteStringAsync(resultBody);
 
             return response;
