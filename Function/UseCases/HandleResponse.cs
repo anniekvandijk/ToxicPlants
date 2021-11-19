@@ -7,12 +7,13 @@ using System;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Function.Interfaces;
 
 namespace Function.UseCases
 {
-    internal class HandleResponse
+    internal class HandleResponse : IHandleResponse
     {
-        public static async Task<HttpResponseData> SetResponse(HttpRequestData request, string resultBody)
+        public async Task<HttpResponseData> SetResponse(HttpRequestData request, string resultBody)
         {
             return await Create(request, HttpStatusCode.OK, resultBody);
         }

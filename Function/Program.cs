@@ -26,6 +26,7 @@ namespace Function
                     e.UseMiddleware<ExceptionHandlerMiddleware>();
                     e.UseNewtonsoftJson();
                 })
+                // TODO: NOT WORKING: https://github.com/Animundo/ToxicPlants/issues/5
                 .ConfigureOpenApi()
                 .ConfigureLogging(g =>
                 {
@@ -33,12 +34,10 @@ namespace Function
                 })
                 .ConfigureServices(s =>
                 {
+                    // TODO: NOT WORKING: https://github.com/Animundo/ToxicPlants/issues/7
                     s.AddControllers().AddJsonOptions(x =>
                     {
-                        // serialize enums as strings in api responses (e.g. Role)
                         x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-
-                        // ignore omitted parameters on models to enable optional params (e.g. User update)
                         x.JsonSerializerOptions.IgnoreNullValues = true;
                     });
 
@@ -56,10 +55,25 @@ namespace Function
                     }
                     // One instance of a service which gets all toxoc plants data and adds it to the repository
                     s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
-                    s.AddSingleton<IToxicPlantAnimalService, ToxicPlantAnimalService>();
+
+                    // Load this one instance of ToxicPlantAnimalRepository
+                    var toxicPlantAnimalRepositoryProvider = s.BuildServiceProvider();
+                    var toxicPlantAnimalRepository = toxicPlantAnimalRepositoryProvider.GetService<IToxicPlantAnimalRepository>();
+
+                    // Use it to add to the ToxicPlantAnimalService
+                    s.AddSingleton<IToxicPlantAnimalService>(x =>
+                        new ToxicPlantAnimalService(toxicPlantAnimalRepository)
+                    );
+
+                    // Load the ToxicPlantAnimalService to Load initial data
+                    var toxicPlantAnimalServiceProvider = s.BuildServiceProvider();
+                    var toxicPlantAnimalService = toxicPlantAnimalServiceProvider.GetService<IToxicPlantAnimalService>();
+                    toxicPlantAnimalService.LoadPlantAnimalData();
+
                     s.AddScoped<IHandleRequest, HandleRequest>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();
+                    s.AddScoped<IHandleResponse, HandleResponse>();
                 })
 
                 .Build();
