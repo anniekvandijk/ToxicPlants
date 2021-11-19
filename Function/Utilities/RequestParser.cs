@@ -1,10 +1,8 @@
-﻿using Function.MiddleWare.ExceptionHandler;
-using Function.Models.Request;
+﻿using Function.Models.Request;
 using HttpMultipartParser;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace Function.Utilities
@@ -13,14 +11,14 @@ namespace Function.Utilities
     {
         public static async Task<RequestData> Parse(Stream requestData)
         {
-            MultipartFormDataParser parstData = null;
+            MultipartFormDataParser parstData;
             try
             {
                 parstData = await MultipartFormDataParser.ParseAsync(requestData);
             }
             catch (Exception ex)
             {
-                ProgramError.CreateProgramError(HttpStatusCode.BadRequest, "Error parsing multipartformdata", ex, 1);
+                throw new Exception("Error parsing multipartformdata", ex);
             }
 
             var files = parstData.Files;

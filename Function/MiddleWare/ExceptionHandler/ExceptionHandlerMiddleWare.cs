@@ -21,14 +21,14 @@ namespace Function.MiddleWare.ExceptionHandler
 
             catch (Exception ex)
             {
-                logger.LogError(ex, ex.Message);
-
                 if (ex.InnerException != null && ex.InnerException.GetType() == typeof(ProgramError))
                 {
+                    logger.LogWarning(ex, ex.Message);
                     await HandleResponse.SetProgramErrorResponse(context, logger, ex.InnerException);
                 }
                 else
                 {
+                    logger.LogError(ex, ex.Message);
                     await HandleResponse.SetExceptionResponse(context, logger, HttpStatusCode.InternalServerError, ex);
                 }
             }
