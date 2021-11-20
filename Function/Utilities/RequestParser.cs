@@ -50,6 +50,8 @@ namespace Function.Utilities
                 parameterList.Add(parameterData);
             }
 
+
+
             return new RequestData
             {
                 Files = fileList,

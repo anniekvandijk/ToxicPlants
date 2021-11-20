@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 [assembly: InternalsVisibleTo("Function.Tests")]
@@ -35,7 +36,7 @@ namespace Function
                     // TODO: NOT WORKING: https://github.com/Animundo/ToxicPlants/issues/7
                     s.AddControllers().AddJsonOptions(x =>
                     {
-                        x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                        x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, allowIntegerValues: false));
                         x.JsonSerializerOptions.IgnoreNullValues = true;
                     });
 

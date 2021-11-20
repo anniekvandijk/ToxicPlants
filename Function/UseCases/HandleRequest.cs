@@ -10,18 +10,21 @@ using System.Linq;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Function.UseCases
 {
     internal class HandleRequest : IHandleRequest
     {
+        private readonly ILogger<HandleRequest> _logger;
         private readonly IPlantRepository _plantRepository;
         private readonly IAnimalRepository _animalRepository;
         private readonly IPlantService _plantService;
         private readonly IToxicPlantAnimalRepository _toxicPlantAnimalRepository;
 
-        public HandleRequest(IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantService plantService, IToxicPlantAnimalRepository toxicPlantAnimalRepository)
+        public HandleRequest(ILogger<HandleRequest> logger, IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantService plantService, IToxicPlantAnimalRepository toxicPlantAnimalRepository)
         {
+            _logger = logger;
             _plantRepository = plantRepository;
             _animalRepository = animalRepository;
             _plantService = plantService;
@@ -59,6 +62,7 @@ namespace Function.UseCases
                     ProgramError.CreateProgramError(HttpStatusCode.BadRequest, "Animal not supported");
                 }
             }
+            _logger.LogInformation($"Added {animals.Count} animals to AnimalRepository.");
         }
 
         private async Task AddPlants(RequestData data)
@@ -82,6 +86,7 @@ namespace Function.UseCases
                 };
                 _plantRepository.Add(plant);
             }
+            _logger.LogInformation($"Added {results.GetArrayLength()} plants to PlantRepository.");
         }
 
         private List<ToxicPlantAnimal> MatchToxicPlantsForAnimals()
@@ -98,7 +103,7 @@ namespace Function.UseCases
                     }
                 }
             }
-
+            _logger.LogInformation($"Fond {toxicPlantsAnimal.Count} posible toxic plants hits for sent animals");
             return toxicPlantsAnimal;
         }
 
