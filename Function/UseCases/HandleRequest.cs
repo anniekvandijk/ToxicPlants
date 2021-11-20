@@ -103,7 +103,7 @@ namespace Function.UseCases
                     }
                 }
             }
-            _logger.LogInformation($"Fond {toxicPlantsAnimal.Count} posible toxic plants hits for sent animals");
+            _logger.LogInformation($"Found {toxicPlantsAnimal.Count} posible toxic plants hits for sent animals");
             return toxicPlantsAnimal;
         }
 
