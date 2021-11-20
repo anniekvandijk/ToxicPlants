@@ -26,8 +26,6 @@ namespace Function
                     e.UseMiddleware<ExceptionHandlerMiddleware>();
                     e.UseNewtonsoftJson();
                 })
-                // TODO: NOT WORKING: https://github.com/Animundo/ToxicPlants/issues/5
-                .ConfigureOpenApi()
                 .ConfigureLogging(g =>
                 {
                     g.AddSentry();
