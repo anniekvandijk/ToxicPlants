@@ -1,13 +1,13 @@
 ﻿using Function.Models;
 using Function.Repository;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Function.Tests
 {
-    [TestClass]
+    [TestFixture]
     internal class AnimalRepositoryTests
     {
-        [TestMethod]
+        [Test]
         public void AddAnimal()
         {
             //Arrange
@@ -21,7 +21,7 @@ namespace Function.Tests
             Assert.AreEqual(1, animals.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void AddSameAnimalTwice_onlyOneAdded()
         {
             // arrange

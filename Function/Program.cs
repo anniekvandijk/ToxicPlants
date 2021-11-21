@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
+// For unittests
 [assembly: InternalsVisibleTo("Function.Tests")]
 
 namespace Function
