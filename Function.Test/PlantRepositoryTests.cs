@@ -1,6 +1,4 @@
-﻿using System;
-using Function.MiddleWare.ExceptionHandler;
-using Function.Models;
+﻿using Function.Models;
 using Function.Repository;
 using Function.Tests.Utilities;
 using Microsoft.Extensions.Logging;
@@ -68,7 +66,5 @@ namespace Function.Tests
 
 
         }
-
-
     }
 }

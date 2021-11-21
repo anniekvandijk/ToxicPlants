@@ -1,11 +1,7 @@
-﻿using System;
-using Function.Interfaces;
+﻿using Function.Interfaces;
 using Function.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using Function.MiddleWare.ExceptionHandler;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Function.Repository
 {

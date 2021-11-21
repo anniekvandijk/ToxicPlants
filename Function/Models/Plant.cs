@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Function.Models
+﻿namespace Function.Models
 {
     internal class Plant
     {
