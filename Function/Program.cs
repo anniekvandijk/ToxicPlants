@@ -3,14 +3,12 @@ using Function.MiddleWare.ExceptionHandler;
 using Function.Repository;
 using Function.Services;
 using Function.UseCases;
-using Microsoft.Azure.Functions.Worker.Extensions.OpenApi.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 [assembly: InternalsVisibleTo("Function.Tests")]
@@ -38,7 +36,8 @@ namespace Function
                     */
                     if (Convert.ToBoolean(Environment.GetEnvironmentVariable("SENT_TO_SENTRY")))
                     {
-                        g.AddSentry();
+                        g.AddSentry(x => 
+                            x.MinimumEventLevel = LogLevel.Warning);
                     }
                 })
                 .ConfigureServices(s =>
