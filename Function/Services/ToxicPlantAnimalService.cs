@@ -1,7 +1,7 @@
 ﻿using Function.Interfaces;
 using Function.Models;
-using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Function.Services
 {
@@ -16,7 +16,7 @@ namespace Function.Services
             _logger = logger;
         }
 
-        public void LoadPlantAnimalData()
+        public void LoadToxicPlantAnimalData()
         {
             var plantAnimalList = new List<ToxicPlantAnimal>
                 {

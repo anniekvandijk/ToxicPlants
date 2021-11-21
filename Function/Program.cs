@@ -23,30 +23,30 @@ namespace Function
                 .ConfigureFunctionsWorkerDefaults(e =>
                 {
                     /* Global Exception handling.
-                     All errors are handled by the ExceptionHandlerMiddleWare.
+                     * All errors are handled by the ExceptionHandlerMiddleWare.
                      */
                     e.UseMiddleware<ExceptionHandlerMiddleware>();
                 })
                 .ConfigureLogging(g =>
                 {
                     /*
-                    When testing local. Do not alwaiy sent logging to Sentry.
-                    In local.settings.json, if "SENT_TO_SENTRY": true,
-                    Sentry is added to the logger.
-                    */
+                     * When testing local. Do not alwaiy sent logging to Sentry.
+                     * In local.settings.json, if "SENT_TO_SENTRY": true,
+                     * Sentry is added to the logger.
+                     */
                     if (Convert.ToBoolean(Environment.GetEnvironmentVariable("SENT_TO_SENTRY")))
                     {
-                        g.AddSentry(x => 
+                        g.AddSentry(x =>
                             x.MinimumEventLevel = LogLevel.Warning);
                     }
                 })
                 .ConfigureServices(s =>
                 {
                     /*
-                    The response of all http calls is altered in this way:
-                    - Enums are translated to string values
-                    - Null values are not returned
-                    TODO: NOT WORKING: https://github.com/Animundo/ToxicPlants/issues/7
+                     * The response of all http calls is altered in this way:
+                     * - Enums are translated to string values
+                     * - Null values are not returned
+                     * TODO: NOT WORKING: https://github.com/Animundo/ToxicPlants/issues/7
                     */
                     s.AddControllers().AddJsonOptions(x =>
                     {
@@ -56,9 +56,9 @@ namespace Function
 
                     s.AddSingleton<HttpClient>();
                     /*
-                    When debugging, not always make a call to a plants Api.
-                    So use profile 'FunctionFakePlantCall' when the call is not nessesary.
-                    */
+                     * When debugging, not always make a call to a plants Api.
+                     * So use profile 'FunctionFakePlantCall' when the call is not nessesary.
+                     */
                     if (Convert.ToBoolean(Environment.GetEnvironmentVariable("MOCK_PLANTCALL")))
                     {
                         s.AddSingleton<IPlantService, FakePlantService>();
@@ -67,23 +67,32 @@ namespace Function
                     {
                         s.AddSingleton<IPlantService, PlantNetService>();
                     }
-                    // One instance of a service which gets all toxoc plants data and adds it to the repository
+
+                    /*
+                     * The ToxicPlantAnimalRepository and ToxicPlantAnimalService are needed once.
+                     * After initialize, load inital toxic plant data.
+                     * If something goes wrong, throw exception.
+                     */
                     s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
-                    var toxicPlantAnimalRepositoryProvider = s.BuildServiceProvider();
-                    var toxicPlantAnimalRepository = toxicPlantAnimalRepositoryProvider.GetService<IToxicPlantAnimalRepository>();
+                    s.AddSingleton<IToxicPlantAnimalService, ToxicPlantAnimalService>();
 
-                    s.AddSingleton<IToxicPlantAnimalService>(x =>
-                        new ToxicPlantAnimalService(toxicPlantAnimalRepository, 
-                            x.GetService<ILoggerFactory>().CreateLogger<ToxicPlantAnimalService>())
-                    );
-                    var toxicPlantAnimalServiceProvider = s.BuildServiceProvider();
-                    var toxicPlantAnimalService = toxicPlantAnimalServiceProvider.GetService<IToxicPlantAnimalService>();
-                    toxicPlantAnimalService.LoadPlantAnimalData();
+                    try
+                    {
+                        s.BuildServiceProvider().GetService<IToxicPlantAnimalService>().LoadToxicPlantAnimalData();
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception("Error loading initial toxic plant data", e);
+                    }
 
+                    /*
+                     * Initialise all other classes needed for this function.
+                     */
                     s.AddScoped<IHandleRequest, HandleRequest>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();
                     s.AddScoped<IHandleResponse, HandleResponse>();
+
                 })
 
                 .Build();

@@ -1,10 +1,10 @@
 ﻿using Function.Interfaces;
 using Function.Models.Request;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 namespace Function.Services
 {

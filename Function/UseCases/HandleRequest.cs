@@ -4,13 +4,13 @@ using Function.Models;
 using Function.Models.Request;
 using Function.Utilities;
 using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 namespace Function.UseCases
 {
