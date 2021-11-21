@@ -62,7 +62,7 @@ namespace Function.Tests
             // assert
             var plants = repo.Get();
             Assert.AreEqual(1, plants.Count);
-            VerifyHelpers.VerifyLogger(loggerMock, LogLevel.Critical, "Plant with same Scenttific name was not added to the Plant repository. Plantname = Some strange name");
+            loggerMock.VerifyLog(LogLevel.Critical, "Plant with same Scenttific name was not added to the Plant repository. Plantname = Some strange name");
 
 
         }

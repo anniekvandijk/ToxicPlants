@@ -4,9 +4,9 @@ using System;
 
 namespace Function.Tests.Utilities
 {
-    internal class VerifyHelpers
+    internal static class VerifyHelpers
     {
-        public static void VerifyLogger<T>(Mock<ILogger<T>> mockLogger, LogLevel loglevel, string message)
+        public static void VerifyLog<T>(this Mock<ILogger<T>> mockLogger, LogLevel loglevel, string message)
         {
             mockLogger.Verify(logger => logger.Log(
                     It.Is<LogLevel>(logLevel => logLevel == loglevel),
