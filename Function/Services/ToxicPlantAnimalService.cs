@@ -1,16 +1,19 @@
 ﻿using Function.Interfaces;
 using Function.Models;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace Function.Services
 {
     internal class ToxicPlantAnimalService : IToxicPlantAnimalService
     {
         private readonly IToxicPlantAnimalRepository _toxicPlantAnimalRepository;
+        private readonly ILogger<ToxicPlantAnimalService> _logger;
 
-        public ToxicPlantAnimalService(IToxicPlantAnimalRepository toxicPlantAnimalRepository)
+        public ToxicPlantAnimalService(IToxicPlantAnimalRepository toxicPlantAnimalRepository, ILogger<ToxicPlantAnimalService> logger)
         {
             _toxicPlantAnimalRepository = toxicPlantAnimalRepository;
+            _logger = logger;
         }
 
         public void LoadPlantAnimalData()
@@ -44,6 +47,8 @@ namespace Function.Services
             {
                 _toxicPlantAnimalRepository.Add(plantAnimal);
             }
+
+            _logger.LogInformation("Toxic plant data loaded");
         }
     }
 }

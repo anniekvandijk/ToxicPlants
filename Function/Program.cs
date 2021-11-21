@@ -71,8 +71,10 @@ namespace Function
                     s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
                     var toxicPlantAnimalRepositoryProvider = s.BuildServiceProvider();
                     var toxicPlantAnimalRepository = toxicPlantAnimalRepositoryProvider.GetService<IToxicPlantAnimalRepository>();
+
                     s.AddSingleton<IToxicPlantAnimalService>(x =>
-                        new ToxicPlantAnimalService(toxicPlantAnimalRepository)
+                        new ToxicPlantAnimalService(toxicPlantAnimalRepository, 
+                            x.GetService<ILoggerFactory>().CreateLogger<ToxicPlantAnimalService>())
                     );
                     var toxicPlantAnimalServiceProvider = s.BuildServiceProvider();
                     var toxicPlantAnimalService = toxicPlantAnimalServiceProvider.GetService<IToxicPlantAnimalService>();
