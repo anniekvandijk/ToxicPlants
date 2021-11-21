@@ -47,7 +47,7 @@ namespace Function.Tests
             var data = new RequestData();
 
             //Act
-            var plantNetService = new FakePlantService();
+            var plantNetService = FakePlantService.CreateInstance();
             var response = await plantNetService.GetPlantsAsync(data);
         }
     }

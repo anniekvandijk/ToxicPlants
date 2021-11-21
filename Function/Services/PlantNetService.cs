@@ -9,20 +9,25 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Function.Services
 {
     internal class PlantNetService : IPlantService
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger<PlantNetService> _logger;
 
-        public PlantNetService(HttpClient httpClient)
+        public PlantNetService(HttpClient httpClient, ILogger<PlantNetService> logger)
         {
             _httpClient = httpClient;
+            _logger = logger;
         }
 
         public async Task<string> GetPlantsAsync(RequestData data)
         {
+            _logger.LogInformation("PlantNet Service called");
+
             // Make call to PlantNet and get response
             var content = CreateMultipartFormDataContentAsync(data);
             var language = GetLanguage(data);

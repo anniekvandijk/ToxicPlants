@@ -6,7 +6,7 @@
     "FunctionFakePlantCall": {
       "commandName": "Project",
       "environmentVariables": {
-        "MOCK_PLANTCALL": "True"
+        "MOCK_PLANTCALL": true
       }
     }
   }
