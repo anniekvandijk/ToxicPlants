@@ -13,6 +13,7 @@ using System.Text.Json.Serialization;
 
 // For unittests
 [assembly: InternalsVisibleTo("Function.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 namespace Function
 {

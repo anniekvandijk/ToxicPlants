@@ -8,7 +8,7 @@ namespace Function.Tests
     internal class AnimalRepositoryTests
     {
         [Test]
-        public void AddAnimal()
+        public void AnimalRepository_AddAnimal_CanAddOneAnimal()
         {
             //Arrange
             AnimalRepository repo = new();
@@ -22,7 +22,7 @@ namespace Function.Tests
         }
 
         [Test]
-        public void AddSameAnimalTwice_onlyOneAdded()
+        public void AnimalRepository_AddAnimal_AddMultipleAnimalRegisterOnlyOne()
         {
             // arrange
             AnimalRepository repo = new();
