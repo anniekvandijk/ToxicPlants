@@ -97,9 +97,9 @@ namespace Function.UseCases
                 foreach (var plant in _plantRepository.Get())
                 {
                     var ToxicPlant = _toxicPlantAnimalRepository.GetbyAnimalAndPlantName(animal, plant);
-                    if (ToxicPlant != null)
+                    if (ToxicPlant.Count == 1)
                     {
-                        toxicPlantsAnimal.Add(ToxicPlant);
+                        toxicPlantsAnimal.Add(ToxicPlant.First());
                     }
                 }
             }

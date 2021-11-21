@@ -8,7 +8,7 @@ namespace Function.Tests
     internal class AnimalRepositoryTests
     {
         [Test]
-        public void AnimalRepository_AddAnimal_CanAddOneAnimal()
+        public void AnimalRepository_Add_CanAddOneAnimal()
         {
             //Arrange
             AnimalRepository repo = new();
@@ -19,10 +19,11 @@ namespace Function.Tests
             // assert
             var animals = repo.Get();
             Assert.AreEqual(1, animals.Count);
+            Assert.AreEqual(Animal.Alpaca, animals[0]);
         }
 
         [Test]
-        public void AnimalRepository_AddAnimal_AddMultipleAnimalRegisterOnlyOne()
+        public void AnimalRepository_Add_AddMultipleAnimalRegisterOnlyOne()
         {
             // arrange
             AnimalRepository repo = new();

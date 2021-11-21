@@ -8,7 +8,6 @@ namespace Function.Interfaces
         void Add(ToxicPlantAnimal plantAnimal);
         List<ToxicPlantAnimal> Get();
         List<ToxicPlantAnimal> GetByAnimalName(Animal animal);
-        List<ToxicPlantAnimal> GetByPlantName(Plant plant);
-        ToxicPlantAnimal GetbyAnimalAndPlantName(Animal animal, Plant plant);
+        List<ToxicPlantAnimal> GetbyAnimalAndPlantName(Animal animal, Plant plant);
     }
 }

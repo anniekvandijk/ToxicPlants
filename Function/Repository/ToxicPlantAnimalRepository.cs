@@ -25,11 +25,7 @@ namespace Function.Repository
             _toxicPlantAnimals
                 .Where(x => x.Animal == animal).ToList();
 
-        public List<ToxicPlantAnimal> GetByPlantName(Plant plant) =>
-            _toxicPlantAnimals
-                .Where(x => x.PlantName == plant.ScientificName).ToList();
-
-        public ToxicPlantAnimal GetbyAnimalAndPlantName(Animal animal, Plant plant) =>
-            _toxicPlantAnimals.SingleOrDefault(x => x.Animal == animal && x.PlantName == plant.ScientificName);
+        public List<ToxicPlantAnimal> GetbyAnimalAndPlantName(Animal animal, Plant plant) =>
+            _toxicPlantAnimals.Where(x => x.Animal == animal && x.PlantName == plant.ScientificName).ToList();
     }
 }

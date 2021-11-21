@@ -11,13 +11,13 @@ namespace Function.Tests
     internal class PlantRepositoryTests
     {
         [Test]
-        public void PlantRepository_AddPlant_CanAddOnePlant()
+        public void PlantRepository_Add_CanAddOnePlant()
         {
             //Arrange
             var loggerMock = new Mock<ILogger<PlantRepository>>();
             PlantRepository repo = new(loggerMock.Object);
 
-            var plant = new Plant
+            Plant plant = new()
             {
                 ScientificName = "Some strange name",
                 Score = 0.1,
@@ -25,29 +25,31 @@ namespace Function.Tests
             };
 
             // act
-
             repo.Add(plant);
 
             // assert
             var plants = repo.Get();
             Assert.AreEqual(1, plants.Count);
+            Assert.AreEqual("Some strange name", plants[0].ScientificName);
+            Assert.AreEqual(0.1, plants[0].Score);
+            Assert.AreEqual(new[] { "name 1", "Name 2" }, plants[0].CommonNames);
         }
 
         [Test]
-        public void PlantRepository_AddPlant_AddingPlantWithSameNameIsLoggedAndNotAddedAgain()
+        public void PlantRepository_Add_AddingPlantWithSameNameIsLoggedAndNotAddedAgain()
         {
             //Arrange
             var loggerMock = new Mock<ILogger<PlantRepository>>();
             PlantRepository repo = new(loggerMock.Object);
 
-            var plant1 = new Plant
+            Plant plant1 = new()
             {
                 ScientificName = "Some strange name",
                 Score = 0.1,
                 CommonNames = new[] { "name 1", "Name 2" }
             };
 
-            var plant2 = new Plant
+            Plant plant2 = new()
             {
                 ScientificName = "Some strange name",
                 Score = 0.1,
