@@ -3,8 +3,6 @@ name: Build, test and publish to Azure
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 env:
   AZURE_WEBAPP_NAME: ToxicPlantsFunction
