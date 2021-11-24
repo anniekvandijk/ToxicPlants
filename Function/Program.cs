@@ -70,26 +70,8 @@ namespace Function
                         s.AddSingleton<IPlantService, PlantNetService>();
                     }
 
-                    /*
-                     * The ToxicPlantAnimalRepository and ToxicPlantAnimalService are needed once.
-                     * After initialize, load inital toxic plant data.
-                     * If something goes wrong, throw exception.
-                     */
                     s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
                     s.AddSingleton<IToxicPlantAnimalService, ToxicPlantAnimalService>();
-
-                    try
-                    {
-                        s.BuildServiceProvider().GetService<IToxicPlantAnimalService>().LoadToxicPlantAnimalData();
-                    }
-                    catch (Exception e)
-                    {
-                        throw new Exception("Error loading initial toxic plant data", e);
-                    }
-
-                    /*
-                     * Initialise all other classes needed for this function.
-                     */
                     s.AddScoped<IHandleRequest, HandleRequest>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();

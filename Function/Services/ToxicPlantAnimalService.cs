@@ -18,7 +18,9 @@ namespace Function.Services
 
         public void LoadToxicPlantAnimalData()
         {
-            var plantAnimalList = new List<ToxicPlantAnimal>
+            if (_toxicPlantAnimalRepository.Get().Count == 0)
+            {
+                var plantAnimalList = new List<ToxicPlantAnimal>
                 {
 
                     new()
@@ -43,12 +45,16 @@ namespace Function.Services
                     }
                 };
 
-            foreach (var plantAnimal in plantAnimalList)
-            {
-                _toxicPlantAnimalRepository.Add(plantAnimal);
+                foreach (var plantAnimal in plantAnimalList)
+                {
+                    _toxicPlantAnimalRepository.Add(plantAnimal);
+                }
+                _logger.LogInformation("Toxic plant data loaded");
             }
-
-            _logger.LogInformation("Toxic plant data loaded");
+            else
+            {
+                _logger.LogInformation("Toxic plant data already loaded");
+            }
         }
     }
 }

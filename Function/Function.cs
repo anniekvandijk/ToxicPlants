@@ -10,12 +10,14 @@ namespace Function
     {
         private readonly IHandleRequest _handleRequest;
         private readonly IHandleResponse _handleResponse;
+        private readonly IToxicPlantAnimalService _toxicPlantAnimalService;
         private ILogger _logger;
 
-        public Function(IHandleRequest handleRequest, IHandleResponse handleResponse)
+        public Function(IHandleRequest handleRequest, IHandleResponse handleResponse, IToxicPlantAnimalService toxicPlantAnimalService)
         {
             _handleRequest = handleRequest;
             _handleResponse = handleResponse;
+            _toxicPlantAnimalService = toxicPlantAnimalService;
         }
 
         [Function("plantcheck")]
@@ -24,6 +26,8 @@ namespace Function
         {
             _logger = executionContext.GetLogger("PlantCheck");
             _logger.LogInformation("C# HTTP trigger function processed a request.");
+
+            _toxicPlantAnimalService.LoadToxicPlantAnimalData();
 
             // If something goes wrong, all is handled by the ExceptionHandlerMiddleware
 

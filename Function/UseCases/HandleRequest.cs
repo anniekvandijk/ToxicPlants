@@ -100,6 +100,9 @@ namespace Function.UseCases
                     if (ToxicPlant.Count == 1)
                     {
                         toxicPlantsAnimal.Add(ToxicPlant.First());
+                    } else if (ToxicPlant.Count > 1)
+                    {
+                        ProgramError.CreateProgramError(HttpStatusCode.Conflict, "Multiple hits on same toxic plant.");
                     }
                 }
             }
