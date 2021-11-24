@@ -1,15 +1,14 @@
-﻿using System;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
+﻿using Function.UseCases;
 using Microsoft.Azure.Functions.Worker;
-using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Function.MiddleWare.ExceptionHandler
 {
-    public class ExceptionHandlerMiddleware : IFunctionsWorkerMiddleware
+    internal class ExceptionHandlerMiddleware : IFunctionsWorkerMiddleware
     {
         public async Task Invoke(FunctionContext context, FunctionExecutionDelegate next)
         {
@@ -19,38 +18,20 @@ namespace Function.MiddleWare.ExceptionHandler
             {
                 await next(context);
             }
+
             catch (Exception ex)
             {
-                logger.LogError(ex, ex.Message);
-                
-                var statuscode = HttpStatusCode.InternalServerError;
-
-                if (ex.InnerException != null)
+                if (ex.InnerException != null && ex.InnerException.GetType() == typeof(ProgramError))
                 {
-                    var exceptionType = ex.InnerException.GetType();
-
-                    if (exceptionType == typeof(RequestDataException))
-                    {
-                        statuscode = HttpStatusCode.BadRequest;
-                    }
+                    logger.LogWarning(ex, ex.Message);
+                    await HandleResponse.SetProgramErrorResponse(context, logger, ex.InnerException);
                 }
-
-                await SetResponse(context, logger, statuscode, ex);
-
+                else
+                {
+                    logger.LogError(ex, ex.Message);
+                    await HandleResponse.SetExceptionResponse(context, logger, HttpStatusCode.InternalServerError, ex);
+                }
             }
-        }
-
-        private static async Task SetResponse(FunctionContext context, ILogger<ExceptionHandlerMiddleware> logger, HttpStatusCode statusCode, Exception ex)
-        {
-            var request = context.GetHttpRequestData(logger);
-            var response = request?.CreateResponse(statusCode);
-
-#if DEBUG
-            await response.WriteStringAsync(ex.StackTrace);
-#else
-            await response.WriteAsJsonAsync("not ok");
-#endif
-            context.SetHttpResponseData(response, logger);
         }
     }
 }

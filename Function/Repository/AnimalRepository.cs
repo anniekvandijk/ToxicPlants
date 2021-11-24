@@ -1,26 +1,19 @@
-﻿using Function.Models;
+﻿using Function.Interfaces;
+using Function.Models;
 using System.Collections.Generic;
-using Function.Interfaces;
 
 namespace Function.Repository
 {
-    public class AnimalRepository : IAnimalRepository
+    internal class AnimalRepository : IAnimalRepository
     {
-        private readonly List<Animal> _animals;
+        private readonly List<Animal> _animals = new();
 
-        public AnimalRepository()
-        {
-            _animals = new();
-        }
-     
         public void Add(Animal animal)
         {
             if (!_animals.Contains(animal)) _animals.Add(animal);
         }
 
-        public List<Animal> Get()
-        {
-            return _animals;
-        }
+        public List<Animal> Get() => _animals;
+
     }
 }

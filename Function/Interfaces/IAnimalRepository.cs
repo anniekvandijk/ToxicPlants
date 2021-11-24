@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Function.Models;
+﻿using Function.Models;
+using System.Collections.Generic;
 
 namespace Function.Interfaces
 {
-    public interface IAnimalRepository
+    internal interface IAnimalRepository
     {
-        public void Add(Animal animal);
-
-        public List<Animal> Get();
+        void Add(Animal animal);
+        List<Animal> Get();
     }
 }

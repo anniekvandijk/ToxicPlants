@@ -1,8 +1,9 @@
 ﻿namespace Function.Models
 {
-    public class Plant
+    internal class Plant
     {
-        public string Name { get; set; }
+        public string ScientificName { get; set; }
+        public string[] CommonNames { get; set; }
         public double Score { get; set; }
     }
 }

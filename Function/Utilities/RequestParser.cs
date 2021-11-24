@@ -2,24 +2,23 @@
 using HttpMultipartParser;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
 namespace Function.Utilities
 {
-    public static class RequestParser
+    internal static class RequestParser
     {
         public static async Task<RequestData> Parse(Stream requestData)
         {
-            MultipartFormDataParser parstData = null;
+            MultipartFormDataParser parstData;
             try
             {
                 parstData = await MultipartFormDataParser.ParseAsync(requestData);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Debug.WriteLine(e);
+                throw new Exception("Error parsing multipartformdata", ex);
             }
 
             var files = parstData.Files;
@@ -41,7 +40,7 @@ namespace Function.Utilities
             }
 
             var parameterList = new List<ParameterData>();
-            foreach(var parameter in parameters)
+            foreach (var parameter in parameters)
             {
                 var parameterData = new ParameterData
                 {
@@ -50,6 +49,8 @@ namespace Function.Utilities
                 };
                 parameterList.Add(parameterData);
             }
+
+
 
             return new RequestData
             {

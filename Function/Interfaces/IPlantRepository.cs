@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Function.Models;
+﻿using Function.Models;
+using System.Collections.Generic;
 
 namespace Function.Interfaces
 {
-    public interface IPlantRepository
+    internal interface IPlantRepository
     {
-        public List<Plant> Get();
-        public void Add(Plant plant);
+        List<Plant> Get();
+        void Add(Plant plant);
     }
 }

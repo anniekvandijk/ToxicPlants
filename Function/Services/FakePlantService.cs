@@ -1,17 +1,27 @@
-﻿using System;
+﻿using Function.Interfaces;
 using Function.Models.Request;
+using Microsoft.Extensions.Logging;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Function.Interfaces;
 
 namespace Function.Services
 {
-    public class FakePlantService : IPlantService
+    internal class FakePlantService : IPlantService
     {
+        private readonly ILogger<FakePlantService> _logger;
+
+        public FakePlantService(ILogger<FakePlantService> logger)
+        {
+            _logger = logger;
+        }
+
         public async Task<string> GetPlantsAsync(RequestData data)
         {
-            var path = 
+            _logger.LogInformation("Fake Plant Service called");
+
+            var path =
                 Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new InvalidOperationException("File not found")
                     , @"Utilities\PlantNetResultFile.json");
             return await File.ReadAllTextAsync(path);

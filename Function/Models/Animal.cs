@@ -1,6 +1,6 @@
 ﻿namespace Function.Models
 {
-    public enum Animal
+    internal enum Animal
     {
         Alpaca,
         Paard

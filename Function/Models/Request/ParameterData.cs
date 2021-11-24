@@ -1,6 +1,6 @@
 ﻿namespace Function.Models.Request
 {
-    public class ParameterData
+    internal class ParameterData
     {
         public string Data { get; set; }
         public string Name { get; set; }

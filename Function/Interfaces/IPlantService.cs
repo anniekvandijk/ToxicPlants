@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using Function.Models.Request;
+﻿using Function.Models.Request;
+using System.Threading.Tasks;
 
 namespace Function.Interfaces
 {
-    public interface IPlantService
+    internal interface IPlantService
     {
         public Task<string> GetPlantsAsync(RequestData data);
     }

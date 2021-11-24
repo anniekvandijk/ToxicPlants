@@ -1,114 +1,38 @@
-using System;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 using Function.Interfaces;
-using Function.MiddleWare.ExceptionHandler;
-using Function.Models;
-using Function.Models.Request;
-using Function.Utilities;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace Function
 {
-    public class Function
+    internal class Function
     {
-        private readonly IPlantRepository _plantRepository;
-        private readonly IAnimalRepository _animalRepository;
-        private readonly IToxicPlantRepository _toxicPlantsRepository;
-        private readonly IPlantService _plantService;
+        private readonly IHandleRequest _handleRequest;
+        private readonly IHandleResponse _handleResponse;
+        private readonly IToxicPlantAnimalService _toxicPlantAnimalService;
         private ILogger _logger;
 
-        public Function(IPlantRepository plantRepository, IAnimalRepository animalRepository, IToxicPlantRepository toxicPlantsRepository, IPlantService plantService)
+        public Function(IHandleRequest handleRequest, IHandleResponse handleResponse, IToxicPlantAnimalService toxicPlantAnimalService)
         {
-            _plantRepository = plantRepository;
-            _animalRepository = animalRepository;
-            _toxicPlantsRepository = toxicPlantsRepository;
-            _plantService = plantService;
+            _handleRequest = handleRequest;
+            _handleResponse = handleResponse;
+            _toxicPlantAnimalService = toxicPlantAnimalService;
         }
 
         [Function("plantcheck")]
-        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequestData request,
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = "v1/plantcheck")] HttpRequestData request,
             FunctionContext executionContext)
         {
             _logger = executionContext.GetLogger("PlantCheck");
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-            var parsedData = await RequestParser.Parse(request.Body);
-            AddAnimals(parsedData);
-            await AddPlants(parsedData);
-            var matchResult = MatchToxicPlantsForAnimals();
+            _toxicPlantAnimalService.LoadToxicPlantAnimalData();
 
-            // if content OK return OK and stuff
-            var response = request.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
+            // If something goes wrong, all is handled by the ExceptionHandlerMiddleware
 
-            await response.WriteStringAsync(matchResult);
-
-            // if not OK return not OK
-
-            // return
-            return response;
+            var resultBody = await _handleRequest.Handle(request);
+            return await _handleResponse.SetResponse(request, resultBody);
         }
-
-        public void AddAnimals(RequestData data)
-        {
-            var animals = data.Parameters.Where(x => x.Name == "animal").ToList();
-
-            if (animals.Count == 0)
-            {
-                throw new RequestDataException("No animal received");
-            }
-
-            foreach (var animal in animals)
-            {
-                if (Enum.TryParse(animal.Data, true, out Animal animalEnum))
-                {
-                    _animalRepository.Add(animalEnum);
-                }
-                else
-                {
-                    throw new RequestDataException("Animal not supported");
-                }
-            }
-        }
-
-        public async Task AddPlants(RequestData data)
-        {
-            var responseContent = await _plantService.GetPlantsAsync(data);
-
-            var json = JsonConvert.DeserializeObject(responseContent).ToString();
-            var jsonObject = JObject.Parse(json);
-            var results = (JArray)jsonObject["results"];
-            
-            foreach (var result in results)
-            {
-                var plant = new Plant
-                {
-                    Name = (string)result["species"]["scientificName"],
-                    Score = (double)result["score"]
-                };
-                _plantRepository.Add(plant);
-            }
-        }
-
-        private string MatchToxicPlantsForAnimals()
-        {
-            foreach (var animal in _animalRepository.Get())
-            {
-                foreach(var plant in _plantRepository.Get())
-                {
-                    var ToxicPlant = _toxicPlantsRepository.GetbyAnimalAndPlantName(animal, plant);
-                }
-            }
-
-            return "nothing yet";
-        }
-
-
     }
 }

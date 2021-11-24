@@ -1,14 +1,14 @@
 ﻿using Function.Models;
 using Function.Repository;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Function.Tests
 {
-    [TestClass]
-    public class AnimalRepositoryTests
+    [TestFixture]
+    internal class AnimalRepositoryTests
     {
-        [TestMethod]
-        public void AddAnimal()
+        [Test]
+        public void AnimalRepository_Add_CanAddOneAnimal()
         {
             //Arrange
             AnimalRepository repo = new();
@@ -19,10 +19,11 @@ namespace Function.Tests
             // assert
             var animals = repo.Get();
             Assert.AreEqual(1, animals.Count);
+            Assert.AreEqual(Animal.Alpaca, animals[0]);
         }
 
-        [TestMethod]
-        public void AddSameAnimalTwice_onlyOneAdded()
+        [Test]
+        public void AnimalRepository_Add_AddMultipleAnimalRegisterOnlyOne()
         {
             // arrange
             AnimalRepository repo = new();
