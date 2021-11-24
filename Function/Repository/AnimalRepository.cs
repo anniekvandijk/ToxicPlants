@@ -6,9 +6,7 @@ namespace Function.Repository
 {
     internal class AnimalRepository : IAnimalRepository
     {
-        private readonly List<Animal> _animals;
-
-        public AnimalRepository() => _animals = new();
+        private readonly List<Animal> _animals = new();
 
         public void Add(Animal animal)
         {

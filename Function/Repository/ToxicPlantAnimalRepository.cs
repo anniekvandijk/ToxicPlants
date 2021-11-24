@@ -7,18 +7,10 @@ namespace Function.Repository
 {
     internal class ToxicPlantAnimalRepository : IToxicPlantAnimalRepository
     {
-        private static List<ToxicPlantAnimal> _toxicPlantAnimals;
+        private readonly List<ToxicPlantAnimal> _toxicPlantAnimals = new();
 
-        public ToxicPlantAnimalRepository()
-        {
-            _toxicPlantAnimals ??= new();
-        }
-
-        public void Add(ToxicPlantAnimal plantAnimal)
-        {
-            _toxicPlantAnimals.Add(plantAnimal);
-        }
-
+        public void Add(ToxicPlantAnimal plantAnimal) => _toxicPlantAnimals.Add(plantAnimal);
+        
         public List<ToxicPlantAnimal> Get() => _toxicPlantAnimals;
 
         public List<ToxicPlantAnimal> GetByAnimalName(Animal animal) =>

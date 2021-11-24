@@ -7,12 +7,11 @@ namespace Function.Repository
 {
     internal class PlantRepository : IPlantRepository
     {
-        private readonly List<Plant> _plants;
+        private readonly List<Plant> _plants = new();
         private readonly ILogger<PlantRepository> _logger;
 
         public PlantRepository(ILogger<PlantRepository> logger)
         {
-            _plants = new();
             _logger = logger;
         }
 
