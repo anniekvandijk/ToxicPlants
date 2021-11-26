@@ -1,12 +1,13 @@
 ﻿using System.Text.Json;
 
-namespace Function.Models
+namespace Function.Models.Response
 {
-    internal class ToxicPlantAnimal
+    internal class PlantResponse
     {
         public Animal Animal { get; set; }
         public string PlantName { get; set; }
         public int HowToxic { get; set; }
         public string Reference { get; set; }
+        public JsonElement PlantDetail { get; set; }
     }
 }

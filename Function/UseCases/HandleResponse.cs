@@ -15,7 +15,7 @@ namespace Function.UseCases
     {
         public async Task<HttpResponseData> SetResponse(HttpRequestData request, string resultBody)
         {
-            return await Create(request, HttpStatusCode.OK, resultBody);
+            return await Createresponse(request, HttpStatusCode.OK, resultBody);
         }
 
         public static async Task SetExceptionResponse(FunctionContext context, ILogger<ExceptionHandlerMiddleware> logger, HttpStatusCode statusCode, Exception ex)
@@ -30,7 +30,7 @@ namespace Function.UseCases
             var serialize = JsonSerializer.Serialize(body);
 
             var request = context.GetHttpRequestData(logger);
-            var response = await Create(request, statusCode, serialize);
+            var response = await Createresponse(request, statusCode, serialize);
             context.SetHttpResponseData(response, logger);
         }
 
@@ -50,11 +50,11 @@ namespace Function.UseCases
             var serialize = JsonSerializer.Serialize(body);
 
             var request = context.GetHttpRequestData(logger);
-            var response = await Create(request, statusCode, serialize);
+            var response = await Createresponse(request, statusCode, serialize);
             context.SetHttpResponseData(response, logger);
         }
 
-        private static async Task<HttpResponseData> Create(HttpRequestData request, HttpStatusCode statusCode, string body)
+        private static async Task<HttpResponseData> Createresponse(HttpRequestData request, HttpStatusCode statusCode, string body)
         {
             var response = request.CreateResponse(statusCode);
             response.Headers.Add("Content-Type", "application/json; charset=utf-8");

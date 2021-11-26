@@ -20,8 +20,6 @@ namespace Function.Tests
             Plant plant = new()
             {
                 ScientificName = "Some strange name",
-                Score = 0.1,
-                CommonNames = new[] { "name 1", "Name 2" }
             };
 
             // act
@@ -31,8 +29,6 @@ namespace Function.Tests
             var plants = repo.Get();
             Assert.AreEqual(1, plants.Count);
             Assert.AreEqual("Some strange name", plants[0].ScientificName);
-            Assert.AreEqual(0.1, plants[0].Score);
-            Assert.AreEqual(new[] { "name 1", "Name 2" }, plants[0].CommonNames);
         }
 
         [Test]
@@ -45,15 +41,11 @@ namespace Function.Tests
             Plant plant1 = new()
             {
                 ScientificName = "Some strange name",
-                Score = 0.1,
-                CommonNames = new[] { "name 1", "Name 2" }
             };
 
             Plant plant2 = new()
             {
                 ScientificName = "Some strange name",
-                Score = 0.1,
-                CommonNames = new[] { "name 1", "Name 2" }
             };
 
             // act

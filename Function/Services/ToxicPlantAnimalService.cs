@@ -25,22 +25,22 @@ namespace Function.Services
 
                     new()
                     {
-                        PlantName = "Anthriscus sylvestris (L.) Hoffm.", Animal = Animal.Alpaca, HowToxic = "very",
+                        PlantName = "Anthriscus sylvestris (L.) Hoffm.", Animal = Animal.Alpaca, HowToxic = 1,
                         Reference = "Alpacawereld"
                     },
                     new()
                     {
-                        PlantName = "Prunus serotina", Animal = Animal.Alpaca, HowToxic = "very",
+                        PlantName = "Prunus serotina", Animal = Animal.Alpaca, HowToxic = 3,
                         Reference = "Alpacawereld"
                     },
                     new()
                     {
-                        PlantName = "Rhodondendron", Animal = Animal.Alpaca, HowToxic = "very",
+                        PlantName = "Rhodondendron", Animal = Animal.Alpaca, HowToxic = 2,
                         Reference = "Alpacawereld"
                     },
                     new()
                     {
-                        PlantName = "Hyoscyamus niger", Animal = Animal.Alpaca, HowToxic = "very",
+                        PlantName = "Hyoscyamus niger", Animal = Animal.Alpaca, HowToxic = 5,
                         Reference = "Alpacawereld"
                     }
                 };

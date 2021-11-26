@@ -28,35 +28,35 @@ namespace Function.Tests.Utilities
                 {
                     PlantName = "Anthriscus sylvestris (L.) Hoffm.", 
                     Animal = Animal.Alpaca, 
-                    HowToxic = "a bit",
+                    HowToxic = 1,
                     Reference = "Alpacawereld"
                 },
                 new()
                 {
                     PlantName = "Prunus serotina", 
                     Animal = Animal.Alpaca, 
-                    HowToxic = "very",
+                    HowToxic = 2,
                     Reference = "Some reference"
                 },
                 new()
                 {
                     PlantName = "Rhodondendron", 
                     Animal = Animal.Alpaca, 
-                    HowToxic = "very",
+                    HowToxic = 3,
                     Reference = "Alpacawereld"
                 },
                 new()
                 {
                     PlantName = "Hyoscyamus niger", 
                     Animal = Animal.Alpaca, 
-                    HowToxic = "very",
+                    HowToxic = 4,
                     Reference = "Alpacawereld"
                 },
                 new()
                 {
                     PlantName = "Hyoscyamus niger",
-                    Animal = Animal.Paard,
-                    HowToxic = "a bit",
+                    Animal = Animal.Horse,
+                    HowToxic = 5,
                     Reference = "Horseworld"
                 }
             };
