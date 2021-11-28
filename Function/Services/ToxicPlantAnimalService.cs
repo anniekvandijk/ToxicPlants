@@ -1,7 +1,12 @@
-﻿using Function.Interfaces;
+﻿using System;
+using Function.Interfaces;
 using Function.Models;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
+using Function.Models.Request;
 
 namespace Function.Services
 {
@@ -14,6 +19,16 @@ namespace Function.Services
         {
             _toxicPlantAnimalRepository = toxicPlantAnimalRepository;
             _logger = logger;
+        }
+
+        public async Task LoadToxicPlantAnimalDataFromFile()
+        {
+            _logger.LogInformation("Loader toxicplants called");
+
+            var path =
+                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new InvalidOperationException("File not found")
+                    , @"Data\ToxicPlants.csv");
+            var file = await File.ReadAllTextAsync(path);
         }
 
         public void LoadToxicPlantAnimalData()
@@ -35,7 +50,10 @@ namespace Function.Services
                     },
                     new()
                     {
-                        PlantName = "Rhodondendron", Animal = Animal.Alpaca, HowToxic = 2,
+                        PlantName = "Rhodondendron", 
+                        Animal = Animal.Alpaca, 
+                        HowToxic = 3,
+                        ScientificClassification = ScientificClassification.Genus,
                         Reference = "Alpacawereld"
                     },
                     new()

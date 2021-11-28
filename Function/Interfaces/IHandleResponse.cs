@@ -7,6 +7,6 @@ namespace Function.Interfaces
 {
     internal interface IHandleResponse
     {
-        Task<HttpResponseData> SetResponse(HttpRequestData request, List<PlantResponse> resultBody);
+        Task<HttpResponseData> SetResponse(HttpRequestData request, List<ToxicPlantResponse> resultBody);
     }
 }

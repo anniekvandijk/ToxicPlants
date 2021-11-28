@@ -13,6 +13,9 @@
     <PackageReference Include="Sentry.AspNetCore" Version="3.11.1" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Data\ToxicPlants.xlsx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="host.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -23,8 +26,5 @@
     <None Update="Utilities\PlantNetResultFile.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
   </ItemGroup>
 </Project>

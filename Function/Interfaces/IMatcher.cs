@@ -5,6 +5,6 @@ namespace Function.Interfaces
 {
     internal interface IMatcher
     {
-        List<PlantResponse> MatchToxicPlantsForAnimals();
+        List<ToxicPlantResponse> MatchToxicPlantsForAnimals();
     }
 }

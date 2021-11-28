@@ -63,16 +63,7 @@ namespace Function.Services
             return multiPartContent;
         }
 
-        private static string GetLanguage(RequestData data)
-        {
-            var language = data.Language;
-            if (language == null)
-            {
-                language = "nl";
-            }
-
-            return language;
-        }
+        private static string GetLanguage(RequestData data) => data.Language ?? "en"; 
 
         private async Task<string> MakePlantNetRequest(MultipartFormDataContent content, string language)
         {

@@ -14,7 +14,7 @@ namespace Function.UseCases
 {
     internal class HandleResponse : IHandleResponse
     {
-        public async Task<HttpResponseData> SetResponse(HttpRequestData request, List<PlantResponse> result)
+        public async Task<HttpResponseData> SetResponse(HttpRequestData request, List<ToxicPlantResponse> result)
         {
             var json = JsonSerializer.Serialize(result);
             return await Createresponse(request, HttpStatusCode.OK, json);

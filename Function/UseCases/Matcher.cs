@@ -28,16 +28,16 @@ namespace Function.UseCases
             _toxicPlantAnimalService = toxicPlantAnimalService;
         }
 
-        public List<PlantResponse> MatchToxicPlantsForAnimals()
+        public List<ToxicPlantResponse> MatchToxicPlantsForAnimals()
         {
             _toxicPlantAnimalService.LoadToxicPlantAnimalData();
 
-            var plantResponseList = new List<PlantResponse>();
+            var plantResponseList = new List<ToxicPlantResponse>();
             foreach (var animal in _animalRepository.Get())
             {
                 foreach (var plant in _plantRepository.Get())
                 {
-                    var plantResponse = new PlantResponse
+                    var plantResponse = new ToxicPlantResponse
                     {
                         Animal = animal,
                         PlantName = plant.ScientificName,
@@ -45,22 +45,25 @@ namespace Function.UseCases
                     };
 
                     var toxicPlantList = _toxicPlantAnimalRepository.GetbyAnimalAndPlantName(animal, plant);
-                    if (toxicPlantList.Count == 1)
+                    switch (toxicPlantList.Count)
                     {
-                        var toxicPlant = toxicPlantList.First();
-
-                        plantResponse.HowToxic = toxicPlant.HowToxic;
-                        plantResponse.Reference = toxicPlant.Reference;
-                        plantResponseList.Add(plantResponse);
-                    }
-                    else if (toxicPlantList.Count == 0)
-                    {
-                        plantResponse.HowToxic = 0;
-                        plantResponseList.Add(plantResponse);
-                    }
-                    else if (toxicPlantList.Count > 1)
-                    {
-                        ProgramError.CreateProgramError(HttpStatusCode.Conflict, "Multiple hits on same toxic plant.");
+                        case 1:
+                        {
+                            var toxicPlant = toxicPlantList.First();
+                            plantResponse.HowToxic = toxicPlant.HowToxic;
+                            plantResponse.Reference = toxicPlant.Reference;
+                            plantResponse.ExtraInformation = toxicPlant.ExtraInformation;
+                            plantResponseList.Add(plantResponse);
+                            break;
+                        }
+                        case 0:
+                            plantResponse.HowToxic = 0;
+                            plantResponse.ExtraInformation = "There is no information that this plant is toxic for this animal";
+                            plantResponseList.Add(plantResponse);
+                            break;
+                        default:
+                            ProgramError.CreateProgramError(HttpStatusCode.Conflict, "Multiple hits on same toxic plant.");
+                            break;
                     }
                 }
             }
