@@ -5,6 +5,6 @@ namespace Function.Interfaces
 {
     internal interface IHandleRequest
     {
-        Task<string> Handle(HttpRequestData request);
+        Task Handle(HttpRequestData request);
     }
 }

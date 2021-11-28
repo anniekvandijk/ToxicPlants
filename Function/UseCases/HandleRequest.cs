@@ -21,26 +21,21 @@ namespace Function.UseCases
         private readonly IPlantRepository _plantRepository;
         private readonly IAnimalRepository _animalRepository;
         private readonly IPlantService _plantService;
-        private readonly IToxicPlantAnimalRepository _toxicPlantAnimalRepository;
 
-        public HandleRequest(ILogger<HandleRequest> logger, IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantService plantService, IToxicPlantAnimalRepository toxicPlantAnimalRepository)
+        public HandleRequest(ILogger<HandleRequest> logger, IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantService plantService)
         {
             _logger = logger;
             _plantRepository = plantRepository;
             _animalRepository = animalRepository;
             _plantService = plantService;
-            _toxicPlantAnimalRepository = toxicPlantAnimalRepository;
         }
 
-        public async Task<string> Handle(HttpRequestData request)
+        public async Task Handle(HttpRequestData request)
         {
             var parsedData = await RequestParser.Parse(request.Body);
             var addPlants = AddPlants(parsedData);
             AddAnimals(parsedData);
             await Task.WhenAll(addPlants);
-            var result = MatchToxicPlantsForAnimals();
-            var json = JsonSerializer.Serialize(result);
-            return json;
         }
 
         private void AddAnimals(RequestData data)
@@ -88,46 +83,5 @@ namespace Function.UseCases
             }
             _logger.LogInformation($"Added {results.GetArrayLength()} plants to PlantRepository.");
         }
-
-        private List<PlantResponse> MatchToxicPlantsForAnimals()
-        {
-            var plantResponseList = new List<PlantResponse>();
-            foreach (var animal in _animalRepository.Get())
-            {
-                foreach (var plant in _plantRepository.Get())
-                {
-                    var plantResponse = new PlantResponse
-                    {
-                        Animal = animal,
-                        PlantName = plant.ScientificName,
-                        PlantDetail = plant.PlantDetail
-                    };
-
-                    var toxicPlantList = _toxicPlantAnimalRepository.GetbyAnimalAndPlantName(animal, plant);
-                    if (toxicPlantList.Count == 1)
-                    {
-                        var toxicPlant = toxicPlantList.First();
-
-                        plantResponse.HowToxic = toxicPlant.HowToxic;
-                        plantResponse.Reference = toxicPlant.Reference;
-                        plantResponseList.Add(plantResponse);
-                    } else if (toxicPlantList.Count == 0)
-                    {
-                        plantResponse.HowToxic = 0;
-                        plantResponseList.Add(plantResponse);
-                    } 
-                    else if (toxicPlantList.Count > 1)
-                    {
-                        ProgramError.CreateProgramError(HttpStatusCode.Conflict, "Multiple hits on same toxic plant.");
-                    }
-                }
-            }
-
-            var nrOfToxicPlants = plantResponseList.Where(x => x.HowToxic > 0);
-            _logger.LogInformation($"Found {nrOfToxicPlants.Count()} posible toxic plants hits for sent animals");
-            return plantResponseList;
-        }
-
-
     }
 }

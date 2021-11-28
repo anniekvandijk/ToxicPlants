@@ -5,6 +5,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -13,9 +14,10 @@ namespace Function.UseCases
 {
     internal class HandleResponse : IHandleResponse
     {
-        public async Task<HttpResponseData> SetResponse(HttpRequestData request, string resultBody)
+        public async Task<HttpResponseData> SetResponse(HttpRequestData request, List<PlantResponse> result)
         {
-            return await Createresponse(request, HttpStatusCode.OK, resultBody);
+            var json = JsonSerializer.Serialize(result);
+            return await Createresponse(request, HttpStatusCode.OK, json);
         }
 
         public static async Task SetExceptionResponse(FunctionContext context, ILogger<ExceptionHandlerMiddleware> logger, HttpStatusCode statusCode, Exception ex)
