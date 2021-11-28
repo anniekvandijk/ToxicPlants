@@ -123,6 +123,24 @@ namespace Function.Tests
         }
 
         [Test]
+        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithNullPlantNameGivesProgramError()
+        {
+            //Arrange
+            ToxicPlantAnimalRepository repo = new();
+            ToxicPlantAnimal toxicPlantAnimal = new()
+            {
+                Animal = Animal.Alpaca,
+                HowToxic = 3,
+                PlantName = null,
+                Reference = "An reference"
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
+            Assert.AreEqual("PlantName can not be empty", ex.Message);
+        }
+
+        [Test]
         public void ToxicPlantAnimalRepository_Add_ToxicPlantWithEmptyPlantNameGivesProgramError()
         {
             //Arrange
@@ -186,6 +204,24 @@ namespace Function.Tests
                 HowToxic = 3,
                 PlantName = "Some strange name",
                 Reference = ""
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
+            Assert.AreEqual("Reference can not be empty", ex.Message);
+        }
+
+        [Test]
+        public void ToxicPlantAnimalRepository_Add_ToxicPlantWittNullReferenceGivesProgramError()
+        {
+            //Arrange
+            ToxicPlantAnimalRepository repo = new();
+            ToxicPlantAnimal toxicPlantAnimal = new()
+            {
+                Animal = Animal.Alpaca,
+                HowToxic = 3,
+                PlantName = "Some strange name",
+                Reference = null
             };
 
             // Assert
