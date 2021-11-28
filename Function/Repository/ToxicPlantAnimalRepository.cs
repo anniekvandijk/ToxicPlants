@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using Function.MiddleWare.ExceptionHandler;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
+using Microsoft.Extensions.Logging;
 
 namespace Function.Repository
 {
@@ -36,7 +37,30 @@ namespace Function.Repository
             _toxicPlantAnimals
                 .Where(x => x.Animal == animal).ToList();
 
-        public List<ToxicPlantAnimal> GetbyAnimalAndPlantName(Animal animal, Plant plant) =>
-            _toxicPlantAnimals.Where(x => x.Animal == animal && x.Species == plant.Species).ToList();
+        public List<ToxicPlantAnimal> GetbyAnimalAndPlantName(Animal animal, Plant plant)
+        {
+            var list = new List<ToxicPlantAnimal>();
+
+            var toxicForAnimal = GetByAnimalName(animal);
+            
+            foreach (var toxicPlantAnimal in toxicForAnimal)
+            {
+                if (toxicPlantAnimal.ScientificClassification == ScientificClassification.Species && toxicPlantAnimal.Species == plant.Species)
+                {
+                    list.Add(toxicPlantAnimal);
+                }
+                if (toxicPlantAnimal.ScientificClassification == ScientificClassification.Genus && toxicPlantAnimal.Genus == plant.Genus)
+                {
+                    list.Add(toxicPlantAnimal);
+                }
+                if (toxicPlantAnimal.ScientificClassification == ScientificClassification.Family && toxicPlantAnimal.Family == plant.Family)
+                {
+                    list.Add(toxicPlantAnimal);
+                }
+            }
+
+            return list;
+        }
+
     }
 }

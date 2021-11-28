@@ -72,6 +72,7 @@ namespace Function.UseCases
             foreach (var result in results.EnumerateArray())
             {
                 result.TryGetProperty("species", out var species);
+                species.TryGetProperty("scientificName", out var scientificName);
                 species.TryGetProperty("scientificNameWithoutAuthor", out var speciesScientificNameWithoutAuthor);
 
                 species.TryGetProperty("genus", out var genus);
@@ -83,6 +84,7 @@ namespace Function.UseCases
 
                 var plant = new Plant
                 {
+                    ScientificName = scientificName.GetString(),
                     Species = speciesScientificNameWithoutAuthor.GetString(),
                     Genus = genusScientificNameWithoutAuthor.GetString(),
                     Family = familyScientificNameWithoutAuthor.GetString(),
