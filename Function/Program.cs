@@ -75,6 +75,7 @@ namespace Function
                     s.AddScoped<IHandleRequest, HandleRequest>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();
+                    s.AddScoped<IMatcher, Matcher>();
                     s.AddScoped<IHandleResponse, HandleResponse>();
 
                 })
