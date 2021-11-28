@@ -40,7 +40,7 @@ namespace Function.UseCases
                     var plantResponse = new ToxicPlantResponse
                     {
                         Animal = animal,
-                        PlantName = plant.ScientificName,
+                        PlantName = plant.Species,
                         PlantDetail = plant.PlantDetail
                     };
 

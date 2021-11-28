@@ -72,11 +72,20 @@ namespace Function.UseCases
             foreach (var result in results.EnumerateArray())
             {
                 result.TryGetProperty("species", out var species);
-                species.TryGetProperty("scientificName", out var scientificName);
+                species.TryGetProperty("scientificNameWithoutAuthor", out var speciesScientificNameWithoutAuthor);
+
+                species.TryGetProperty("genus", out var genus);
+                genus.TryGetProperty("scientificNameWithoutAuthor", out var genusScientificNameWithoutAuthor);
+
+                species.TryGetProperty("family", out var family);
+                family.TryGetProperty("scientificNameWithoutAuthor", out var familyScientificNameWithoutAuthor);
+
 
                 var plant = new Plant
                 {
-                    ScientificName = scientificName.GetString(),
+                    Species = speciesScientificNameWithoutAuthor.GetString(),
+                    Genus = genusScientificNameWithoutAuthor.GetString(),
+                    Family = familyScientificNameWithoutAuthor.GetString(),
                     PlantDetail = result
                 };
                 _plantRepository.Add(plant);

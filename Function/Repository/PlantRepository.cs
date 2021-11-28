@@ -20,13 +20,13 @@ namespace Function.Repository
         public void Add(Plant plant)
         {
             var plantsInRepo = Get();
-            if (!plantsInRepo.Exists(x => x.ScientificName == plant.ScientificName))
+            if (!plantsInRepo.Exists(x => x.Species == plant.Species))
             {
                 _plants.Add(plant);
             }
             else
             {
-                _logger.LogCritical("Plant with same Scenttific name was not added to the Plant repository. Plantname = {_}", plant.ScientificName);
+                _logger.LogCritical("Plant with same Scenttific name was not added to the Plant repository. Plantname = {_}", plant.Species);
             }
 
         }

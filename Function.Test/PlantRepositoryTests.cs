@@ -19,7 +19,7 @@ namespace Function.Tests
 
             Plant plant = new()
             {
-                ScientificName = "Some strange name",
+                Species = "Some strange name",
             };
 
             // act
@@ -28,7 +28,7 @@ namespace Function.Tests
             // assert
             var plants = repo.Get();
             Assert.AreEqual(1, plants.Count);
-            Assert.AreEqual("Some strange name", plants[0].ScientificName);
+            Assert.AreEqual("Some strange name", plants[0].Species);
         }
 
         [Test]
@@ -40,12 +40,12 @@ namespace Function.Tests
 
             Plant plant1 = new()
             {
-                ScientificName = "Some strange name",
+                Species = "Some strange name",
             };
 
             Plant plant2 = new()
             {
-                ScientificName = "Some strange name",
+                Species = "Some strange name",
             };
 
             // act

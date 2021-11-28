@@ -16,12 +16,12 @@ namespace Function.Repository
         public void Add(ToxicPlantAnimal plantAnimal)
         {
             const int mimimumClass = 1;
-            const int maximumClass = 5;
+            const int maximumClass = 3;
 
             if (plantAnimal.HowToxic is < mimimumClass or > maximumClass) 
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Toxicclass is not in range of {mimimumClass}-{maximumClass}");
-            else if (string.IsNullOrEmpty(plantAnimal.PlantName?.Trim())) 
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"PlantName can not be empty");
+            else if (string.IsNullOrEmpty(plantAnimal.Species?.Trim())) 
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Species can not be empty");
             else if (string.IsNullOrEmpty(plantAnimal.Reference?.Trim())) 
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Reference can not be empty");
             else if (plantAnimal.Animal.IsNullOrDefault()) 
@@ -37,6 +37,6 @@ namespace Function.Repository
                 .Where(x => x.Animal == animal).ToList();
 
         public List<ToxicPlantAnimal> GetbyAnimalAndPlantName(Animal animal, Plant plant) =>
-            _toxicPlantAnimals.Where(x => x.Animal == animal && x.PlantName == plant.ScientificName).ToList();
+            _toxicPlantAnimals.Where(x => x.Animal == animal && x.Species == plant.Species).ToList();
     }
 }

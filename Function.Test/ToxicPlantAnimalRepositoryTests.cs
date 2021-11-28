@@ -18,7 +18,7 @@ namespace Function.Tests
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 1,
-                PlantName = "Some strange name",
+                Species = "Some strange name",
                 Reference = "An reference"
             };
 
@@ -30,7 +30,7 @@ namespace Function.Tests
             Assert.AreEqual(1, toxicPlantAnimals.Count);
             Assert.AreEqual(Animal.Alpaca, toxicPlantAnimals[0].Animal);
             Assert.AreEqual(1, toxicPlantAnimals[0].HowToxic);
-            Assert.AreEqual("Some strange name", toxicPlantAnimals[0].PlantName);
+            Assert.AreEqual("Some strange name", toxicPlantAnimals[0].Species);
             Assert.AreEqual("An reference", toxicPlantAnimals[0].Reference);
         }
 
@@ -43,49 +43,49 @@ namespace Function.Tests
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 0,
-                PlantName = "Some strange name",
+                Species = "Some strange name",
                 Reference = "An reference"
             };
 
             // Assert
             ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("Toxicclass is not in range of 1-5", ex.Message);
+            Assert.AreEqual("Toxicclass is not in range of 1-3", ex.Message);
         }
 
 
         [Test]
-        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithToxicClassHigherThan5GivesProgramError()
+        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithToxicClassHigherThan3GivesProgramError()
         {
             //Arrange
             ToxicPlantAnimalRepository repo = new();
             ToxicPlantAnimal toxicPlantAnimal = new()
             {
                 Animal = Animal.Alpaca,
-                HowToxic = 6,
-                PlantName = "Some strange name",
+                HowToxic = 4,
+                Species = "Some strange name",
                 Reference = "An reference"
             };
 
             // Assert
             ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("Toxicclass is not in range of 1-5", ex.Message);
+            Assert.AreEqual("Toxicclass is not in range of 1-3", ex.Message);
         }
 
         [Test]
-        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithoutToxicClassHigherThan5GivesProgramError()
+        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithoutToxicClassGivesProgramError()
         {
             //Arrange
             ToxicPlantAnimalRepository repo = new();
             ToxicPlantAnimal toxicPlantAnimal = new()
             {
                 Animal = Animal.Alpaca,
-                PlantName = "Some strange name",
+                Species = "Some strange name",
                 Reference = "An reference"
             };
 
             // Assert
             ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("Toxicclass is not in range of 1-5", ex.Message);
+            Assert.AreEqual("Toxicclass is not in range of 1-3", ex.Message);
         }
 
         [Test]
@@ -96,7 +96,7 @@ namespace Function.Tests
             ToxicPlantAnimal toxicPlantAnimal = new()
             {
                 HowToxic = 3,
-                PlantName = "Some strange name",
+                Species = "Some strange name",
                 Reference = "An reference"
             };
 
@@ -119,7 +119,7 @@ namespace Function.Tests
 
             // Assert
             ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("PlantName can not be empty", ex.Message);
+            Assert.AreEqual("Species can not be empty", ex.Message);
         }
 
         [Test]
@@ -131,13 +131,13 @@ namespace Function.Tests
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
-                PlantName = null,
+                Species = null,
                 Reference = "An reference"
             };
 
             // Assert
             ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("PlantName can not be empty", ex.Message);
+            Assert.AreEqual("Species can not be empty", ex.Message);
         }
 
         [Test]
@@ -149,13 +149,13 @@ namespace Function.Tests
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
-                PlantName = "",
+                Species = "",
                 Reference = "An reference"
             };
 
             // Assert
             ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("PlantName can not be empty", ex.Message);
+            Assert.AreEqual("Species can not be empty", ex.Message);
         }
 
         [Test]
@@ -167,13 +167,13 @@ namespace Function.Tests
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
-                PlantName = "   ",
+                Species = "   ",
                 Reference = "An reference"
             };
 
             // Assert
             ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("PlantName can not be empty", ex.Message);
+            Assert.AreEqual("Species can not be empty", ex.Message);
         }
 
         [Test]
@@ -185,7 +185,7 @@ namespace Function.Tests
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
-                PlantName = "Some strange name",
+                Species = "Some strange name",
             };
 
             // Assert
@@ -202,7 +202,7 @@ namespace Function.Tests
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
-                PlantName = "Some strange name",
+                Species = "Some strange name",
                 Reference = ""
             };
 
@@ -220,7 +220,7 @@ namespace Function.Tests
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
-                PlantName = "Some strange name",
+                Species = "Some strange name",
                 Reference = null
             };
 
@@ -238,7 +238,7 @@ namespace Function.Tests
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
-                PlantName = "Some strange name",
+                Species = "Some strange name",
                 Reference = "   "
             };
 
@@ -279,14 +279,14 @@ namespace Function.Tests
             var animal = Animal.Alpaca;
             Plant plant = new()
             {
-                ScientificName = "Prunus serotina",
+                Species = "Prunus serotina",
             };
 
             // Act
             var actualResult = repo.GetbyAnimalAndPlantName(animal, plant);
 
             // Assert
-            Assert.AreEqual("Prunus serotina", actualResult[0].PlantName);
+            Assert.AreEqual("Prunus serotina", actualResult[0].Species);
         }
 
         [Test]
@@ -302,7 +302,7 @@ namespace Function.Tests
             var animal = Animal.Alpaca;
             Plant plant = new()
             {
-                ScientificName = "not existing plant",
+                Species = "not existing plant",
             };
 
             // Act

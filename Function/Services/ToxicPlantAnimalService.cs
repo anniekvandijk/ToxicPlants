@@ -40,17 +40,23 @@ namespace Function.Services
 
                     new()
                     {
-                        PlantName = "Anthriscus sylvestris (L.) Hoffm.", Animal = Animal.Alpaca, HowToxic = 1,
+                        Species = "Anthriscus sylvestris", 
+                        Animal = Animal.Alpaca, 
+                        HowToxic = 1,
+                        ScientificClassification = ScientificClassification.Species,
                         Reference = "Alpacawereld"
                     },
                     new()
                     {
-                        PlantName = "Prunus serotina", Animal = Animal.Alpaca, HowToxic = 3,
+                        Species = "Prunus serotina", 
+                        Animal = Animal.Alpaca, 
+                        HowToxic = 3,
+                        ScientificClassification = ScientificClassification.Species,
                         Reference = "Alpacawereld"
                     },
                     new()
                     {
-                        PlantName = "Rhodondendron", 
+                        Species = "Rhodondendron", 
                         Animal = Animal.Alpaca, 
                         HowToxic = 3,
                         ScientificClassification = ScientificClassification.Genus,
@@ -58,7 +64,10 @@ namespace Function.Services
                     },
                     new()
                     {
-                        PlantName = "Hyoscyamus niger", Animal = Animal.Alpaca, HowToxic = 5,
+                        Species = "Hyoscyamus niger", 
+                        Animal = Animal.Alpaca, 
+                        HowToxic = 3,
+                        ScientificClassification = ScientificClassification.Species,
                         Reference = "Alpacawereld"
                     }
                 };
