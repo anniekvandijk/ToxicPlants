@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
+using Function.Models;
 using Function.Models.Response;
 using Microsoft.Extensions.Logging;
 
@@ -28,38 +29,37 @@ namespace Function.UseCases
             _toxicPlantAnimalService = toxicPlantAnimalService;
         }
 
-        public List<ToxicPlantResponse> MatchToxicPlantsForAnimals()
+        public List<ToxicPlantAnimal> MatchToxicPlantsForAnimals()
         {
             _toxicPlantAnimalService.LoadToxicPlantAnimalData();
 
-            var plantResponseList = new List<ToxicPlantResponse>();
+            var plantResponseList = new List<ToxicPlantAnimal>();
             foreach (var animal in _animalRepository.Get())
             {
                 foreach (var plant in _plantRepository.Get())
                 {
-                    var plantResponse = new ToxicPlantResponse
-                    {
-                        Animal = animal,
-                        PlantName = plant.Species,
-                        PlantDetail = plant.PlantDetail
-                    };
-
                     var toxicPlantList = _toxicPlantAnimalRepository.GetbyAnimalAndPlantName(animal, plant);
                     switch (toxicPlantList.Count)
                     {
                         case 1:
                         {
                             var toxicPlant = toxicPlantList.First();
-                            plantResponse.HowToxic = toxicPlant.HowToxic;
-                            plantResponse.Reference = toxicPlant.Reference;
-                            plantResponse.ExtraInformation = toxicPlant.ExtraInformation;
-                            plantResponseList.Add(plantResponse);
+                            toxicPlant.PlantDetail = plant.PlantDetail;
+                            plantResponseList.Add(toxicPlant);
                             break;
                         }
                         case 0:
-                            plantResponse.HowToxic = 0;
-                            plantResponse.ExtraInformation = "There is no information that this plant is toxic for this animal";
-                            plantResponseList.Add(plantResponse);
+                            var nonToxicPlant = new ToxicPlantAnimal
+                            {
+                                Animal = animal,
+                                Species = plant.Species,
+                                Genus = plant.Genus,
+                                Family = plant.Family,
+                                PlantDetail = plant.PlantDetail,
+                                HowToxic = 0,
+                                ExtraInformation = "There is no information that this plant is toxic for this animal"
+                            };
+                            plantResponseList.Add(nonToxicPlant);
                             break;
                         default:
                             ProgramError.CreateProgramError(HttpStatusCode.Conflict, "Multiple hits on same toxic plant.");

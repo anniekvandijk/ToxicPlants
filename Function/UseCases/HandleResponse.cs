@@ -9,12 +9,13 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Function.Models;
 
 namespace Function.UseCases
 {
     internal class HandleResponse : IHandleResponse
     {
-        public async Task<HttpResponseData> SetResponse(HttpRequestData request, List<ToxicPlantResponse> result)
+        public async Task<HttpResponseData> SetResponse(HttpRequestData request, List<ToxicPlantAnimal> result)
         {
             var json = JsonSerializer.Serialize(result);
             return await Createresponse(request, HttpStatusCode.OK, json);

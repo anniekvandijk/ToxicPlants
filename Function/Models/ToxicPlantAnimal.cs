@@ -1,4 +1,7 @@
-﻿namespace Function.Models
+﻿using System.Text.Json;
+using Newtonsoft.Json;
+
+namespace Function.Models
 {
     internal class ToxicPlantAnimal
     {
@@ -10,6 +13,7 @@
         public int HowToxic { get; set; }
         public string Reference { get; set; }
         public string ExtraInformation { get; set; }
+        public JsonElement PlantDetail { get; set; }
 
     }
 }
