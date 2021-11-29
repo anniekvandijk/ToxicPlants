@@ -1,6 +1,8 @@
 ﻿using Function.Interfaces;
 using Function.Models;
 using System.Collections.Generic;
+using System.Net;
+using Function.MiddleWare.ExceptionHandler;
 
 namespace Function.Repository
 {
@@ -9,7 +11,7 @@ namespace Function.Repository
         private readonly List<Animal> _animals = new();
 
         public void Add(Animal animal)
-        {
+        {   
             if (!_animals.Contains(animal)) _animals.Add(animal);
         }
 

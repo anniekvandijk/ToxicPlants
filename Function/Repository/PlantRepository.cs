@@ -2,6 +2,10 @@
 using Function.Models;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Net;
+using System.Text.Json;
+using Function.MiddleWare.ExceptionHandler;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
 
 namespace Function.Repository
 {
@@ -19,6 +23,15 @@ namespace Function.Repository
 
         public void Add(Plant plant)
         {
+            if (string.IsNullOrEmpty(plant.Species?.Trim()))
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Species can not be empty");
+            else if (string.IsNullOrEmpty(plant.Genus?.Trim()))
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Genus can not be empty");
+            else if (string.IsNullOrEmpty(plant.Family?.Trim()))
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Family can not be empty");
+            else if (plant.PlantDetail.IsNullOrDefault())
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"PlantDetail can not be empty");
+
             var plantsInRepo = Get();
             if (!plantsInRepo.Exists(x => x.Species == plant.Species))
             {
@@ -26,7 +39,7 @@ namespace Function.Repository
             }
             else
             {
-                _logger.LogCritical("Plant with same Scenttific name was not added to the Plant repository. Plantname = {_}", plant.Species);
+                _logger.LogCritical("Plant with same Species was not added to the Plant repository. Plantname = {_}", plant.Species);
             }
 
         }

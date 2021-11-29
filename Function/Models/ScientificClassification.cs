@@ -2,6 +2,7 @@
 {
     internal enum ScientificClassification
     {
+        None,
         Species,
         Genus,
         Family

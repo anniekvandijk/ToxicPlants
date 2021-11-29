@@ -2,7 +2,7 @@
 {
     internal enum Animal
     {
-        NoAnimal,
+        None,
         Alpaca,
         Horse
     }

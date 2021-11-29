@@ -19,14 +19,20 @@ namespace Function.Repository
             const int mimimumClass = 1;
             const int maximumClass = 3;
 
-            if (plantAnimal.HowToxic is < mimimumClass or > maximumClass) 
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Toxicclass is not in range of {mimimumClass}-{maximumClass}");
-            else if (string.IsNullOrEmpty(plantAnimal.Species?.Trim())) 
+            if (plantAnimal.Animal.IsNullOrDefault())
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Animal can not be empty");
+            else if (plantAnimal.ScientificClassification.IsNullOrDefault())
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"ScientificClassification can not be empty");
+            else if (plantAnimal.ScientificClassification == ScientificClassification.Species && string.IsNullOrEmpty(plantAnimal.Species?.Trim()))
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Species can not be empty");
+            else if (plantAnimal.ScientificClassification == ScientificClassification.Genus && string.IsNullOrEmpty(plantAnimal.Genus?.Trim()))
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Genus can not be empty");
+            else if (plantAnimal.ScientificClassification == ScientificClassification.Family && string.IsNullOrEmpty(plantAnimal.Family?.Trim()))
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Family can not be empty");
+            else if (plantAnimal.HowToxic is < mimimumClass or > maximumClass) 
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Toxicclass is not in range of {mimimumClass}-{maximumClass}");
             else if (string.IsNullOrEmpty(plantAnimal.Reference?.Trim())) 
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Reference can not be empty");
-            else if (plantAnimal.Animal.IsNullOrDefault()) 
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Animal can not be empty");
             else _toxicPlantAnimals.Add(plantAnimal);
             
         }
@@ -45,17 +51,13 @@ namespace Function.Repository
             
             foreach (var toxicPlantAnimal in toxicForAnimal)
             {
-                if (toxicPlantAnimal.ScientificClassification == ScientificClassification.Species && toxicPlantAnimal.Species == plant.Species)
+                switch (toxicPlantAnimal.ScientificClassification)
                 {
-                    list.Add(toxicPlantAnimal);
-                }
-                if (toxicPlantAnimal.ScientificClassification == ScientificClassification.Genus && toxicPlantAnimal.Genus == plant.Genus)
-                {
-                    list.Add(toxicPlantAnimal);
-                }
-                if (toxicPlantAnimal.ScientificClassification == ScientificClassification.Family && toxicPlantAnimal.Family == plant.Family)
-                {
-                    list.Add(toxicPlantAnimal);
+                    case ScientificClassification.Species when toxicPlantAnimal.Species == plant.Species:
+                    case ScientificClassification.Genus when toxicPlantAnimal.Genus == plant.Genus:
+                    case ScientificClassification.Family when toxicPlantAnimal.Family == plant.Family:
+                        list.Add(toxicPlantAnimal);
+                        break;
                 }
             }
 

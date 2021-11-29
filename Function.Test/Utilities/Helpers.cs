@@ -18,48 +18,5 @@ namespace Function.Tests.Utilities
                     It.IsAny<Func<It.IsAnyType, Exception, string>>()),
                 Times.Once);
         }
-
-        public static List<ToxicPlantAnimal> ToxicPlantAnimalTestData()
-        {
-            return new List<ToxicPlantAnimal>
-            {
-
-                new()
-                {
-                    Species = "Anthriscus sylvestris (L.) Hoffm.", 
-                    Animal = Animal.Alpaca, 
-                    HowToxic = 1,
-                    Reference = "Alpacawereld"
-                },
-                new()
-                {
-                    Species = "Prunus serotina", 
-                    Animal = Animal.Alpaca, 
-                    HowToxic = 2,
-                    Reference = "Some reference"
-                },
-                new()
-                {
-                    Species = "Rhodondendron", 
-                    Animal = Animal.Alpaca, 
-                    HowToxic = 3,
-                    Reference = "Alpacawereld"
-                },
-                new()
-                {
-                    Species = "Hyoscyamus niger", 
-                    Animal = Animal.Alpaca, 
-                    HowToxic = 1,
-                    Reference = "Alpacawereld"
-                },
-                new()
-                {
-                    Species = "Hyoscyamus niger",
-                    Animal = Animal.Horse,
-                    HowToxic = 2,
-                    Reference = "Horseworld"
-                }
-            };
-        }
     }
 }
