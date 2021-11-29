@@ -1,44 +1,33 @@
-﻿using System;
+﻿using CsvHelper;
 using Function.Interfaces;
+using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Net;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using CsvHelper;
-using Function.MiddleWare.ExceptionHandler;
-using Function.Models.Request;
 
 namespace Function.Services
 {
     internal class ToxicPlantAnimalService : IToxicPlantAnimalService
     {
         private readonly IToxicPlantAnimalRepository _toxicPlantAnimalRepository;
+        private readonly IFileHelper _fileHelper;
         private readonly ILogger<ToxicPlantAnimalService> _logger;
 
-        public ToxicPlantAnimalService(IToxicPlantAnimalRepository toxicPlantAnimalRepository, ILogger<ToxicPlantAnimalService> logger)
+        public ToxicPlantAnimalService(IToxicPlantAnimalRepository toxicPlantAnimalRepository, ILogger<ToxicPlantAnimalService> logger, IFileHelper fileHelper)
         {
             _toxicPlantAnimalRepository = toxicPlantAnimalRepository;
+            _fileHelper = fileHelper;
             _logger = logger;
         }
 
         public void LoadToxicPlantAnimalData()
         {
-            if (_toxicPlantAnimalRepository.Get().Count == 0)
-                LoadFromFile();
-        }
+            if (_toxicPlantAnimalRepository.Get().Count != 0) return;
 
-        public void LoadFromFile()
-        {
-            _logger.LogInformation("Loader toxicplants called");
-
-            var path =
-                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new InvalidOperationException("File not found")
-                    , @"Data\ToxicPlants.csv");
+            var path = _fileHelper.GetToxicPlantAnimalFileLocation();
 
             using var reader = new StreamReader(path);
             using var csv = new CsvReader(reader, new CultureInfo("nl-NL"));
@@ -47,8 +36,10 @@ namespace Function.Services
             {
                 csv.Read();
                 csv.ReadHeader();
+                var lineNumber = 1;
                 while (csv.Read())
                 {
+                    lineNumber++;
                     try
                     {
                         var record = csv.GetRecord<ToxicPlantAnimal>();
@@ -56,7 +47,7 @@ namespace Function.Services
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError(ex, "Adding Toxic Plant record failed.");
+                        _logger.LogError(ex, "Adding Toxic Plant record failed at line {lineNumber");
                     }
                 }
             }

@@ -1,13 +1,11 @@
-﻿using System.Text.Json;
-using Function.MiddleWare.ExceptionHandler;
+﻿using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
 using Function.Repository;
 using Function.Tests.Utilities;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
+using System.Text.Json;
 
 namespace Function.Tests
 {

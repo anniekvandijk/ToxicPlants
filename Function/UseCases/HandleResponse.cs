@@ -1,5 +1,6 @@
 ﻿using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
+using Function.Models;
 using Function.Models.Response;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
@@ -9,7 +10,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Function.Models;
 
 namespace Function.UseCases
 {

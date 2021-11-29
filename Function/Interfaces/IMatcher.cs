@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using Function.Models;
-using Function.Models.Response;
+﻿using Function.Models;
+using System.Collections.Generic;
 
 namespace Function.Interfaces
 {

@@ -21,4 +21,10 @@
     <ProjectReference Include="..\Function\Function.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\ToxicPlants.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

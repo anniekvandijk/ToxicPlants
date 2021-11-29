@@ -1,11 +1,10 @@
 ﻿using Function.Interfaces;
+using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Net;
-using System.Text.Json;
-using Function.MiddleWare.ExceptionHandler;
-using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
 
 namespace Function.Repository
 {

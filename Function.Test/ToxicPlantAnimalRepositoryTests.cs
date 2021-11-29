@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
-using Function.MiddleWare.ExceptionHandler;
+﻿using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
 using Function.Repository;
-using Function.Tests.Utilities;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Function.Tests
 {
     [TestFixture]
-    public class ToxicPlantAnimalRepositoryTests
+    internal class ToxicPlantAnimalRepositoryTests
     {
         [Test]
         public void ToxicPlantAnimalRepository_Add_CanAddOneToxicPlantAnimal()
@@ -21,7 +20,9 @@ namespace Function.Tests
                 HowToxic = 1,
                 ScientificClassification = ScientificClassification.Species,
                 Species = "Some strange name",
-                Reference = "An reference"
+                Reference = "An reference",
+                ExtraInformation = "Some extra information"
+
             };
 
             // Act
@@ -34,6 +35,7 @@ namespace Function.Tests
             Assert.AreEqual(1, toxicPlantAnimals[0].HowToxic);
             Assert.AreEqual("Some strange name", toxicPlantAnimals[0].Species);
             Assert.AreEqual("An reference", toxicPlantAnimals[0].Reference);
+            Assert.AreEqual("Some extra information", toxicPlantAnimals[0].ExtraInformation);
         }
 
         [Test]

@@ -6,12 +6,10 @@ using Function.Utilities;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Function.Models.Response;
 
 namespace Function.UseCases
 {
@@ -66,7 +64,7 @@ namespace Function.UseCases
             var responseContent = await _plantService.GetPlantsAsync(data);
 
             var json = JsonSerializer.Deserialize<JsonElement>(responseContent);
-            
+
             json.TryGetProperty("results", out var results);
 
             foreach (var result in results.EnumerateArray())

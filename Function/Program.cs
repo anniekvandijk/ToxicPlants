@@ -3,6 +3,7 @@ using Function.MiddleWare.ExceptionHandler;
 using Function.Repository;
 using Function.Services;
 using Function.UseCases;
+using Function.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -70,6 +71,7 @@ namespace Function
                         s.AddSingleton<IPlantService, PlantNetService>();
                     }
 
+                    s.AddSingleton<IFileHelper, FileHelper>();
                     s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
                     s.AddSingleton<IToxicPlantAnimalService, ToxicPlantAnimalService>();
                     s.AddScoped<IHandleRequest, HandleRequest>();

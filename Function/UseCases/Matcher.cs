@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Function.Interfaces;
+using Function.MiddleWare.ExceptionHandler;
+using Function.Models;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Function.Interfaces;
-using Function.MiddleWare.ExceptionHandler;
-using Function.Models;
-using Function.Models.Response;
-using Microsoft.Extensions.Logging;
 
 namespace Function.UseCases
 {
@@ -42,12 +38,12 @@ namespace Function.UseCases
                     switch (toxicPlantList.Count)
                     {
                         case 1:
-                        {
-                            var toxicPlant = toxicPlantList.First();
-                            toxicPlant.PlantDetail = plant.PlantDetail;
-                            plantResponseList.Add(toxicPlant);
-                            break;
-                        }
+                            {
+                                var toxicPlant = toxicPlantList.First();
+                                toxicPlant.PlantDetail = plant.PlantDetail;
+                                plantResponseList.Add(toxicPlant);
+                                break;
+                            }
                         case 0:
                             var nonToxicPlant = new ToxicPlantAnimal
                             {

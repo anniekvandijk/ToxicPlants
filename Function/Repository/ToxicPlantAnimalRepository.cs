@@ -1,12 +1,10 @@
-﻿using System;
-using Function.Interfaces;
+﻿using Function.Interfaces;
+using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using Function.MiddleWare.ExceptionHandler;
-using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
-using Microsoft.Extensions.Logging;
 
 namespace Function.Repository
 {
@@ -19,6 +17,8 @@ namespace Function.Repository
             const int mimimumClass = 1;
             const int maximumClass = 3;
 
+            plantAnimal.ExtraInformation?.Trim();
+
             if (plantAnimal.Animal.IsNullOrDefault())
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Animal can not be empty");
             else if (plantAnimal.ScientificClassification.IsNullOrDefault())
@@ -29,12 +29,12 @@ namespace Function.Repository
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Genus can not be empty");
             else if (plantAnimal.ScientificClassification == ScientificClassification.Family && string.IsNullOrEmpty(plantAnimal.Family?.Trim()))
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Family can not be empty");
-            else if (plantAnimal.HowToxic is < mimimumClass or > maximumClass) 
+            else if (plantAnimal.HowToxic is < mimimumClass or > maximumClass)
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Toxicclass is not in range of {mimimumClass}-{maximumClass}");
-            else if (string.IsNullOrEmpty(plantAnimal.Reference?.Trim())) 
+            else if (string.IsNullOrEmpty(plantAnimal.Reference?.Trim()))
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Reference can not be empty");
             else _toxicPlantAnimals.Add(plantAnimal);
-            
+
         }
 
         public List<ToxicPlantAnimal> Get() => _toxicPlantAnimals;
@@ -48,7 +48,7 @@ namespace Function.Repository
             var list = new List<ToxicPlantAnimal>();
 
             var toxicForAnimal = GetByAnimalName(animal);
-            
+
             foreach (var toxicPlantAnimal in toxicForAnimal)
             {
                 switch (toxicPlantAnimal.ScientificClassification)

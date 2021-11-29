@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Function.Models;
 using Microsoft.Azure.Functions.Worker.Http;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Function.Models;
-using Function.Models.Response;
 
 namespace Function.Interfaces
 {

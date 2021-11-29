@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
 using System;
-using System.Collections.Generic;
-using Function.Models;
 
 namespace Function.Tests.Utilities
 {

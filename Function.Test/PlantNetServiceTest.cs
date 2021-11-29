@@ -1,17 +1,16 @@
-﻿using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
-using Function.Repository;
-using Function.Services;
+﻿using Function.Services;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Moq.Protected;
 using NUnit.Framework;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Function.Tests
 {
     [TestFixture]
-    public class PlantNetServiceTest
+    internal class PlantNetServiceTest
     {
         private HttpClient CreateHttpClient()
         {
@@ -29,7 +28,8 @@ namespace Function.Tests
             return new HttpClient(httpMessageHandlerMock.Object);
         }
 
-        [Test][Ignore("Not ready")]
+        [Test]
+        [Ignore("Not ready")]
         public void PlantNetService_GetLanguage_ReturnsEnIfNoDataFound()
         {
             //Arrange
