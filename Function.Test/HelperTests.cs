@@ -13,7 +13,10 @@ namespace Function.Tests
         [TestCase(" bla   ", "bla")]
         public void Helper_TrimToNull_ReturnsNullOrString(string stringValue, string expectedResult)
         {
+            // Act
             var actualResult = stringValue.TrimToNull();
+            
+            // Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
     }

@@ -37,8 +37,8 @@ namespace Function.Services
 
         private static MultipartFormDataContent CreateMultipartFormDataContentAsync(RequestData data)
         {
-            var images = data.Files.Where(x => x.Name == "images");
-            var organs = data.Parameters.Where(x => x.Name == "organs");
+            var images = data.Files.Where(x => x.Name.ToLower() == "images");
+            var organs = data.Parameters.Where(x => x.Name.ToLower() == "organs");
 
             var multiPartContent = new MultipartFormDataContent();
 
@@ -63,7 +63,7 @@ namespace Function.Services
             return multiPartContent;
         }
 
-        private static string GetLanguage(RequestData data) => data.Language ?? "en";
+        private static string GetLanguage(RequestData data) => data.Language.ToLower() ?? "en";
 
         private async Task<string> MakePlantNetRequest(MultipartFormDataContent content, string language)
         {
