@@ -11,8 +11,8 @@ namespace Function.Models
         public string Genus { get; set; }
         public string Family { get; set; }
         public int HowToxic { get; set; }
-        public string Reference { get; set; }
         public string ExtraInformation { get; set; }
+        public string Reference { get; set; }
         public JsonElement PlantDetail { get; set; }
 
     }

@@ -3,9 +3,14 @@ using Function.Interfaces;
 using Function.Models;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Net;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using CsvHelper;
+using Function.MiddleWare.ExceptionHandler;
 using Function.Models.Request;
 
 namespace Function.Services
@@ -21,66 +26,43 @@ namespace Function.Services
             _logger = logger;
         }
 
-        public async Task LoadToxicPlantAnimalDataFromFile()
+        public void LoadToxicPlantAnimalData()
+        {
+            if (_toxicPlantAnimalRepository.Get().Count == 0)
+                LoadFromFile();
+        }
+
+        public void LoadFromFile()
         {
             _logger.LogInformation("Loader toxicplants called");
 
             var path =
                 Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? throw new InvalidOperationException("File not found")
                     , @"Data\ToxicPlants.csv");
-            var file = await File.ReadAllTextAsync(path);
-        }
 
-        public void LoadToxicPlantAnimalData()
-        {
-            if (_toxicPlantAnimalRepository.Get().Count == 0)
+            using var reader = new StreamReader(path);
+            using var csv = new CsvReader(reader, new CultureInfo("nl-NL"));
+
+            try
             {
-                var plantAnimalList = new List<ToxicPlantAnimal>
+                csv.Read();
+                csv.ReadHeader();
+                while (csv.Read())
                 {
-
-                    new()
+                    try
                     {
-                        Species = "Anthriscus sylvestris", 
-                        Animal = Animal.Alpaca, 
-                        HowToxic = 1,
-                        ScientificClassification = ScientificClassification.Species,
-                        Reference = "Alpacawereld"
-                    },
-                    new()
-                    {
-                        Species = "Prunus serotina", 
-                        Animal = Animal.Alpaca, 
-                        HowToxic = 3,
-                        ScientificClassification = ScientificClassification.Species,
-                        Reference = "Alpacawereld"
-                    },
-                    new()
-                    {
-                        Species = "Rhodondendron", 
-                        Animal = Animal.Alpaca, 
-                        HowToxic = 3,
-                        ScientificClassification = ScientificClassification.Genus,
-                        Reference = "Alpacawereld"
-                    },
-                    new()
-                    {
-                        Species = "Hyoscyamus niger", 
-                        Animal = Animal.Alpaca, 
-                        HowToxic = 3,
-                        ScientificClassification = ScientificClassification.Species,
-                        Reference = "Alpacawereld"
+                        var record = csv.GetRecord<ToxicPlantAnimal>();
+                        _toxicPlantAnimalRepository.Add(record);
                     }
-                };
-
-                foreach (var plantAnimal in plantAnimalList)
-                {
-                    _toxicPlantAnimalRepository.Add(plantAnimal);
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Adding Toxic Plant record failed.");
+                    }
                 }
-                _logger.LogInformation("Toxic plant data loaded");
             }
-            else
+            catch
             {
-                _logger.LogInformation("Toxic plant data already loaded");
+                ProgramError.CreateProgramError(HttpStatusCode.Conflict, "Reading toxicplant data error");
             }
         }
     }
