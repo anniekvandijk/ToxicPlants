@@ -75,7 +75,7 @@ namespace Function
                     s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
                     s.AddSingleton<IToxicPlantAnimalService, ToxicPlantAnimalService>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
-                    s.AddScoped<IPlantSevice, PlantSevice>();
+                    s.AddScoped<IPlantSevice, PlantNetService>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();
                     s.AddScoped<IAnimalSevice, AnimalSevice>();
                     s.AddScoped<IMatcher, Matcher>();
