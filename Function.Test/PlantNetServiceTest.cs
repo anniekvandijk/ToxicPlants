@@ -33,8 +33,8 @@ namespace Function.Tests
         public void PlantNetService_GetLanguage_ReturnsEnIfNoDataFound()
         {
             //Arrange
-            var loggerMock = new Mock<ILogger<PlantNetService>>();
-            PlantNetService repo = new(CreateHttpClient(), loggerMock.Object);
+            var loggerMock = new Mock<ILogger<PlantNetRequest>>();
+            PlantNetRequest repo = new(CreateHttpClient(), loggerMock.Object);
 
             // Act
         }

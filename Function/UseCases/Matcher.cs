@@ -10,13 +10,13 @@ namespace Function.UseCases
 {
     internal class Matcher : IMatcher
     {
-        private readonly ILogger<HandleRequest> _logger;
+        private readonly ILogger<Matcher> _logger;
         private readonly IPlantRepository _plantRepository;
         private readonly IAnimalRepository _animalRepository;
         private readonly IToxicPlantAnimalRepository _toxicPlantAnimalRepository;
         private readonly IToxicPlantAnimalService _toxicPlantAnimalService;
 
-        public Matcher(ILogger<HandleRequest> logger, IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantService plantService, IToxicPlantAnimalRepository toxicPlantAnimalRepository, IToxicPlantAnimalService toxicPlantAnimalService)
+        public Matcher(ILogger<Matcher> logger, IPlantRepository plantRepository, IAnimalRepository animalRepository, IPlantRequest plantService, IToxicPlantAnimalRepository toxicPlantAnimalRepository, IToxicPlantAnimalService toxicPlantAnimalService)
         {
             _logger = logger;
             _plantRepository = plantRepository;

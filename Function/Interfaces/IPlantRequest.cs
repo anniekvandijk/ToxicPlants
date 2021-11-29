@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Function.Interfaces
 {
-    internal interface IPlantService
+    internal interface IPlantRequest
     {
         public Task<string> GetPlantsAsync(RequestData data);
     }

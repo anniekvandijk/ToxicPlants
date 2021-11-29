@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Function.Services
 {
-    internal class FakePlantService : IPlantService
+    internal class FakePlantRequest : IPlantRequest
     {
-        private readonly ILogger<FakePlantService> _logger;
+        private readonly ILogger<FakePlantRequest> _logger;
 
-        public FakePlantService(ILogger<FakePlantService> logger)
+        public FakePlantRequest(ILogger<FakePlantRequest> logger)
         {
             _logger = logger;
         }

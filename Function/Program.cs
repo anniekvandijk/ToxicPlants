@@ -64,19 +64,20 @@ namespace Function
                      */
                     if (Convert.ToBoolean(Environment.GetEnvironmentVariable("MOCK_PLANTCALL")))
                     {
-                        s.AddSingleton<IPlantService, FakePlantService>();
+                        s.AddSingleton<IPlantRequest, FakePlantRequest>();
                     }
                     else
                     {
-                        s.AddSingleton<IPlantService, PlantNetService>();
+                        s.AddSingleton<IPlantRequest, PlantNetRequest>();
                     }
 
                     s.AddSingleton<IFileHelper, FileHelper>();
                     s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
                     s.AddSingleton<IToxicPlantAnimalService, ToxicPlantAnimalService>();
-                    s.AddScoped<IHandleRequest, HandleRequest>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
+                    s.AddScoped<IPlantSevice, PlantSevice>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();
+                    s.AddScoped<IAnimalSevice, AnimalSevice>();
                     s.AddScoped<IMatcher, Matcher>();
                     s.AddScoped<IHandleResponse, HandleResponse>();
 

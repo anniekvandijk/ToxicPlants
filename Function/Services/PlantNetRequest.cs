@@ -13,12 +13,12 @@ using System.Threading.Tasks;
 
 namespace Function.Services
 {
-    internal class PlantNetService : IPlantService
+    internal class PlantNetRequest : IPlantRequest
     {
         private readonly HttpClient _httpClient;
-        private readonly ILogger<PlantNetService> _logger;
+        private readonly ILogger<PlantNetRequest> _logger;
 
-        public PlantNetService(HttpClient httpClient, ILogger<PlantNetService> logger)
+        public PlantNetRequest(HttpClient httpClient, ILogger<PlantNetRequest> logger)
         {
             _httpClient = httpClient;
             _logger = logger;
