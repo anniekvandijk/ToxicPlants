@@ -23,5 +23,9 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Debug --no-restore
-    - name: Test
+    - name: Unit Test
+      working-directory: ./Function.Test
+      run: dotnet test --no-restore --verbosity normal
+    - name: Integration Test
+      working-directory: ./Function.IT
       run: dotnet test --no-restore --verbosity normal
