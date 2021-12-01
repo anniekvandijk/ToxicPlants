@@ -78,7 +78,8 @@ namespace Function
                     s.AddScoped<IPlantSevice, PlantNetService>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();
                     s.AddScoped<IAnimalSevice, AnimalSevice>();
-                    s.AddScoped<IMatcher, Matcher>();
+                    s.AddScoped<IHandleRequest, HandleRequest>();
+                    s.AddScoped<IMatchData, MatchData>();
                     s.AddScoped<IHandleResponse, HandleResponse>();
 
                 })

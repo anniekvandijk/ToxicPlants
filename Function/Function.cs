@@ -9,18 +9,16 @@ namespace Function
 {
     internal class Function
     {
-        private readonly IPlantSevice _plantService;
-        private readonly IAnimalSevice _animalService;
+        private readonly IHandleRequest _handleRequest;
         private readonly IHandleResponse _handleResponse;
-        private readonly IMatcher _matcher;
+        private readonly IMatchData _matchData;
         private ILogger _logger;
 
-        public Function(IAnimalSevice animalService, IPlantSevice plantService, IHandleResponse handleResponse, IMatcher matcher)
+        public Function(IHandleRequest handleRequest, IHandleResponse handleResponse, IMatchData matchData)
         {
-            _plantService = plantService;
-            _animalService = animalService;
+            _handleRequest = handleRequest;
             _handleResponse = handleResponse;
-            _matcher = matcher;
+            _matchData = matchData;
         }
 
         [Function("plantcheck")]
@@ -32,14 +30,8 @@ namespace Function
 
             // If something goes wrong, all is handled by the ExceptionHandlerMiddleware
 
-            var parsedData = await RequestParser.Parse(request.Body);
-            
-            var addPlants = _plantService.AddPlants(parsedData);
-            _animalService.AddAnimals(parsedData);
-            await Task.WhenAll(addPlants);
-
-            var result = _matcher.MatchToxicPlantsForAnimals();
-            
+            await _handleRequest.CollectData(request);
+            var result = _matchData.MatchToxicPlantsForAnimals();
             return await _handleResponse.SetResponse(request, result);
         }
     }

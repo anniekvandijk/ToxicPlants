@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Function.Interfaces
 {
-    internal interface IMatcher
+    internal interface IMatchData
     {
         List<ToxicPlantAnimal> MatchToxicPlantsForAnimals();
     }
