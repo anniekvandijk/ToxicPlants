@@ -44,7 +44,7 @@ namespace Function.Tests
             // Arrange
             Mock<IAnimalRepository> repo = new();
 
-            RequestData requestData = new RequestData
+            RequestData requestData = new()
             {
                 Parameters = new()
                 {
@@ -71,7 +71,7 @@ namespace Function.Tests
             // Arrange
             Mock<IAnimalRepository> repo = new();
 
-            RequestData requestData = new RequestData
+            RequestData requestData = new()
             {
                 Parameters = new()
                 {
@@ -93,7 +93,7 @@ namespace Function.Tests
             // Arrange
             Mock<IAnimalRepository> repo = new();
 
-            RequestData requestData = new RequestData
+            RequestData requestData = new()
             {
                 Parameters = new()
                 {
@@ -120,7 +120,7 @@ namespace Function.Tests
             // Arrange
             Mock<IAnimalRepository> repo = new();
 
-            RequestData requestData = new RequestData
+            RequestData requestData = new()
             {
                 Parameters = new()
                 {
@@ -147,7 +147,7 @@ namespace Function.Tests
             // Arrange
             Mock<IAnimalRepository> repo = new();
 
-            RequestData requestData = new RequestData
+            RequestData requestData = new()
             {
                 Parameters = new()
                 {
