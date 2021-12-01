@@ -2,7 +2,8 @@
 {
     internal enum Animal
     {
+        None,
         Alpaca,
-        Paard
+        Horse
     }
 }

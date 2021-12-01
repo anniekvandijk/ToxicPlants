@@ -1,15 +1,23 @@
-﻿using Function.Models;
+﻿using Function.MiddleWare.ExceptionHandler;
+using Function.Models;
 using Function.Repository;
 using Function.Tests.Utilities;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
+using System.Text.Json;
 
 namespace Function.Tests
 {
     [TestFixture]
     internal class PlantRepositoryTests
     {
+        public JsonElement CreateJsonElement()
+        {
+            var content = @"{ ""content"": ""content""}";
+            return JsonSerializer.Deserialize<JsonElement>(content);
+        }
+
         [Test]
         public void PlantRepository_Add_CanAddOnePlant()
         {
@@ -19,9 +27,10 @@ namespace Function.Tests
 
             Plant plant = new()
             {
-                ScientificName = "Some strange name",
-                Score = 0.1,
-                CommonNames = new[] { "name 1", "Name 2" }
+                Species = "Some strange name",
+                Genus = "Some",
+                Family = "Family",
+                PlantDetail = CreateJsonElement()
             };
 
             // act
@@ -30,13 +39,11 @@ namespace Function.Tests
             // assert
             var plants = repo.Get();
             Assert.AreEqual(1, plants.Count);
-            Assert.AreEqual("Some strange name", plants[0].ScientificName);
-            Assert.AreEqual(0.1, plants[0].Score);
-            Assert.AreEqual(new[] { "name 1", "Name 2" }, plants[0].CommonNames);
+            Assert.AreEqual("Some strange name", plants[0].Species);
         }
 
         [Test]
-        public void PlantRepository_Add_AddingPlantWithSameNameIsLoggedAndNotAddedAgain()
+        public void PlantRepository_Add_AddingPlantWithSameSpeciesIsLoggedAndNotAddedAgain()
         {
             //Arrange
             var loggerMock = new Mock<ILogger<PlantRepository>>();
@@ -44,16 +51,18 @@ namespace Function.Tests
 
             Plant plant1 = new()
             {
-                ScientificName = "Some strange name",
-                Score = 0.1,
-                CommonNames = new[] { "name 1", "Name 2" }
+                Species = "Some strange name",
+                Genus = "Some",
+                Family = "Family",
+                PlantDetail = CreateJsonElement()
             };
 
             Plant plant2 = new()
             {
-                ScientificName = "Some strange name",
-                Score = 0.1,
-                CommonNames = new[] { "name 1", "Name 2" }
+                Species = "Some strange name",
+                Genus = "Some",
+                Family = "Family",
+                PlantDetail = CreateJsonElement()
             };
 
             // act
@@ -64,9 +73,173 @@ namespace Function.Tests
             // assert
             var plants = repo.Get();
             Assert.AreEqual(1, plants.Count);
-            loggerMock.VerifyLog(LogLevel.Critical, "Plant with same Scenttific name was not added to the Plant repository. Plantname = Some strange name");
+            loggerMock.VerifyLog(LogLevel.Critical, "Plant with same Species was not added to the Plant repository. Plantname = Some strange name");
+        }
 
 
+        [Test]
+        public void PlantRepository_Add_PlantWithoutSpeciesGivesProgramError()
+        {
+            //Arrange
+            var loggerMock = new Mock<ILogger<PlantRepository>>();
+            PlantRepository repo = new(loggerMock.Object);
+
+            Plant plant = new()
+            {
+                Genus = "Some",
+                Family = "Family",
+                PlantDetail = CreateJsonElement()
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
+            Assert.AreEqual("Species can not be empty", ex.Message);
+        }
+
+        [Test]
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("    ")]
+        public void PlantRepository_Add_PlantWithInvalidSpeciesGivesProgramError(string species)
+        {
+            //Arrange
+            var loggerMock = new Mock<ILogger<PlantRepository>>();
+            PlantRepository repo = new(loggerMock.Object);
+
+            Plant plant = new()
+            {
+                Species = species,
+                Genus = "Some",
+                Family = "Family",
+                PlantDetail = CreateJsonElement()
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
+            Assert.AreEqual("Species can not be empty", ex.Message);
+        }
+
+        [Test]
+        public void PlantRepository_Add_PlantWithoutGenusGivesProgramError()
+        {
+            //Arrange
+            var loggerMock = new Mock<ILogger<PlantRepository>>();
+            PlantRepository repo = new(loggerMock.Object);
+
+            Plant plant = new()
+            {
+                Species = "Some strange name",
+                Family = "Family",
+                PlantDetail = CreateJsonElement()
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
+            Assert.AreEqual("Genus can not be empty", ex.Message);
+        }
+
+        [Test]
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("    ")]
+        public void PlantRepository_Add_PlantWithInvalidGenusGivesProgramError(string genus)
+        {
+            //Arrange
+            var loggerMock = new Mock<ILogger<PlantRepository>>();
+            PlantRepository repo = new(loggerMock.Object);
+
+            Plant plant = new()
+            {
+                Species = "Some strange name",
+                Genus = genus,
+                Family = "Family",
+                PlantDetail = CreateJsonElement()
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
+            Assert.AreEqual("Genus can not be empty", ex.Message);
+        }
+
+        [Test]
+        public void PlantRepository_Add_PlantWithoutFamilyGivesProgramError()
+        {
+            //Arrange
+            var loggerMock = new Mock<ILogger<PlantRepository>>();
+            PlantRepository repo = new(loggerMock.Object);
+
+            Plant plant = new()
+            {
+                Species = "Some strange name",
+                Genus = "Some",
+                PlantDetail = CreateJsonElement()
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
+            Assert.AreEqual("Family can not be empty", ex.Message);
+        }
+
+        [Test]
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("    ")]
+        public void PlantRepository_Add_PlantWithInvalidFamilyGivesProgramError(string family)
+        {
+            //Arrange
+            var loggerMock = new Mock<ILogger<PlantRepository>>();
+            PlantRepository repo = new(loggerMock.Object);
+
+            Plant plant = new()
+            {
+                Species = "Some strange name",
+                Genus = "Some",
+                Family = family,
+                PlantDetail = CreateJsonElement()
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
+            Assert.AreEqual("Family can not be empty", ex.Message);
+        }
+
+        [Test]
+        public void PlantRepository_Add_PlantWithoutPlantDetailGivesProgramError()
+        {
+            //Arrange
+            var loggerMock = new Mock<ILogger<PlantRepository>>();
+            PlantRepository repo = new(loggerMock.Object);
+
+            Plant plant = new()
+            {
+                Species = "Some strange name",
+                Genus = "Some",
+                Family = "Family",
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
+            Assert.AreEqual("PlantDetail can not be empty", ex.Message);
+        }
+
+        [Test]
+        public void PlantRepository_Add_PlantWithEmptyPlantDetailGivesProgramError()
+        {
+            //Arrange
+            var loggerMock = new Mock<ILogger<PlantRepository>>();
+            PlantRepository repo = new(loggerMock.Object);
+
+            Plant plant = new()
+            {
+                Species = "Some strange name",
+                Genus = "Some",
+                Family = "Family",
+                PlantDetail = new JsonElement()
+            };
+
+            // Assert
+            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
+            Assert.AreEqual("PlantDetail can not be empty", ex.Message);
         }
     }
 }

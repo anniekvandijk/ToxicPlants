@@ -3,6 +3,7 @@ using Function.MiddleWare.ExceptionHandler;
 using Function.Repository;
 using Function.Services;
 using Function.UseCases;
+using Function.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -63,18 +64,22 @@ namespace Function
                      */
                     if (Convert.ToBoolean(Environment.GetEnvironmentVariable("MOCK_PLANTCALL")))
                     {
-                        s.AddSingleton<IPlantService, FakePlantService>();
+                        s.AddSingleton<IPlantRequest, FakePlantRequest>();
                     }
                     else
                     {
-                        s.AddSingleton<IPlantService, PlantNetService>();
+                        s.AddSingleton<IPlantRequest, PlantNetRequest>();
                     }
 
+                    s.AddSingleton<IFileHelper, FileHelper>();
                     s.AddSingleton<IToxicPlantAnimalRepository, ToxicPlantAnimalRepository>();
                     s.AddSingleton<IToxicPlantAnimalService, ToxicPlantAnimalService>();
-                    s.AddScoped<IHandleRequest, HandleRequest>();
                     s.AddScoped<IPlantRepository, PlantRepository>();
+                    s.AddScoped<IPlantSevice, PlantNetService>();
                     s.AddScoped<IAnimalRepository, AnimalRepository>();
+                    s.AddScoped<IAnimalSevice, AnimalSevice>();
+                    s.AddScoped<IHandleRequest, HandleRequest>();
+                    s.AddScoped<IMatchData, MatchData>();
                     s.AddScoped<IHandleResponse, HandleResponse>();
 
                 })

@@ -1,10 +1,10 @@
-﻿using Microsoft.Azure.Functions.Worker.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microsoft.Azure.Functions.Worker.Http;
 
 namespace Function.Interfaces
 {
     internal interface IHandleRequest
     {
-        Task<string> Handle(HttpRequestData request);
+        Task CollectData(HttpRequestData request);
     }
 }

@@ -1,116 +1,86 @@
-﻿using Function.Interfaces;
-using Function.MiddleWare.ExceptionHandler;
-using Function.Models.Request;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Function.Interfaces;
+using Function.MiddleWare.ExceptionHandler;
+using Function.Models;
+using Function.Models.Request;
 
 namespace Function.Services
 {
-    internal class PlantNetService : IPlantService
+    internal class PlantNetService : IPlantSevice
     {
-        private readonly HttpClient _httpClient;
-        private readonly ILogger<PlantNetService> _logger;
+        private readonly IPlantRequest _plantRequest;
+        private readonly IPlantRepository _plantRepository;
 
-        public PlantNetService(HttpClient httpClient, ILogger<PlantNetService> logger)
+        public PlantNetService(IPlantRequest plantRequest, IPlantRepository plantRepository)
         {
-            _httpClient = httpClient;
-            _logger = logger;
+            _plantRequest = plantRequest;
+            _plantRepository = plantRepository;
         }
 
-        public async Task<string> GetPlantsAsync(RequestData data)
+        public async Task AddPlants(RequestData data)
         {
-            _logger.LogInformation("PlantNet Service called");
+            var results = await GetPlantRequestResults(data);
 
-            // Make call to PlantNet and get response
-            var content = CreateMultipartFormDataContentAsync(data);
-            var language = GetLanguage(data);
-            return await MakePlantNetRequest(content, language);
-
-        }
-
-        private static MultipartFormDataContent CreateMultipartFormDataContentAsync(RequestData data)
-        {
-            var images = data.Files.Where(x => x.Name == "images");
-            var organs = data.Parameters.Where(x => x.Name == "organs");
-
-            var multiPartContent = new MultipartFormDataContent();
-
-            foreach (var image in images)
+            if (results.GetArrayLength() > 0)
             {
-                var fileContent = new StreamContent(image.Data);
-                fileContent.Headers.ContentType = new MediaTypeHeaderValue(image.ContentType);
-                fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                foreach (var result in results.EnumerateArray())
                 {
-                    Name = image.Name,
-                    FileName = image.FileName
-                };
-                multiPartContent.Add(fileContent);
-            }
+                    GetResultDetails(result, out var species, out var genus, out var family);
 
-            foreach (var organ in organs)
-            {
-                var keyValue = new KeyValuePair<string, string>(organ.Name, organ.Data);
-                multiPartContent.Add(new StringContent(keyValue.Value), keyValue.Key);
-            }
-
-            return multiPartContent;
-        }
-
-        private static string GetLanguage(RequestData data)
-        {
-            var language = data.Language;
-            if (language == null)
-            {
-                language = "nl";
-            }
-
-            return language;
-        }
-
-        private async Task<string> MakePlantNetRequest(MultipartFormDataContent content, string language)
-        {
-            var url = $"{Environment.GetEnvironmentVariable("PLANTNET_URL")}&lang={language}";
-
-            var plantRequest = new HttpRequestMessage
-            {
-                RequestUri = new Uri(url),
-                Method = HttpMethod.Post,
-                Content = content
-            };
-
-            var response = await _httpClient.SendAsync(plantRequest);
-            var result = await response.Content.ReadAsStringAsync();
-
-            if (response.IsSuccessStatusCode)
-            {
-                return result;
+                    var plant = new Plant
+                    {
+                        Species = species,
+                        Genus = genus,
+                        Family = family,
+                        PlantDetail = result
+                    };
+                    _plantRepository.Add(plant);
+                }
             }
             else
-            {
-                var json = JsonSerializer.Deserialize<JsonElement>(result);
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "Nor results received from plantreqest");
+        }
 
-                HttpStatusCode statusCode;
-                string message;
-                try
-                {
-                    statusCode = (HttpStatusCode)json.GetProperty("statusCode").GetInt16();
-                    message = json.GetProperty("message").GetString();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Something went wrong with the request", ex);
-                }
-                ProgramError.CreateProgramError(statusCode, message, 1); // quit
-                return null;
+        private async Task<JsonElement> GetPlantRequestResults(RequestData data)
+        {
+            JsonElement results = default;
+            try
+            {
+                var responseContent = await _plantRequest.GetPlantsAsync(data);
+                var json = JsonSerializer.Deserialize<JsonElement>(responseContent);
+                json.TryGetProperty("results", out results);
             }
+            catch (Exception ex)
+            {
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "Error receiving plants from plantrequest",
+                    ex);
+            }
+
+            return results;
+        }
+
+        private static void GetResultDetails(JsonElement result, out string species, out string genus, out string family)
+        {
+            species = result.GetProperty("species")
+                .GetProperty("scientificNameWithoutAuthor")
+                .GetString();
+
+            genus = result.GetProperty("species")
+                .GetProperty("genus")
+                .GetProperty("scientificNameWithoutAuthor")
+                .GetString();
+
+            family = result.GetProperty("species")
+                .GetProperty("family")
+                .GetProperty("scientificNameWithoutAuthor")
+                .GetString();
+
+            if (species == null || genus == null || family == null)
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError,
+                    "Error receiving plantdetails from plantrequest");
         }
     }
 }
-

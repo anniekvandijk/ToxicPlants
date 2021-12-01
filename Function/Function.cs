@@ -3,6 +3,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Function.Utilities;
 
 namespace Function
 {
@@ -10,14 +11,14 @@ namespace Function
     {
         private readonly IHandleRequest _handleRequest;
         private readonly IHandleResponse _handleResponse;
-        private readonly IToxicPlantAnimalService _toxicPlantAnimalService;
+        private readonly IMatchData _matchData;
         private ILogger _logger;
 
-        public Function(IHandleRequest handleRequest, IHandleResponse handleResponse, IToxicPlantAnimalService toxicPlantAnimalService)
+        public Function(IHandleRequest handleRequest, IHandleResponse handleResponse, IMatchData matchData)
         {
             _handleRequest = handleRequest;
             _handleResponse = handleResponse;
-            _toxicPlantAnimalService = toxicPlantAnimalService;
+            _matchData = matchData;
         }
 
         [Function("plantcheck")]
@@ -27,12 +28,11 @@ namespace Function
             _logger = executionContext.GetLogger("PlantCheck");
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-            _toxicPlantAnimalService.LoadToxicPlantAnimalData();
-
             // If something goes wrong, all is handled by the ExceptionHandlerMiddleware
 
-            var resultBody = await _handleRequest.Handle(request);
-            return await _handleResponse.SetResponse(request, resultBody);
+            await _handleRequest.CollectData(request);
+            var result = _matchData.MatchToxicPlantsForAnimals();
+            return await _handleResponse.SetResponse(request, result);
         }
     }
 }

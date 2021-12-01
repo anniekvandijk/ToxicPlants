@@ -1,0 +1,323 @@
+{
+  "query": {
+    "project": "all",
+    "images": [
+      "8042b972c930969bd7704954c358d6b4"
+    ],
+    "organs": [
+      "flower"
+    ]
+  },
+  "language": "nl",
+  "preferedReferential": "the-plant-list",
+  "results": [
+    {
+      "score": 0.1566,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron ciliatum",
+        "scientificNameAuthorship": "Hook. f.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron ciliatum Hook. f."
+      },
+      "gbif": {
+        "id": "4166478"
+      }
+    },
+    {
+      "score": 0.1271,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron campanulatum",
+        "scientificNameAuthorship": "D. Don",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron campanulatum D. Don"
+      },
+      "gbif": {
+        "id": "7327918"
+      }
+    },
+    {
+      "score": 0.07741,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron zaleucum",
+        "scientificNameAuthorship": "Balf. f. & W.W. Sm.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron zaleucum Balf. f. & W.W. Sm."
+      },
+      "gbif": {
+        "id": "7328714"
+      }
+    },
+    {
+      "score": 0.05004,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron wallichii",
+        "scientificNameAuthorship": "Hook. f.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron wallichii Hook. f."
+      },
+      "gbif": {
+        "id": "4936724"
+      }
+    },
+    {
+      "score": 0.04448,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron lindleyi",
+        "scientificNameAuthorship": "T. Moore",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron lindleyi T. Moore"
+      },
+      "gbif": {
+        "id": "4171546"
+      }
+    },
+    {
+      "score": 0.02574,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron scopulorum",
+        "scientificNameAuthorship": "Hutch.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron scopulorum Hutch."
+      },
+      "gbif": {
+        "id": "4165514"
+      }
+    },
+    {
+      "score": 0.01887,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron cinnabarinum",
+        "scientificNameAuthorship": "Hook. f.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron cinnabarinum Hook. f."
+      },
+      "gbif": {
+        "id": "7327797"
+      }
+    },
+    {
+      "score": 0.01681,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron taggianum",
+        "scientificNameAuthorship": "Hutch.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron taggianum Hutch."
+      },
+      "gbif": {
+        "id": "4164232"
+      }
+    },
+    {
+      "score": 0.01506,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron maddenii",
+        "scientificNameAuthorship": "Hook. f.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron maddenii Hook. f."
+      },
+      "gbif": {
+        "id": "7328418"
+      }
+    },
+    {
+      "score": 0.01381,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron adenogynum",
+        "scientificNameAuthorship": "Diels",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron adenogynum Diels"
+      },
+      "gbif": {
+        "id": "4169509"
+      }
+    },
+    {
+      "score": 0.01299,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron vernicosum",
+        "scientificNameAuthorship": "Franch.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron vernicosum Franch."
+      },
+      "gbif": {
+        "id": "4174595"
+      }
+    },
+    {
+      "score": 0.01253,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron oreotrephes",
+        "scientificNameAuthorship": "W.W. Sm.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron oreotrephes W.W. Sm."
+      },
+      "gbif": {
+        "id": "4168628"
+      }
+    },
+    {
+      "score": 0.01163,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron dendricola",
+        "scientificNameAuthorship": "Hutch.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron dendricola Hutch."
+      },
+      "gbif": {
+        "id": "4165071"
+      }
+    },
+    {
+      "score": 0.01142,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron cyanocarpum",
+        "scientificNameAuthorship": "(Franch.) Franch. ex W.W. Sm.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron cyanocarpum (Franch.) Franch. ex W.W. Sm."
+      },
+      "gbif": {
+        "id": "7877646"
+      }
+    }
+  ]
+}

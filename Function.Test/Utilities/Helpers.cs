@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
 using System;
-using System.Collections.Generic;
-using Function.Models;
 
 namespace Function.Tests.Utilities
 {
@@ -17,49 +15,6 @@ namespace Function.Tests.Utilities
                     It.IsAny<Exception>(),
                     It.IsAny<Func<It.IsAnyType, Exception, string>>()),
                 Times.Once);
-        }
-
-        public static List<ToxicPlantAnimal> ToxicPlantAnimalTestData()
-        {
-            return new List<ToxicPlantAnimal>
-            {
-
-                new()
-                {
-                    PlantName = "Anthriscus sylvestris (L.) Hoffm.", 
-                    Animal = Animal.Alpaca, 
-                    HowToxic = "a bit",
-                    Reference = "Alpacawereld"
-                },
-                new()
-                {
-                    PlantName = "Prunus serotina", 
-                    Animal = Animal.Alpaca, 
-                    HowToxic = "very",
-                    Reference = "Some reference"
-                },
-                new()
-                {
-                    PlantName = "Rhodondendron", 
-                    Animal = Animal.Alpaca, 
-                    HowToxic = "very",
-                    Reference = "Alpacawereld"
-                },
-                new()
-                {
-                    PlantName = "Hyoscyamus niger", 
-                    Animal = Animal.Alpaca, 
-                    HowToxic = "very",
-                    Reference = "Alpacawereld"
-                },
-                new()
-                {
-                    PlantName = "Hyoscyamus niger",
-                    Animal = Animal.Paard,
-                    HowToxic = "a bit",
-                    Reference = "Horseworld"
-                }
-            };
         }
     }
 }
