@@ -30,7 +30,7 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
       - name: Restore NuGet packages
-        run: nuget restore ToxicPlants.sln
+        run: dotnet restore
       - name: Begin Sonar scan
         run: |
           dotnet tool install --global dotnet-sonarscanner
