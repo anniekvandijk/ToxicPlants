@@ -12,7 +12,7 @@ namespace Function.Tests
     [TestFixture]
     internal class PlantRepositoryTests
     {
-        public JsonElement CreateJsonElement()
+        public static JsonElement CreateJsonElement()
         {
             var content = @"{ ""content"": ""content""}";
             return JsonSerializer.Deserialize<JsonElement>(content);

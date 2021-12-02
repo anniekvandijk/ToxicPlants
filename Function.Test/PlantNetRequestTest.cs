@@ -12,7 +12,7 @@ namespace Function.Tests
     [TestFixture]
     internal class PlantNetRequestTest
     {
-        private HttpClient CreateHttpClient()
+        private static HttpClient CreateHttpClient()
         {
             // Instantiate the mock object
             var httpMessageHandlerMock = new Mock<HttpMessageHandler>();
