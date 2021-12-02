@@ -1,4 +1,4 @@
-name: Build, test and publish to Azure
+name: Publish to Azure
 
 on:
   workflow_run:
@@ -14,7 +14,7 @@ env:
 
 jobs:
   build-and-deploy:
-
+    name: Publish to Azure
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -22,21 +22,21 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-    - name: Add 3.1 bug
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.x         
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+    #- uses: actions/checkout@v2
+    #- name: Setup .NET
+    #  uses: actions/setup-dotnet@v1
+    #  with:
+    #    dotnet-version: 5.0.x
+    #- name: Add 3.1 bug
+    #  uses: actions/setup-dotnet@v1
+    #  with:
+    #    dotnet-version: 3.1.x         
+    #- name: Restore dependencies
+    #  run: dotnet restore
+    #- name: Build
+    #  run: dotnet build --configuration Release --no-restore
+    #- name: Test
+    #  run: dotnet test --no-restore --verbosity normal
     - name: dotnet publish
       run: dotnet publish --configuration Release --output '${{ env.OUTPUT }}'
     - name: Deploy to Azure WebApp
