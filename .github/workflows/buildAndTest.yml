@@ -1,4 +1,4 @@
-name: Sonarcloud
+name: Build and test
 on:
   push:
     branches:
@@ -23,8 +23,6 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-      - name: Restore dependencies
-        run: dotnet restore
       - name: Begin Sonar scan
         run: |
           dotnet tool install --global dotnet-sonarscanner
@@ -33,7 +31,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Build
-        run: dotnet build --configuration Debug --no-restore
+        run: dotnet build --configuration Debug
       - name: Unit Test
         working-directory: ./Function.Test
         run: dotnet test --no-build --no-restore --verbosity normal -p:CollectCoverage=true -p:CoverletOutputFormat=opencover
