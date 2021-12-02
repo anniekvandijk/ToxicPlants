@@ -55,6 +55,8 @@ jobs:
     needs: [test]
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Build
+        run: dotnet build
       - name: dotnet publish
         run: dotnet publish --configuration Release --output '${{ env.OUTPUT }}'
       - name: Deploy to Azure WebApp
