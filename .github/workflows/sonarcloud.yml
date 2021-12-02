@@ -33,6 +33,7 @@ jobs:
           dotnet tool install --global dotnet-sonarscanner
           dotnet sonarscanner begin /o:animundo /k:Animundo_ToxicPlants /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io
       - name: Build
-        run: dotnet build --no-restore
+        run: |
+          dotnet build Function/Function.csproj --no-restore
       - name: End Sonar scan
         run: dotnet sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
