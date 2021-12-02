@@ -20,35 +20,20 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.x
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
+      - name: MS build
+        uses: microsoft/setup-msbuild@v1
+      - uses: actions/setup-java@v2
         with:
-          java-version: 1.11
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v1
-        with:
-          path: ~\sonar\cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache SonarCloud scanner
-        id: cache-sonar-scanner
-        uses: actions/cache@v1
-        with:
-          path: .\.sonar\scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
-      - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
+          distribution: 'adopt'
+          java-version: '11'
+      - name: Restore NuGet packages
+        run: nuget restore ToxicPlants.sln
+      - name: Begin Sonar scan
         run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-      - name: Build and analyze
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        shell: powershell
+          dotnet tool install --global dotnet-sonarscanner
+          dotnet sonarscanner begin /o:animundo /k:Animundo_ToxicPlants /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io
+      - name: Build
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"Animundo_ToxicPlants" /o:"animundo" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build --configuration Debug
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          dotnet build Function.csproj --no-restore
+      - name: End Sonar scan
+        run: dotnet sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
