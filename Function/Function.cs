@@ -29,7 +29,6 @@ namespace Function
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             // If something goes wrong, all is handled by the ExceptionHandlerMiddleware
-
             await _handleRequest.CollectData(request);
             var result = _matchData.MatchToxicPlantsForAnimals();
             return await _handleResponse.SetResponse(request, result);
