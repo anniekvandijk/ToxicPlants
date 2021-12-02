@@ -14,7 +14,7 @@ namespace Function.Tests
     [TestFixture]
     internal class PlantNetServiceTests
     {
-        private async Task<(PlantNetService service, RequestData requestData, Mock<IPlantRepository> repo)> Arrange(string fileName)
+        private static async Task<(PlantNetService service, RequestData requestData, Mock<IPlantRepository> repo)> Arrange(string fileName)
         {
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ??
                          throw new InvalidOperationException("File not found")
