@@ -1,9 +1,10 @@
-name: Build, test en deploy
+name: Build and test
 
 on:
   push:
     branches:
-      - main
+        - main
+        - develop
 
 env:
   AZURE_WEBAPP_NAME: ToxicPlantsFunction
@@ -13,14 +14,10 @@ env:
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 jobs:
-  build-and-deploy:
-    name: Build, test en deploy
+  test:
+    name: Build and test
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-
+    
     steps:
       - uses: actions/checkout@v2
         with:
@@ -37,20 +34,27 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
+      - name: Restore NuGet packages
+        run: dotnet restore
       - name: Begin Sonar scan
         run: |
           dotnet tool install --global dotnet-sonarscanner
           dotnet sonarscanner begin /o:animundo /k:Animundo_ToxicPlants /d:sonar.login=${{ secrets.SONAR_TOKEN }} /d:sonar.host.url=https://sonarcloud.io
-      - name: Build
-        run: dotnet build --configuration Debug
-      - name: Unit Test
-        working-directory: ./Function.Test
-        run: dotnet test --no-build --no-restore --verbosity normal -p:CollectCoverage=true -p:CoverletOutputFormat=opencover
-      - name: Integration Test
-        working-directory: ./Function.IT
-        run: dotnet test --no-restore --verbosity normal
+      - name: Build and test
+        run: |
+          dotnet build --no-restore
+          dotnet test Function.Test/Function.Tests.csproj --no-build --no-restore --verbosity normal -p:CollectCoverage=true -p:CoverletOutputFormat=opencover
       - name: End Sonar scan
         run: dotnet sonarscanner end /d:sonar.login=${{ secrets.SONAR_TOKEN }}
+      - name: Integration test
+        run: dotnet test Function.IT/Function.IT.csproj --no-restore --no-build --verbosity normal
+
+  deployment:
+    name: Deployment
+    runs-on: ubuntu-latest
+    needs: [test]
+    if: github.ref == 'refs/heads/main'
+    steps:
       - name: dotnet publish
         run: dotnet publish --configuration Release --output '${{ env.OUTPUT }}'
       - name: Deploy to Azure WebApp
@@ -59,3 +63,4 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.SCM_CREDENTIALS }}
           package: '${{ env.WORKING_DIRECTORY }}/${{ env.OUTPUT }}'
+
