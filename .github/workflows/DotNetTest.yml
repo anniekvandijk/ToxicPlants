@@ -49,7 +49,7 @@ jobs:
             --no-restore 
             --configuration Debug
       - name: Dotnet Unit test
-        run: dotnett test 
+        run: dotnet test 
             Function.Test/Function.Tests.csproj 
             --no-build 
             --no-restore 
