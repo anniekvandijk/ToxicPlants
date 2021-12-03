@@ -22,10 +22,10 @@ namespace Function.Services
         {
             _logger.LogInformation("Fake Plant Service called");
 
-            var toxic = data.Parameters.Where(x => x.Name == "toxic").First().Data;
+            var toxic = data.Parameters.First(x => x.Name == "toxic").Data;
 
             string fileName;
-            if (Convert.ToBoolean(toxic = "true"))
+            if (toxic == "true")
             {
                 fileName = "PlantNetToxic.json";
             }
