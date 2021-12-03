@@ -54,8 +54,8 @@ jobs:
             --no-build 
             --no-restore 
             --verbosity normal 
-            -p:CollectCoverage=true 
-            -p:CoverletOutputFormat=opencover
+            #-p:CollectCoverage=true 
+            #-p:CoverletOutputFormat=opencover
       - name: End Sonar scan
         run: dotnet sonarscanner end
             /d:sonar.login=${{ secrets.SONAR_TOKEN }}
