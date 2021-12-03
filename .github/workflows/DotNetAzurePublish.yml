@@ -29,8 +29,10 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.x
+      - name: Dotnet Restore
+        run: dotnet restore
       - name: Dotnet clean
-        run: dotnet clean
+        run: dotnet clean --configuration Release
       - name: Dotnet build
         run: dotnet build --configuration Release
       - name: Dotnet publish
