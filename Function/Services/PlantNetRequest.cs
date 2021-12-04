@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Function.Utilities;
 
 namespace Function.Services
 {
@@ -63,7 +64,7 @@ namespace Function.Services
             return multiPartContent;
         }
 
-        private static string GetLanguage(RequestData data) => data.Language.ToLower() ?? "en";
+        private static string GetLanguage(RequestData data) => data.Language.TrimToNull() == null ? "en" : data.Language.ToLower();
 
         private async Task<string> MakePlantNetRequest(MultipartFormDataContent content, string language)
         {
