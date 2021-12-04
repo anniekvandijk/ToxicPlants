@@ -56,8 +56,8 @@ jobs:
             --no-build 
             --no-restore 
             --verbosity normal 
-            --collect "Code coverage"
-            --logger trx
+            --collect "DotnetCodeCoverage"
+            --logger xml
             #-p:CollectCoverage=true 
             #-p:CoverletOutputFormat=opencover
       - name: End Sonar scan
