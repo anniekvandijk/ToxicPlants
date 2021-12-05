@@ -102,7 +102,12 @@ namespace Function.Services
             return multiPartContent;
         }
 
-        private static string GetLanguage(RequestData data) => data.Language.TrimToNull() == null ? "en" : data.Language.ToLower();
+        private static string GetLanguage(RequestData data)
+        {
+            var language = data.Parameters.SingleOrDefault(x => x.Name.ToLower() == "language");
+            if (language == null || language.Data.TrimToNull() == null) return "en";
+            return language.Data.ToLower();
+        }
 
         private async Task<string> MakePlantNetRequest(MultipartFormDataContent content, string language)
         {

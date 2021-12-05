@@ -20,30 +20,6 @@ namespace Function.Services
             _logger = logger;
         }
 
-        public async Task<string> GetPlantsAsync(RequestData data)
-        {
-            _logger.LogInformation("Fake Plant Service called");
-
-            var toxic = data.Parameters.First(x => x.Name == "toxic").Data;
-
-            string fileName;
-            if (toxic == "true")
-            {
-                fileName = "PlantNetToxic.json";
-            }
-            else
-            {
-                fileName = "PlantNetNonToxic.json";
-            }
-
-            var path =
-                Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ??
-                             throw new InvalidOperationException("File not found")
-                    , "Utilities", fileName);
-
-            return await File.ReadAllTextAsync(path);
-        }
-
         public async Task<HttpResponseMessage> MakeRequest(HttpRequestMessage httpRequestMessage)
         {
             _logger.LogInformation("Fake Plant Service called");
