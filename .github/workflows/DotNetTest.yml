@@ -47,6 +47,7 @@ jobs:
             /d:sonar.login=${{ secrets.SONAR_TOKEN }}
             /d:sonar.host.url=https://sonarcloud.io
             /d:sonar.cs.nunit.reportsPaths="./TestResults"
+            /d:sonar.cs.opencover.reportsPaths"./TestResults"
       - name: Dotnet Build
         run: dotnet build 
             --no-restore 
@@ -58,7 +59,8 @@ jobs:
             --no-restore 
             --verbosity normal 
             --logger trx
-            --collect "XPlat Code Coverage"
+            -p:CollectCoverage=true
+            -p:CoverletOutputFormat=opencover
             --results-directory "./../TestResults"
       - name: End Sonar scan
         run: dotnet sonarscanner end
