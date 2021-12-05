@@ -46,6 +46,7 @@ jobs:
             /k:Animundo_ToxicPlants
             /d:sonar.login=${{ secrets.SONAR_TOKEN }}
             /d:sonar.host.url=https://sonarcloud.io
+            /d:sonar.cs.nunit.reportsPaths="./TestResults"
       - name: Dotnet Build
         run: dotnet build 
             --no-restore 
