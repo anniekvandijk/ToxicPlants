@@ -1,4 +1,6 @@
-﻿using Function.Services;
+﻿using System;
+using System.Net;
+using Function.Services;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Moq.Protected;
@@ -23,20 +25,29 @@ namespace Function.Tests
                     "SendAsync",
                     ItExpr.IsAny<HttpRequestMessage>(),
                     ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(new HttpResponseMessage());
+                .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK));
             // create the HttpClient
             return new HttpClient(httpMessageHandlerMock.Object);
         }
 
         [Test]
-        [Ignore("Not ready")]
-        public void PlantNetService_GetLanguage_ReturnsEnIfNoDataFound()
+        public async Task PlantNetRequest_MakeRequest_CanBecalled()
         {
             //Arrange
             var loggerMock = new Mock<ILogger<PlantNetRequest>>();
-            PlantNetRequest repo = new(CreateHttpClient(), loggerMock.Object);
+            PlantNetRequest plantNetRequest = new(CreateHttpClient(), loggerMock.Object);
+
+            var httpRequestMessage = new HttpRequestMessage
+            {
+                RequestUri = new Uri("https://someuri.url"),
+                Method = HttpMethod.Post,
+            };
 
             // Act
+            var response = await plantNetRequest.MakeRequest(httpRequestMessage);
+
+            // Assert
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
         }
     }
 }
