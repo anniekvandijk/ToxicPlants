@@ -56,10 +56,9 @@ jobs:
             --no-build 
             --no-restore 
             --verbosity normal 
-            --collect "Code Coverage"
             --logger trx
-            #-p:CollectCoverage=true 
-            #-p:CoverletOutputFormat=opencover
+            --collect "XPlat Code Coverage"
+            --results-directory "./../TestResults"
       - name: End Sonar scan
         run: dotnet sonarscanner end
             /d:sonar.login=${{ secrets.SONAR_TOKEN }}
@@ -69,3 +68,4 @@ jobs:
             --no-build
             --no-restore 
             --verbosity normal
+            --results-directory "./../TestResults"

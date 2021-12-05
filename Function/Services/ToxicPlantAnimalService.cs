@@ -47,7 +47,7 @@ namespace Function.Services
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError(ex, "Adding Toxic Plant record failed at line {lineNumber");
+                        _logger.LogError(ex, $"Adding Toxic Plant record failed at line {lineNumber}");
                     }
                 }
             }
