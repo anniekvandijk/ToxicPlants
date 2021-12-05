@@ -59,7 +59,7 @@ jobs:
             --no-restore 
             --verbosity normal 
             --logger trx
-            -p:CollectCoverage=true
+            --collect "XPlat Code Coverage"
             -p:CoverletOutputFormat=opencover
             --results-directory "./../TestResults"
       - name: End Sonar scan
