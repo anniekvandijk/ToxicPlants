@@ -31,9 +31,8 @@ namespace Function.Tests
 
             // Arrange
             const string responseFile = "PlantNetResponse_OK.json";
-            const string imageName = "plant.jpg";
 
-            var requestData = CreateDefaultRequestData(imageName);
+            var requestData = CreateDefaultRequestData();
 
             var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -50,9 +49,8 @@ namespace Function.Tests
 
             // Arrange
             const string responseFile = "PlantNetResponse_EmptyResults.json";
-            const string imageName = "plant.jpg";
 
-            var requestData = CreateDefaultRequestData(imageName);
+            var requestData = CreateDefaultRequestData();
 
             var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -67,9 +65,8 @@ namespace Function.Tests
 
             // Arrange
             const string responseFile = "PlantNetResponse_NoResults.json";
-            const string imageName = "plant.jpg";
 
-            var requestData = CreateDefaultRequestData(imageName);
+            var requestData = CreateDefaultRequestData();
 
             var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -84,9 +81,8 @@ namespace Function.Tests
 
             // Arrange
             const string responseFile = "PlantNetResponse_NoJson.json";
-            const string imageName = "plant.jpg";
 
-            var requestData = CreateDefaultRequestData(imageName);
+            var requestData = CreateDefaultRequestData();
 
             var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -101,9 +97,8 @@ namespace Function.Tests
 
             // Arrange
             const string responseFile = "PlantNetResponse_NOK_WrongContent.json";
-            const string imageName = "plant.jpg";
 
-            var requestData = CreateDefaultRequestData(imageName);
+            var requestData = CreateDefaultRequestData();
 
             var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.InternalServerError);
 
@@ -118,9 +113,8 @@ namespace Function.Tests
 
             // Arrange
             const string responseFile = "PlantNetResponse_NOK_ExpectedContent.json";
-            const string imageName = "plant.jpg";
 
-            var requestData = CreateDefaultRequestData(imageName);
+            var requestData = CreateDefaultRequestData();
 
             var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.InternalServerError);
 
@@ -149,16 +143,16 @@ namespace Function.Tests
             return (new(request.Object, repo.Object), repo);
         }
 
-        private static RequestData CreateDefaultRequestData(string imageName)
+        private static RequestData CreateDefaultRequestData()
         {
             var fileDataList = new List<FileData>();
 
             FileData fileData = new()
             {
-                Data = Helpers.CreateFileStream(imageName),
+                Data = Helpers.CreateFileStream("plant.jpg"),
                 ContentType = "image/jpeg",
                 Name = "images",
-                FileName = imageName
+                FileName = "plant.jpg"
             };
             fileDataList.Add(fileData);
 
