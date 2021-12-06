@@ -38,7 +38,7 @@ namespace Function.Services
                 }
             }
             else
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "Nor results received from plantreqest");
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "No results received from plantrequest");
         }
 
         public void AddPlantToRepository(string species, string genus, string family, JsonElement result)
@@ -59,11 +59,11 @@ namespace Function.Services
             var language = GetLanguage(data);
 
             JsonElement results = default;
+            var responseContent = await MakePlantNetRequest(content, language);
             try
             {
-                var responseContent = await MakePlantNetRequest(content, language);
                 var json = JsonSerializer.Deserialize<JsonElement>(responseContent);
-                json.TryGetProperty("results", out results);
+                results = json.GetProperty("results");
             }
             catch (Exception ex)
             {

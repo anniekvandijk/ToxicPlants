@@ -1,0 +1,14 @@
+{
+  "query": {
+    "project": "all",
+    "images": [
+      "8042b972c930969bd7704954c358d6b4"
+    ],
+    "organs": [
+      "flower"
+    ]
+  },
+  "language": "nl",
+  "preferedReferential": "the-plant-list",
+  "results": []
+}
