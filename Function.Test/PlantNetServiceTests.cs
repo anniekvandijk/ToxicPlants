@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Function.Interfaces;
 using Function.Models;
 using Function.Models.Request;
 using Function.Services;
+using Function.Tests.Utilities;
 using Moq;
 using NUnit.Framework;
 
@@ -17,7 +18,13 @@ namespace Function.Tests
     [TestFixture]
     internal class PlantNetServiceTests
     {
-        private static async Task<(PlantNetService service, RequestData requestData, Mock<IPlantRepository> repo)> Arrange(string fileName)
+        [SetUp]
+        public void SetUpFixture()
+        {
+            Environment.SetEnvironmentVariable("PLANTNET_URL", "https://www.myfakeplantnet.url/all?api-key=secretapikey");
+        }
+
+        private static async Task<(PlantNetService service, Mock<IPlantRepository> repo)> ArrangePlantNetServiceMock(string fileName, HttpStatusCode httpStatusCode)
         {
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ??
                          throw new InvalidOperationException("File not found")
@@ -27,41 +34,56 @@ namespace Function.Tests
 
             Mock<IPlantRepository> repo = new();
             Mock<IPlantRequest> request = new(); 
-            RequestData requestData = new();
-            HttpRequestMessage httpRequestMessage = new();
-            HttpResponseMessage httpResponseMessage = new(HttpStatusCode.OK);
+            HttpResponseMessage httpResponseMessage = new(httpStatusCode);
             httpResponseMessage.Content = new StringContent(content);
 
             request.Setup(x =>
-                    x.MakeRequest(httpRequestMessage)).
+                    x.MakeRequest(It.IsAny<HttpRequestMessage>())).
                 Returns(Task.FromResult(httpResponseMessage));
 
-            return (new(request.Object, repo.Object), requestData, repo);
+            return (new(request.Object, repo.Object), repo);
         }
 
         [Test]
         public async Task PlantNetService_AddPlants_CanAddPlantToPlantRepository()
         {
+
             // Arrange
             const string responseFile = "PlantNetResponse_OK.json";
-            var (service, requestData, repo) = await Arrange(responseFile);
+            const string imageName = "plant.jpg";
 
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ??
-                                    throw new InvalidOperationException("File not found")
-                , "Data", responseFile);
+            var fileDataList = new List<FileData>();
 
-            var content = await File.ReadAllTextAsync(path);
+            FileData fileData = new()
+            {
+                Data = Helpers.CreateFileStream(imageName),
+                ContentType = "image/jpeg",
+                Name = "images",
+                FileName = imageName
 
-            var json = JsonSerializer.Deserialize<JsonElement>(content);
-            json.TryGetProperty("results", out var results);
+            };
+            fileDataList.Add(fileData);
 
-            var species = "species";
-            var genus = "genus";
-            var family = "family";
-            var result = results[0];
+            var parameterDataList = new List<ParameterData>()
+            {
+                new()
+                {
+                    Name = "organs",
+                    Data = "flower"
+                }
+
+            };
+
+            var requestData = new RequestData
+            {
+                Files = fileDataList,
+                Parameters = parameterDataList
+            };
+
+            var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
             // Act
-            service.AddPlantToRepository(species, genus, family, result);
+            await service.AddPlants(requestData);
 
             // Assert
             repo.Verify(m => m.Add(It.IsAny<Plant>()), Times.AtLeastOnce);

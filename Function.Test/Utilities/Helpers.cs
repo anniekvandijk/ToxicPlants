@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
 using System;
+using System.IO;
+using System.Reflection;
 
 namespace Function.Tests.Utilities
 {
@@ -15,6 +17,17 @@ namespace Function.Tests.Utilities
                     It.IsAny<Exception>(),
                     It.IsAny<Func<It.IsAnyType, Exception, string>>()),
                 Times.Once);
+        }
+
+        public static Stream CreateFileStream(string imageName)
+        {
+            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ??
+                                    throw new InvalidOperationException("File not found")
+                , "Data", imageName);
+
+            using FileStream fileStream = new(path, FileMode.Open, FileAccess.Read);
+
+            return fileStream;
         }
     }
 }
