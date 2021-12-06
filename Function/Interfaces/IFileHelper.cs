@@ -2,6 +2,6 @@
 {
     internal interface IFileHelper
     {
-        string GetToxicPlantAnimalFileLocation();
+        string GetToxicPlantAnimalFileLocation(string fileName);
     }
 }
