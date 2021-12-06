@@ -11,12 +11,12 @@ namespace Function.Utilities
 {
     internal static class RequestParser
     {
-        public static async Task<RequestData> Parse(Stream requestData)
+        public static async Task<RequestData> Parse(Stream requestBody)
         {
             MultipartFormDataParser parstData = null;
             try
             {
-                parstData = await MultipartFormDataParser.ParseAsync(requestData);
+                parstData = await MultipartFormDataParser.ParseAsync(requestBody);
             }
             catch (Exception ex)
             {
