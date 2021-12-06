@@ -2,8 +2,8 @@
  
 | Branch | Status |   
 | :--- | :--- |
-| develop  | ![Test](https://github.com/animundo/ToxicPlants/actions/workflows/DotNetTest.yml/badge.svg?branch=develop) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Animundo_ToxicPlants&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Animundo_ToxicPlantsbranch=develop)   |
-| main  | ![Test](https://github.com/animundo/ToxicPlants/actions/workflows/DotNetTest.yml/badge.svg?branch=main) ![Deploy](https://github.com/animundo/ToxicPlants/actions/workflows/DotNetAzurePublish.yml/badge.svg?branch=main)|
+| develop  | ![Test](https://github.com/animundo/ToxicPlants/actions/workflows/DotNetTest.yml/badge.svg?branch=develop) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Animundo_ToxicPlants&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Animundo_ToxicPlants?branch=develop)   |
+| main  | ![Test](https://github.com/animundo/ToxicPlants/actions/workflows/DotNetTest.yml/badge.svg?branch=main) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Animundo_ToxicPlants&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Animundo_ToxicPlants?branch=main) ![Deploy](https://github.com/animundo/ToxicPlants/actions/workflows/DotNetAzurePublish.yml/badge.svg?branch=main)|
 
 This is an Azure Function App with http based trigger. Api can be called with an Api Key.   
 
