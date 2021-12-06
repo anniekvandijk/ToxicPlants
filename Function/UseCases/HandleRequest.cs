@@ -16,10 +16,10 @@ namespace Function.UseCases
             _animalService = animalService;
         }
 
-        public async Task CollectData(HttpRequestData request)
+        public async Task CollectData(Stream requestBody)
         {
 
-            var parsedData = await RequestParser.Parse(request.Body);
+            var parsedData = await RequestParser.Parse(requestBody);
 
             var addPlants = _plantService.AddPlants(parsedData);
             _animalService.AddAnimals(parsedData);
