@@ -131,8 +131,8 @@ namespace Function.Services
             {
                 var json = JsonSerializer.Deserialize<JsonElement>(result);
 
-                HttpStatusCode statusCode;
-                string message;
+                HttpStatusCode statusCode = (HttpStatusCode)0;
+                string message = null;
                 try
                 {
                     statusCode = (HttpStatusCode)json.GetProperty("statusCode").GetInt16();
@@ -140,7 +140,7 @@ namespace Function.Services
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Something went wrong with the request", ex);
+                    ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "Something went wrong with the request", ex);
                 }
                 ProgramError.CreateProgramError(statusCode, message, 1); // quit
                 return null;
