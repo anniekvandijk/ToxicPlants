@@ -34,7 +34,7 @@ namespace Function.Tests
 
             var requestData = CreateDefaultRequestData();
 
-            var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
+            var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
             // Act
             await service.AddPlants(requestData);
@@ -52,7 +52,7 @@ namespace Function.Tests
 
             var requestData = CreateDefaultRequestData();
 
-            var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
+            var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
             // Assert
             ProgramError ex = Assert.ThrowsAsync<ProgramError>(async() => await service.AddPlants(requestData));
@@ -68,7 +68,7 @@ namespace Function.Tests
 
             var requestData = CreateDefaultRequestData();
 
-            var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
+            var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
             // Assert
             ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
@@ -84,7 +84,7 @@ namespace Function.Tests
 
             var requestData = CreateDefaultRequestData();
 
-            var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
+            var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
             // Assert
             ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
@@ -100,7 +100,7 @@ namespace Function.Tests
 
             var requestData = CreateDefaultRequestData();
 
-            var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.InternalServerError);
+            var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.InternalServerError);
 
             // Assert
             ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
@@ -116,14 +116,14 @@ namespace Function.Tests
 
             var requestData = CreateDefaultRequestData();
 
-            var (service, repo) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.InternalServerError);
+            var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.InternalServerError);
 
             // Assert
             ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
             Assert.AreEqual("\"Organs\" is required", ex.Message);
         }
 
-        private static async Task<(PlantNetService service, Mock<IPlantRepository> repo)> ArrangePlantNetServiceMock(string fileName, HttpStatusCode httpStatusCode)
+        private static async Task<(PlantNetService service, Mock<IPlantRepository> repo, Mock<IPlantRequest> request)> ArrangePlantNetServiceMock(string fileName, HttpStatusCode httpStatusCode)
         {
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ??
                                     throw new InvalidOperationException("File not found")
@@ -140,7 +140,7 @@ namespace Function.Tests
                     x.MakeRequest(It.IsAny<HttpRequestMessage>())).
                 Returns(Task.FromResult(httpResponseMessage));
 
-            return (new(request.Object, repo.Object), repo);
+            return (new(request.Object, repo.Object), repo, request);
         }
 
         private static RequestData CreateDefaultRequestData()
