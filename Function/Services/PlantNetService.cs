@@ -41,7 +41,7 @@ namespace Function.Services
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "No results received from plantrequest");
         }
 
-        public void AddPlantToRepository(string species, string genus, string family, JsonElement result)
+        private void AddPlantToRepository(string species, string genus, string family, JsonElement result)
         {
             var plant = new Plant
             {
