@@ -15,4 +15,5 @@ This is an Azure Function App with http based trigger. Api can be called with an
 - Global Exception handling
 - Global response handling
 - Sentry
+- Coverlet
 - SonarCloud
