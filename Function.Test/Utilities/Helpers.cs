@@ -25,8 +25,7 @@ namespace Function.Tests.Utilities
                                     throw new InvalidOperationException("File not found")
                 , "Data", imageName);
 
-            using FileStream fileStream = new(path, FileMode.Open, FileAccess.Read);
-
+            FileStream fileStream = new(path, FileMode.Open, FileAccess.Read);
             return fileStream;
         }
     }
