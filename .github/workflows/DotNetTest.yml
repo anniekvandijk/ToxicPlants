@@ -46,8 +46,8 @@ jobs:
             /k:Animundo_ToxicPlants
             /d:sonar.login=${{ secrets.SONAR_TOKEN }}
             /d:sonar.host.url=https://sonarcloud.io
-            /d:sonar.cs.nunit.reportsPaths=".\TestResults\*.trx"
-            /d:sonar.cs.opencover.reportsPaths=".\TestResults\**\*.xml"
+            /d:sonar.cs.nunit.reportsPaths="Function.Test\TestResults\*.trx"
+            /d:sonar.cs.opencover.reportsPaths="Function.Test\TestResults\**\*.xml"
       - name: Dotnet Build
         run: dotnet build 
             --no-restore 
@@ -61,7 +61,6 @@ jobs:
             --logger trx
             --collect "XPlat Code Coverage"
             -p:CoverletOutputFormat=opencover
-            --results-directory "./../TestResults"
       - name: End Sonar scan
         run: dotnet sonarscanner end
             /d:sonar.login=${{ secrets.SONAR_TOKEN }}
@@ -71,4 +70,3 @@ jobs:
             --no-build
             --no-restore 
             --verbosity normal
-            --results-directory "./../TestResults"
