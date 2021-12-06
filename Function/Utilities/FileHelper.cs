@@ -7,11 +7,11 @@ namespace Function.Utilities
 {
     internal class FileHelper : IFileHelper
     {
-        public string GetToxicPlantAnimalFileLocation()
+        public string GetToxicPlantAnimalFileLocation(string fileName)
         {
             return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ??
                                 throw new InvalidOperationException("File not found")
-                , "Data", "ToxicPlants.csv");
+                , "Data", fileName);
         }
     }
 }

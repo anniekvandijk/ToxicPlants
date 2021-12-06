@@ -24,7 +24,7 @@ namespace Function
         public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = "v1/plantcheck")] HttpRequestData request,
             FunctionContext executionContext)
         {
-            await _handleRequest.CollectData(request);
+            await _handleRequest.CollectData(request.Body);
             var result = _matchData.MatchToxicPlantsForAnimals();
             return await _handleResponse.SetResponse(request, result);
         }

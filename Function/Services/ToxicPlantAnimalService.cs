@@ -27,7 +27,7 @@ namespace Function.Services
         {
             if (_toxicPlantAnimalRepository.Get().Count != 0) return;
 
-            var path = _fileHelper.GetToxicPlantAnimalFileLocation();
+            var path = _fileHelper.GetToxicPlantAnimalFileLocation("ToxicPlants.csv");
 
             using var reader = new StreamReader(path);
             using var csv = new CsvReader(reader, new CultureInfo("nl-NL"));
