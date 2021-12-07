@@ -2,7 +2,6 @@
 using Function.Interfaces;
 using Function.Utilities;
 using System.IO;
-using Microsoft.Azure.Functions.Worker.Http;
 
 namespace Function.UseCases
 {

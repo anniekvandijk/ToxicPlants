@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -8,7 +7,6 @@ using System.Threading.Tasks;
 using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
-using Function.Models.Request;
 using Function.Services;
 using Function.Tests.Utilities;
 using Moq;
@@ -32,7 +30,7 @@ namespace Function.Tests
             // Arrange
             const string responseFile = "PlantNetResponse_OK.json";
 
-            var requestData = CreateDefaultRequestData();
+            var requestData = Helpers.CreateDefaultRequestData();
 
             var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -50,7 +48,7 @@ namespace Function.Tests
             // Arrange
             const string responseFile = "PlantNetResponse_EmptyResults.json";
 
-            var requestData = CreateDefaultRequestData();
+            var requestData = Helpers.CreateDefaultRequestData();
 
             var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -66,7 +64,7 @@ namespace Function.Tests
             // Arrange
             const string responseFile = "PlantNetResponse_NoResults.json";
 
-            var requestData = CreateDefaultRequestData();
+            var requestData = Helpers.CreateDefaultRequestData();
 
             var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -82,7 +80,7 @@ namespace Function.Tests
             // Arrange
             const string responseFile = "PlantNetResponse_NoJson.json";
 
-            var requestData = CreateDefaultRequestData();
+            var requestData = Helpers.CreateDefaultRequestData();
 
             var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -98,7 +96,7 @@ namespace Function.Tests
             // Arrange
             const string responseFile = "PlantNetResponse_NOK_WrongContent.json";
 
-            var requestData = CreateDefaultRequestData();
+            var requestData = Helpers.CreateDefaultRequestData();
 
             var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.InternalServerError);
 
@@ -114,7 +112,7 @@ namespace Function.Tests
             // Arrange
             const string responseFile = "PlantNetResponse_NOK_ExpectedContent.json";
 
-            var requestData = CreateDefaultRequestData();
+            var requestData = Helpers.CreateDefaultRequestData();
 
             var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.InternalServerError);
 
@@ -130,7 +128,7 @@ namespace Function.Tests
             // Arrange
             const string responseFile = "PlantNetResponse_NoSpecies.json";
 
-            var requestData = CreateDefaultRequestData();
+            var requestData = Helpers.CreateDefaultRequestData();
 
             var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -146,7 +144,7 @@ namespace Function.Tests
             // Arrange
             const string responseFile = "PlantNetResponse_NoGenus.json";
 
-            var requestData = CreateDefaultRequestData();
+            var requestData = Helpers.CreateDefaultRequestData();
 
             var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -162,7 +160,7 @@ namespace Function.Tests
             // Arrange
             const string responseFile = "PlantNetResponse_NoFamily.json";
 
-            var requestData = CreateDefaultRequestData();
+            var requestData = Helpers.CreateDefaultRequestData();
 
             var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
 
@@ -189,36 +187,6 @@ namespace Function.Tests
                 Returns(Task.FromResult(httpResponseMessage));
 
             return (new(request.Object, repo.Object), repo, request);
-        }
-
-        private static RequestData CreateDefaultRequestData()
-        {
-            var fileDataList = new List<FileData>();
-
-            FileData fileData = new()
-            {
-                Data = Helpers.CreateFileStream("plant.jpg"),
-                ContentType = "image/jpeg",
-                Name = "images",
-                FileName = "plant.jpg"
-            };
-            fileDataList.Add(fileData);
-
-            var parameterDataList = new List<ParameterData>()
-            {
-                new()
-                {
-                    Name = "organs",
-                    Data = "flower"
-                }
-            };
-
-            var requestData = new RequestData
-            {
-                Files = fileDataList,
-                Parameters = parameterDataList
-            };
-            return requestData;
         }
     }
 }
