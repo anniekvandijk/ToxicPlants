@@ -123,6 +123,54 @@ namespace Function.Tests
             Assert.AreEqual("\"Organs\" is required", ex.Message);
         }
 
+        [Test]
+        public async Task PlantNetService_AddPlants_NoSpeciesInResultsCreatesProgramError()
+        {
+
+            // Arrange
+            const string responseFile = "PlantNetResponse_NoSpecies.json";
+
+            var requestData = CreateDefaultRequestData();
+
+            var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
+
+            // Assert
+            ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
+            Assert.AreEqual("Error receiving plantdetails from plantrequest", ex.Message);
+        }
+
+        [Test]
+        public async Task PlantNetService_AddPlants_NoGenusInResultsCreatesProgramError()
+        {
+
+            // Arrange
+            const string responseFile = "PlantNetResponse_NoGenus.json";
+
+            var requestData = CreateDefaultRequestData();
+
+            var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
+
+            // Assert
+            ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
+            Assert.AreEqual("Error receiving plantdetails from plantrequest", ex.Message);
+        }
+
+        [Test]
+        public async Task PlantNetService_AddPlants_NoFamilyInResultsCreatesProgramError()
+        {
+
+            // Arrange
+            const string responseFile = "PlantNetResponse_NoFamily.json";
+
+            var requestData = CreateDefaultRequestData();
+
+            var (service, repo, request) = await ArrangePlantNetServiceMock(responseFile, HttpStatusCode.OK);
+
+            // Assert
+            ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
+            Assert.AreEqual("Error receiving plantdetails from plantrequest", ex.Message);
+        }
+
         private static async Task<(PlantNetService service, Mock<IPlantRepository> repo, Mock<IPlantRequest> request)> ArrangePlantNetServiceMock(string fileName, HttpStatusCode httpStatusCode)
         {
             var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ??

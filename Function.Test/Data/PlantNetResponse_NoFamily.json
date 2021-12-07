@@ -1,0 +1,32 @@
+{
+  "query": {
+    "project": "all",
+    "images": [
+      "8042b972c930969bd7704954c358d6b4"
+    ],
+    "organs": [
+      "flower"
+    ]
+  },
+  "language": "nl",
+  "preferedReferential": "the-plant-list",
+  "results": [
+    {
+      "score": 0.1566,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron ciliatum",
+        "scientificNameAuthorship": "Hook. f.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron ciliatum Hook. f."
+      },
+      "gbif": {
+        "id": "4166478"
+      }
+    }
+  ]
+}
