@@ -72,6 +72,9 @@ jobs:
         if: matrix.os != 'windows-latest'
         shell: pwsh
         run: |
+            dir
+            $rootDir = $pwd.Path
+            cd ./Function
             Start-Process -NoNewWindow func @("start","--verbose","false")
             Start-Sleep -s 60
       - name: Integration test
@@ -80,3 +83,4 @@ jobs:
             --no-build
             --no-restore 
             --verbosity normal
+            --configuration Debug
