@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Function.Tests
 {
     [TestFixture]
-    internal class PlantNetRequestTest
+    internal class PlantNetRequestTests
     {
         private static HttpClient CreateHttpClient()
         {

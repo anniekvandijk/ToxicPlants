@@ -64,6 +64,16 @@ jobs:
       - name: End Sonar scan
         run: dotnet sonarscanner end
             /d:sonar.login=${{ secrets.SONAR_TOKEN }}
+      - name: Setup Azure Functions Core Tools
+        shell: pwsh
+        run: |
+            npm install -g azure-functions-core-tools@3 --unsafe-perm true
+      - name: Start function
+        if: matrix.os != 'windows-latest'
+        shell: pwsh
+        run: |
+            Start-Process -NoNewWindow func @("start","--verbose","false")
+            Start-Sleep -s 60
       - name: Integration test
         run: dotnet test 
             Function.IT/Function.IT.csproj 
