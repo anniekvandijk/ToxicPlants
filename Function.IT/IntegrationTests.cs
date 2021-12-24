@@ -57,9 +57,9 @@ namespace Function.IT
             };
 
             var response = await CreateRequest(fileDataList, parameterDataList);
-            var statusCodeOK = response.IsSuccessStatusCode;
+            var statusCode = (int)response.StatusCode;
             var data = response.Content.ReadAsStringAsync().Result;
-            Assert.IsTrue(statusCodeOK, data);
+            Assert.AreEqual(200, statusCode, $"Message = {data}");
         }
 
         private static Stream CreateFileStream(string imageName)
