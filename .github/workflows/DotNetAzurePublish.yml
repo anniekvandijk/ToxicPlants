@@ -7,7 +7,7 @@ on:
     types: [completed]
 
 env:
-  AZURE_WEBAPP_NAME: ToxicPlantsFunction
+  AZURE_WEBAPP_NAME: ToxicPlants
   WORKING_DIRECTORY: Function
   OUTPUT: Dotnetpublishfolder
 
