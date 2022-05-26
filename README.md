@@ -17,3 +17,4 @@ This is an Azure Function App with http based trigger. Api can be called with an
 - Sentry
 - Coverlet
 - SonarCloud
+- Github actions for test and deploy
