@@ -49,5 +49,4 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.SCM_CREDENTIALS }}
-          #package: '${{ env.WORKING_DIRECTORY }}/${{ env.OUTPUT }}'
           package: '${{ env.OUTPUT }}'
