@@ -74,7 +74,7 @@ jobs:
             dir
             $rootDir = $pwd.Path
             cd ./Function
-            Start-Process -NoNewWindow func @("start","--verbose","false")
+            Start-Process -NoNewWindow func @("start","--verbose","false", "--csharp")
             Start-Sleep -s 60
             cd ..
       - name: Integration test
