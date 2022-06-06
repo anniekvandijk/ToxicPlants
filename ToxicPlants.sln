@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Function", "Function\Functi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Function.Tests", "Function.Test\Function.Tests.csproj", "{D54857BA-881C-4EA4-86EA-F8447BBA4588}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function.IT", "Function.IT\Function.IT.csproj", "{A35BB312-DA14-458F-A0EF-A0FB87DC88B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Function.IT", "Function.IT\Function.IT.csproj", "{A35BB312-DA14-458F-A0EF-A0FB87DC88B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

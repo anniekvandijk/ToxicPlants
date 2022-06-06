@@ -21,7 +21,8 @@ namespace Function
         }
 
         [Function("plantcheck")]
-        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Function, "post", Route = "v1/plantcheck")] HttpRequestData request,
+        public async Task<HttpResponseData> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "v1/plantcheck")] HttpRequestData request,
             FunctionContext executionContext)
         {
             await _handleRequest.CollectData(request.Body);

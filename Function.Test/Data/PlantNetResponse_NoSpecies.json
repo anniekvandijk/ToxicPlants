@@ -1,0 +1,43 @@
+{
+  "query": {
+    "project": "all",
+    "images": [
+      "8042b972c930969bd7704954c358d6b4"
+    ],
+    "organs": [
+      "flower"
+    ]
+  },
+  "language": "nl",
+  "preferedReferential": "the-plant-list",
+  "results": [
+    {
+      "score": 0.1566,
+      "gbif": {
+        "id": "4166478"
+      }
+    },
+    {
+      "score": 0.1271,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron campanulatum",
+        "scientificNameAuthorship": "D. Don",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron campanulatum D. Don"
+      },
+      "gbif": {
+        "id": "7327918"
+      }
+    }
+  ]
+}
