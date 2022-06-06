@@ -107,7 +107,7 @@ namespace Function.Services
 
         private async Task<string> MakePlantNetRequest(MultipartFormDataContent content, string language)
         {
-            var url = $"{Environment.GetEnvironmentVariable("PLANTNET_URL")}&lang={language}";
+            var url = $"{Environment.GetEnvironmentVariable("PLANTNET_URL")}&lang={language}&include-related-images=true";
 
             var plantRequest = new HttpRequestMessage
             {
