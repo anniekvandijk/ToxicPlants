@@ -14,7 +14,10 @@
     <PackageReference Include="Sentry.AspNetCore" Version="3.14.1" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="Data\ToxicPlants.csv">
+    <None Update="Data\ToxicPlants_Plants_v2.0.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\ToxicPlants_Reference_v2.0.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="host.json">
@@ -30,8 +33,5 @@
     <None Update="Utilities\PlantNetNonToxic.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
   </ItemGroup>
 </Project>

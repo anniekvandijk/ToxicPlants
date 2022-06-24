@@ -1,0 +1,56 @@
+Id;Animal;ScientificClassification;Species;Genus;Family;HowToxic;Summary;Dutch name
+1;Alpaca;Species;Adonis Aestivalis ;;;2; gehele plant is giftig;zomeradonis�
+2;Alpaca;Species;Aethusa Cynapium;;;3; gehele plant zeer giftig;Hondspeterselie
+3;Alpaca;Species;Agrostemma githago;;;2; alleen het zaad is giftig;Bolderik
+4;Alpaca;Species;Asclepias syriaca;;;3; zeer giftig;Zijdeplant (Asclepias) 
+5;Alpaca;Species;Buxus Sempervirens;;;2; loof, zaden en bast bevatten giftige stoffen;Buxus
+6;Alpaca;Species;Chelidonium Majus ;;;2; gehele plant is giftig;Stinkende Gouwe 
+7;Alpaca;Species;Cicuta Virosa ;;;3; gehele plant zeer giftig, slootkanten en drassige gebieden;Waterscheerling 
+8;Alpaca;Species;Colchium Autumnale;;;2; giftig;Herfststijloos
+9;Alpaca;Species;Conium Maculatum;;;3; gehele plant zeer giftig;Gevlekte scheerling
+10;Alpaca;Species;Convallaria majalis;;;2;" zowel stengels, als bloemen en bessen zijn giftig; ook het water waarin eventueel een boeketje heeft gestaan";Lelietjes-der-dalen 
+11;Alpaca;Species;Datura Stramonium;;;3; gehele plant zeer giftig;Doornappel
+12;Alpaca;Species;Digitalis Purpurea ;;;3; zeer giftig;Vingerhoedskruid 
+13;Alpaca;Species;Equisetum arvense;;;2; gehele plant is giftig, vochtige plaatsen in weiden en bermen;Heermoes (of Paardenstaart) 
+14;Alpaca;Species;Equisetum Palustre ;;;2; gehele plant is giftig, in vochtig weiland;Lidrus 
+15;Alpaca;Species;Euphorbia Cyparissias ;;;2; helioscopia, -peplus.  melksap is giftig;Wolfsmelk 
+16;Alpaca;Species;Evonymus Europaeus ;;;2; zaad is giftig;Kardinaalsmuts, wilde 
+17;Alpaca;Species;Hedera Helix ;;;2; het blad en de bessen zijn giftig;Klimop 
+18;Alpaca;Species;Heracleum mantegazzianum;;;3; bevat zeer giftige sappen, die huidirritaties en brandblaren veroorzaken, vooral op vochtige, voedselrijke grond;Reuzenberenklauw (Schermbloemenfamilie) 
+19;Alpaca;Species;Heracleum sphondylium;;;3; bevat zeer giftige sappen, die huidirritaties veroorzaken;Berenklauw
+20;Alpaca;Species;Hyoscyamus niger;;;3; zeer giftig;Bilzekruid
+21;Alpaca;Species;Juniperus Sabina;;;2; takken en blad giftig;Jeneverbes
+22;Alpaca;Species;Kalmia Latifolia ;;;2; giftig;Lepelboom 
+23;Alpaca;Species;Laburnum anagyroides;;;2; vooral het zaad en boomschors zijn giftig;Gouden regen
+24;Alpaca;Species;Ledum Glandulosum ;;;2; gehele plant is giftig;Moerasrozemarijn 
+25;Alpaca;Species;Lonicera Nigra ;;;2; vruchten zijn giftig;Kamperfoelie 
+26;Alpaca;Species;Mercurialis Annua ;;;2; gehele plant waarschijnlijk giftig;Tuinbingelkruid 
+27;Alpaca;Species;Nicotiana tabacum;;;3; zeer giftig;Tabak (Nicotiana) 
+28;Alpaca;Species;Oleander Nerium ;;;3; de gehele plant is zeer giftig;Oleander Nerium 
+29;Alpaca;Species;Pinus Ponderosa ;;;2; deze coniferensoort kan spontaan abortus geven;Pinus Ponderosa 
+30;Alpaca;Species;Prunus Serotina;;;2; giftig;Amerikaanse Vogelkers
+31;Alpaca;Species;Pteridium aquilinum;;;2; gehele plant en m.n. de wortelstok is giftig, droge-zure-voedselarme grond;Adelaarsvaren 
+32;Alpaca;Species;Ranunculus Acris;;;2; gehele plant is giftig;Boterbloem, gewone
+33;Alpaca;Species;Ranunculus Bulbosus ;;;2; gehele plant is giftig, in droog weiland;Knolboterbloem 
+34;Alpaca;Species;Ranunculus Repens;;;2; gehele plant is giftig, in vochtig weiland;Boterbloem, kruipende
+35;Alpaca;Species;Rhamnus Catharticus ;;;2; zwarte bessen zijn giftig;Wegedoorn 
+36;Alpaca;Species;Rheum rhabarbarum;;;1; de stengels zijn eetbaar, maar de bladeren zijn bij inname in grote hoeveelheden giftig (oxaalzuur);Rabarber 
+37;Alpaca;Species;Ricinus Communis ;;;3; zeer giftig;Wonderboom 
+38;Alpaca;Species;Robinia Pseudoacacia ;;;3; zeer giftig;Valse Acacia 
+39;Alpaca;Species;Saponaria Officinalis ;;;2; bloesem is giftig, groeit op zandgrond;Zeepkruid 
+40;Alpaca;Species;Senecio Jacobaea;;;2; giftig voor mens en dier;Jacobskruiskruid
+41;Alpaca;Species;Solanum dulcamara;;;2; zaden en onrijpe bessen zijn giftig, vaak als klimplant in hagen en struiken;Bitterzoet (Nachtschade-achtige) 
+42;Alpaca;Species;Trifolium hybridum;;;2; in zijn geheel giftig, op zure weilanden;Bastaardklaver
+43;Alpaca;Species;Trollius Europaeus ;;;2; giftig;Kogelbloem 
+44;Alpaca;Species;Veratrum Album ;;;2; gehele plant is giftig, in nat weiland;Veratrum Album 
+45;Alpaca;Genus;;Anagallis;;2; gehele plant, zowel rode als blauwe waarschijnlijk giftig;Guichelheil
+46;Alpaca;Genus;;Arctium;;1; niet giftig, maar maakt de wol onbruikbaar voor verwerking!;Klis (Klit) 
+47;Alpaca;Genus;;Clematis ;;3; gehele plant zeer giftig;Clematis 
+48;Alpaca;Genus;;Hydrangea;;3; bevat cyanide, giftig voor mens en dier;Hortensia 
+49;Alpaca;Genus;;Iris;;2; giftig;Iris 
+50;Alpaca;Genus;;Quercus;;1; blad en vrucht geven maag- en darmstoornissen, niet dodelijk;Eik 
+51;Alpaca;Genus;;Rhododendron;;3; zeer giftig;Azalia
+52;Alpaca;Genus;;Solanum;;2; giftig;Nachtschade (Solanum) 
+53;Alpaca;Genus;;Taxus ;;2; takken en blad zeer giftig;Taxus 
+54;Alpaca;Genus;;Thuja ;;3; zeer giftig;Thuja 
+55;Alpaca;Genus;;Zigadenus;;3; zeer giftig;Lelie
