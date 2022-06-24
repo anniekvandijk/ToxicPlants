@@ -27,23 +27,51 @@ namespace Function.Services
         {
             if (_toxicPlantAnimalRepository.Get().Count != 0) return;
 
-            var path = _fileHelper.GetToxicPlantAnimalFileLocation("ToxicPlants.csv");
+            var plants = _fileHelper.GetToxicPlantAnimalFileLocation("ToxicPlants_Plants_v2.0.csv");
+            var reference = _fileHelper.GetToxicPlantAnimalFileLocation("ToxicPlants_Reference_v2.0.csv");
 
-            using var reader = new StreamReader(path);
-            using var csv = new CsvReader(reader, new CultureInfo("nl-NL"));
+            using var plantsReader = new StreamReader(plants);
+            using var plantsCsv = new CsvReader(plantsReader, new CultureInfo("nl-NL"));
 
             try
             {
-                csv.Read();
-                csv.ReadHeader();
+                plantsCsv.Read();
+                plantsCsv.ReadHeader();
                 var lineNumber = 1;
-                while (csv.Read())
+                while (plantsCsv.Read())
                 {
                     lineNumber++;
                     try
                     {
-                        var record = csv.GetRecord<ToxicPlantAnimal>();
+                        var record = plantsCsv.GetRecord<ToxicPlantAnimal>();
                         _toxicPlantAnimalRepository.Add(record);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Adding Toxic Plant record failed at line {lineNumber}");
+                    }
+                }
+            }
+            catch
+            {
+                ProgramError.CreateProgramError(HttpStatusCode.Conflict, "Reading toxicplant data error");
+            }
+
+            using var referenceReader = new StreamReader(reference);
+            using var referenceCsv = new CsvReader(referenceReader, new CultureInfo("nl-NL"));
+
+            try
+            {
+                referenceCsv.Read();
+                referenceCsv.ReadHeader();
+                var lineNumber = 1;
+                while (referenceCsv.Read())
+                {
+                    lineNumber++;
+                    try
+                    {
+                        var record = referenceCsv.GetRecord<InformationReference>();
+                        _toxicPlantAnimalRepository.GetById(record.ToxicPlantId).InformationReferences.Add(record);
                     }
                     catch (Exception ex)
                     {

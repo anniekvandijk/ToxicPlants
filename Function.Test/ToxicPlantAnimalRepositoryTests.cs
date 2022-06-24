@@ -14,14 +14,22 @@ namespace Function.Tests
         {
             //Arrange
             ToxicPlantAnimalRepository repo = new();
+
             ToxicPlantAnimal toxicPlantAnimal = new()
             {
                 Animal = Animal.Alpaca,
                 HowToxic = 1,
                 ScientificClassification = ScientificClassification.Species,
                 Species = "Some strange name",
-                Reference = "An reference",
-                ExtraInformation = "Some extra information"
+                Summary = "Some summary information",
+                InformationReferences = new List<InformationReference>
+                {
+                    new InformationReference
+                    {
+                        Reference = "An reference",
+                        Information = "Some info"
+                    }
+                }
 
             };
 
@@ -34,82 +42,9 @@ namespace Function.Tests
             Assert.AreEqual(Animal.Alpaca, toxicPlantAnimals[0].Animal);
             Assert.AreEqual(1, toxicPlantAnimals[0].HowToxic);
             Assert.AreEqual("Some strange name", toxicPlantAnimals[0].Species);
-            Assert.AreEqual("An reference", toxicPlantAnimals[0].Reference);
-            Assert.AreEqual("Some extra information", toxicPlantAnimals[0].ExtraInformation);
-        }
-
-        [Test]
-        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithNoAnimalGivesError()
-        {
-            //Arrange
-            ToxicPlantAnimalRepository repo = new();
-            ToxicPlantAnimal toxicPlantAnimal = new()
-            {
-                HowToxic = 3,
-                ScientificClassification = ScientificClassification.Species,
-                Species = "Some strange name",
-                Reference = "An reference"
-            };
-
-            // Assert
-            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("Animal can not be empty", ex.Message);
-        }
-
-        [Test]
-        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithDefaultAnimalGivesError()
-        {
-            //Arrange
-            ToxicPlantAnimalRepository repo = new();
-            ToxicPlantAnimal toxicPlantAnimal = new()
-            {
-                Animal = Animal.None,
-                HowToxic = 3,
-                ScientificClassification = ScientificClassification.Species,
-                Species = "Some strange name",
-                Reference = "An reference"
-            };
-
-            // Assert
-            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("Animal can not be empty", ex.Message);
-        }
-
-        [Test]
-        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithNoScientificClassificationGivesError()
-        {
-            //Arrange
-            ToxicPlantAnimalRepository repo = new();
-            ToxicPlantAnimal toxicPlantAnimal = new()
-            {
-                Animal = Animal.Alpaca,
-                HowToxic = 3,
-                Species = "Some strange name",
-                Reference = "An reference"
-            };
-
-            // Assert
-            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("ScientificClassification can not be empty", ex.Message);
-        }
-
-        [Test]
-        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithDefaultScientificClassificationGivesError()
-        {
-            //Arrange
-            ToxicPlantAnimalRepository repo = new();
-            ToxicPlantAnimal toxicPlantAnimal = new()
-            {
-                Animal = Animal.Alpaca,
-                HowToxic = 3,
-                ScientificClassification = ScientificClassification.None,
-                Species = "Some strange name",
-                Reference = "An reference"
-            };
-
-            // Assert
-            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("ScientificClassification can not be empty", ex.Message);
+            Assert.AreEqual("An reference", toxicPlantAnimals[0].InformationReferences[0].Reference);
+            Assert.AreEqual("Some info", toxicPlantAnimals[0].InformationReferences[0].Information);
+            Assert.AreEqual("Some summary information", toxicPlantAnimals[0].Summary);
         }
 
         [Test]
@@ -125,7 +60,7 @@ namespace Function.Tests
                 HowToxic = howToxic,
                 ScientificClassification = ScientificClassification.Species,
                 Species = "Some strange name",
-                Reference = "An reference"
+                Summary = "Some summary information",
             };
 
             // Assert
@@ -143,7 +78,7 @@ namespace Function.Tests
                 Animal = Animal.Alpaca,
                 ScientificClassification = ScientificClassification.Species,
                 Species = "Some strange name",
-                Reference = "An reference"
+                Summary = "Some summary information",
             };
 
             // Assert
@@ -161,7 +96,7 @@ namespace Function.Tests
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
                 ScientificClassification = ScientificClassification.Species,
-                Reference = "An reference"
+                Summary = "Some summary information",
             };
 
             // Assert
@@ -183,7 +118,7 @@ namespace Function.Tests
                 HowToxic = 3,
                 ScientificClassification = ScientificClassification.Species,
                 Species = species,
-                Reference = "An reference"
+                Summary = "Some summary information",
             };
 
             // Assert
@@ -201,7 +136,7 @@ namespace Function.Tests
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
                 ScientificClassification = ScientificClassification.Genus,
-                Reference = "An reference"
+                Summary = "Some summary information",
             };
 
             // Assert
@@ -223,7 +158,7 @@ namespace Function.Tests
                 HowToxic = 3,
                 ScientificClassification = ScientificClassification.Genus,
                 Genus = genus,
-                Reference = "An reference"
+                Summary = "Some summary information",
             };
 
             // Assert
@@ -241,7 +176,7 @@ namespace Function.Tests
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
                 ScientificClassification = ScientificClassification.Family,
-                Reference = "An reference"
+                Summary = "Some summary information",
             };
 
             // Assert
@@ -263,52 +198,12 @@ namespace Function.Tests
                 HowToxic = 3,
                 ScientificClassification = ScientificClassification.Family,
                 Family = family,
-                Reference = "An reference"
+                Summary = "Some summary information",
             };
 
             // Assert
             ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
             Assert.AreEqual("Family can not be empty", ex.Message);
-        }
-
-        [Test]
-        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithoutReferenceGivesProgramError()
-        {
-            //Arrange
-            ToxicPlantAnimalRepository repo = new();
-            ToxicPlantAnimal toxicPlantAnimal = new()
-            {
-                Animal = Animal.Alpaca,
-                HowToxic = 3,
-                ScientificClassification = ScientificClassification.Species,
-                Species = "Some strange name",
-            };
-
-            // Assert
-            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("Reference can not be empty", ex.Message);
-        }
-
-        [Test]
-        [TestCase(null)]
-        [TestCase("")]
-        [TestCase("  ")]
-        public void ToxicPlantAnimalRepository_Add_ToxicPlantWithInvalidReferenceGivesProgramError(string reference)
-        {
-            //Arrange
-            ToxicPlantAnimalRepository repo = new();
-            ToxicPlantAnimal toxicPlantAnimal = new()
-            {
-                Animal = Animal.Alpaca,
-                HowToxic = 3,
-                ScientificClassification = ScientificClassification.Species,
-                Species = "Some strange name",
-                Reference = reference
-            };
-
-            // Assert
-            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(toxicPlantAnimal));
-            Assert.AreEqual("Reference can not be empty", ex.Message);
         }
 
         [Test]
@@ -324,7 +219,7 @@ namespace Function.Tests
                     Animal = Animal.Alpaca,
                     HowToxic = 3,
                     ScientificClassification = ScientificClassification.Genus,
-                    Reference = "Alpacawereld"
+                    Summary = "Some summary information"
                 },
                 new()
                 {
@@ -332,7 +227,7 @@ namespace Function.Tests
                     Animal = Animal.Alpaca,
                     HowToxic = 1,
                     ScientificClassification = ScientificClassification.Species,
-                    Reference = "Alpacawereld"
+                    Summary = "Some summary information"
                 },
                 new()
                 {
@@ -340,7 +235,7 @@ namespace Function.Tests
                     Animal = Animal.Horse,
                     HowToxic = 2,
                     ScientificClassification = ScientificClassification.Species,
-                    Reference = "Horseworld"
+                    Summary = "Some summary information"
                 }
             };
             foreach (var toxicPlantAnimal in toxicPlantAnimals)
@@ -368,7 +263,7 @@ namespace Function.Tests
                 Animal = Animal.Alpaca,
                 HowToxic = 2,
                 ScientificClassification = ScientificClassification.Species,
-                Reference = "Some reference"
+                Summary = "Some summary information"
             };
             repo.Add(toxicPlantAnimal);
 
@@ -398,7 +293,7 @@ namespace Function.Tests
                 Animal = Animal.Alpaca,
                 HowToxic = 2,
                 ScientificClassification = ScientificClassification.Genus,
-                Reference = "Some reference"
+                Summary = "Some summary information"
             };
             repo.Add(toxicPlantAnimal);
 
@@ -428,7 +323,7 @@ namespace Function.Tests
                 Animal = Animal.Alpaca,
                 HowToxic = 2,
                 ScientificClassification = ScientificClassification.Family,
-                Reference = "Some reference"
+                Summary = "Some summary information"
             };
             repo.Add(toxicPlantAnimal);
 
@@ -458,7 +353,7 @@ namespace Function.Tests
                 Animal = Animal.Alpaca,
                 HowToxic = 3,
                 ScientificClassification = ScientificClassification.Genus,
-                Reference = "Alpacawereld"
+                Summary = "Some summary information"
             };
             repo.Add(toxicPlantAnimal);
 

@@ -53,7 +53,7 @@ namespace Function
                     */
                     s.AddControllers().AddJsonOptions(x =>
                     {
-                        x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                        x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(allowIntegerValues: false));
                         x.JsonSerializerOptions.IgnoreNullValues = true;
                     });
 

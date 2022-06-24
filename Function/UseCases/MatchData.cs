@@ -53,7 +53,6 @@ namespace Function.UseCases
                                 Family = plant.Family,
                                 PlantDetail = plant.PlantDetail,
                                 HowToxic = 0,
-                                ExtraInformation = "There is no information that this plant is toxic for this animal"
                             };
                             plantResponseList.Add(nonToxicPlant);
                             break;

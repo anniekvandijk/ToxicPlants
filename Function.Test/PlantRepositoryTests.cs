@@ -202,44 +202,5 @@ namespace Function.Tests
             ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
             Assert.AreEqual("Family can not be empty", ex.Message);
         }
-
-        [Test]
-        public void PlantRepository_Add_PlantWithoutPlantDetailGivesProgramError()
-        {
-            //Arrange
-            var loggerMock = new Mock<ILogger<PlantRepository>>();
-            PlantRepository repo = new(loggerMock.Object);
-
-            Plant plant = new()
-            {
-                Species = "Some strange name",
-                Genus = "Some",
-                Family = "Family",
-            };
-
-            // Assert
-            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
-            Assert.AreEqual("PlantDetail can not be empty", ex.Message);
-        }
-
-        [Test]
-        public void PlantRepository_Add_PlantWithEmptyPlantDetailGivesProgramError()
-        {
-            //Arrange
-            var loggerMock = new Mock<ILogger<PlantRepository>>();
-            PlantRepository repo = new(loggerMock.Object);
-
-            Plant plant = new()
-            {
-                Species = "Some strange name",
-                Genus = "Some",
-                Family = "Family",
-                PlantDetail = new JsonElement()
-            };
-
-            // Assert
-            ProgramError ex = Assert.Throws<ProgramError>(() => repo.Add(plant));
-            Assert.AreEqual("PlantDetail can not be empty", ex.Message);
-        }
     }
 }

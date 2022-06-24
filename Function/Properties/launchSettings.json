@@ -1,12 +1,14 @@
 {
   "profiles": {
     "Function": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "commandLineArgs": "host start --useHttps --useDefaultCert"
     },
     "FunctionFakePlantCall": {
       "commandName": "Project",
+      "commandLineArgs": "host start --useHttps --useDefaultCert",
       "environmentVariables": {
-        "MOCK_PLANTCALL": true
+        "MOCK_PLANTCALL": "true"
       }
     }
   }
