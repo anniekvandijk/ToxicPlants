@@ -1,10 +1,10 @@
 ﻿using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
-using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Net;
+using System.Text.Json;
 
 namespace Function.Repository
 {
@@ -28,8 +28,6 @@ namespace Function.Repository
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Genus can not be empty");
             else if (string.IsNullOrEmpty(plant.Family?.Trim()))
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Family can not be empty");
-            else if (plant.PlantDetail.IsNullOrDefault())
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"PlantDetail can not be empty");
 
             var plantsInRepo = Get();
             if (!plantsInRepo.Exists(x => x.Species == plant.Species))

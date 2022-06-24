@@ -2,9 +2,9 @@
 {
     internal enum ScientificClassification
     {
-        None,
-        Species,
-        Genus,
-        Family
+        None = 0,
+        Species = 1,
+        Genus = 2,
+        Family =3
     }
 }

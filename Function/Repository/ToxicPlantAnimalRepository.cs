@@ -1,7 +1,6 @@
 ﻿using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
-using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -19,11 +18,7 @@ namespace Function.Repository
 
             plantAnimal.Summary?.Trim();
 
-            if (plantAnimal.Animal.IsNullOrDefault())
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Animal can not be empty");
-            else if (plantAnimal.ScientificClassification.IsNullOrDefault())
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"ScientificClassification can not be empty");
-            else if (plantAnimal.ScientificClassification == ScientificClassification.Species && string.IsNullOrEmpty(plantAnimal.Species?.Trim()))
+            if (plantAnimal.ScientificClassification == ScientificClassification.Species && string.IsNullOrEmpty(plantAnimal.Species?.Trim()))
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Species can not be empty");
             else if (plantAnimal.ScientificClassification == ScientificClassification.Genus && string.IsNullOrEmpty(plantAnimal.Genus?.Trim()))
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Genus can not be empty");

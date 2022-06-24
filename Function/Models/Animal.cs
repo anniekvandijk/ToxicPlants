@@ -2,8 +2,8 @@
 {
     internal enum Animal
     {
-        None,
-        Alpaca,
-        Horse
+        None = 0,
+        Alpaca = 1,
+        Horse = 2
     }
 }
