@@ -40,7 +40,7 @@ namespace Function.UseCases
                         case 1:
                             {
                                 var toxicPlant = toxicPlantList.First();
-                                toxicPlant.PlantDetail = plant.PlantDetail;
+                                toxicPlant.Plant = plant;
                                 plantResponseList.Add(toxicPlant);
                                 break;
                             }
@@ -48,10 +48,7 @@ namespace Function.UseCases
                             var nonToxicPlant = new ToxicPlantAnimal
                             {
                                 Animal = animal,
-                                Species = plant.Species,
-                                Genus = plant.Genus,
-                                Family = plant.Family,
-                                PlantDetail = plant.PlantDetail,
+                                Plant = plant,
                                 HowToxic = 0,
                             };
                             plantResponseList.Add(nonToxicPlant);

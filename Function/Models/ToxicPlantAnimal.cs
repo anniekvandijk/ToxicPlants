@@ -14,7 +14,7 @@ namespace Function.Models
         public int HowToxic { get; set; }
         public string Summary { get; set; }
         public List<InformationReference> InformationReferences { get; set; } = new List<InformationReference>();
-        public JsonElement PlantDetail { get; set; }
+        public Plant Plant { get; set; }
 
     }
 
