@@ -42,6 +42,7 @@ namespace Function.Services
 
         private void AddPlantToRepository(Result result)
         {
+            
             var urls = new List<string>();
             foreach (var image in result.images)
             {
@@ -49,17 +50,25 @@ namespace Function.Services
                 urls.Add(url);
             }
 
-            var plant = new Plant
+            try
             {
-                Species = result.species.scientificNameWithoutAuthor,
-                Genus = result.species.genus.scientificNameWithoutAuthor,
-                Family = result.species.family.scientificNameWithoutAuthor,
-                ScientificName = result.species.scientificName,
-                CommonNames = result.species.commonNames,
-                Score = result.score,
-                ImagesUrls = urls,
-            };
-            _plantRepository.Add(plant);
+                var plant = new Plant
+                {
+                    Species = result.species.scientificNameWithoutAuthor,
+                    Genus = result.species.genus.scientificNameWithoutAuthor,
+                    Family = result.species.family.scientificNameWithoutAuthor,
+                    ScientificName = result.species.scientificName,
+                    CommonNames = result.species.commonNames,
+                    Score = result.score,
+                    ImagesUrls = urls,
+                };
+                _plantRepository.Add(plant);
+            }
+            catch (Exception ex)
+            {
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "Error adding plants from plantrequest",
+                    ex);
+            }
         }
 
         private async Task<PlantNet> GetPlantRequestResults(RequestData data)

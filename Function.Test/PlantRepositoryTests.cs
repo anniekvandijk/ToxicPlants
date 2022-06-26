@@ -30,7 +30,6 @@ namespace Function.Tests
                 Species = "Some strange name",
                 Genus = "Some",
                 Family = "Family",
-                PlantDetail = CreateJsonElement()
             };
 
             // act
@@ -54,7 +53,6 @@ namespace Function.Tests
                 Species = "Some strange name",
                 Genus = "Some",
                 Family = "Family",
-                PlantDetail = CreateJsonElement()
             };
 
             Plant plant2 = new()
@@ -62,7 +60,6 @@ namespace Function.Tests
                 Species = "Some strange name",
                 Genus = "Some",
                 Family = "Family",
-                PlantDetail = CreateJsonElement()
             };
 
             // act
@@ -88,7 +85,6 @@ namespace Function.Tests
             {
                 Genus = "Some",
                 Family = "Family",
-                PlantDetail = CreateJsonElement()
             };
 
             // Assert
@@ -111,7 +107,6 @@ namespace Function.Tests
                 Species = species,
                 Genus = "Some",
                 Family = "Family",
-                PlantDetail = CreateJsonElement()
             };
 
             // Assert
@@ -130,7 +125,6 @@ namespace Function.Tests
             {
                 Species = "Some strange name",
                 Family = "Family",
-                PlantDetail = CreateJsonElement()
             };
 
             // Assert
@@ -153,7 +147,6 @@ namespace Function.Tests
                 Species = "Some strange name",
                 Genus = genus,
                 Family = "Family",
-                PlantDetail = CreateJsonElement()
             };
 
             // Assert
@@ -172,7 +165,6 @@ namespace Function.Tests
             {
                 Species = "Some strange name",
                 Genus = "Some",
-                PlantDetail = CreateJsonElement()
             };
 
             // Assert
@@ -195,7 +187,6 @@ namespace Function.Tests
                 Species = "Some strange name",
                 Genus = "Some",
                 Family = family,
-                PlantDetail = CreateJsonElement()
             };
 
             // Assert
