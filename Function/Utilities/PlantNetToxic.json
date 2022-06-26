@@ -2,20 +2,22 @@
   "query": {
     "project": "all",
     "images": [
-      "8042b972c930969bd7704954c358d6b4"
+      "bde5667f65af020ae0899acbf6a777b7"
     ],
     "organs": [
       "flower"
-    ]
+    ],
+    "includeRelatedImages": true
   },
   "language": "nl",
   "preferedReferential": "the-plant-list",
+  "bestMatch": "Rhododendron mucronulatum Turcz.",
   "results": [
     {
-      "score": 0.1566,
+      "score": 0.32707,
       "species": {
-        "scientificNameWithoutAuthor": "Rhododendron ciliatum",
-        "scientificNameAuthorship": "Hook. f.",
+        "scientificNameWithoutAuthor": "Rhododendron mucronulatum",
+        "scientificNameAuthorship": "Turcz.",
         "genus": {
           "scientificNameWithoutAuthor": "Rhododendron",
           "scientificNameAuthorship": "",
@@ -27,17 +29,49 @@
           "scientificName": "Ericaceae"
         },
         "commonNames": [],
-        "scientificName": "Rhododendron ciliatum Hook. f."
+        "scientificName": "Rhododendron mucronulatum Turcz."
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624541226728,
+            "string": "24 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/81c709a1e20ffd2d25c11b65edee644efd1625e5",
+            "m": "https://bs.plantnet.org/image/m/81c709a1e20ffd2d25c11b65edee644efd1625e5",
+            "s": "https://bs.plantnet.org/image/s/81c709a1e20ffd2d25c11b65edee644efd1625e5"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624541291123,
+            "string": "24 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/c6ca7e13bd7a3b698eb50b4d10e0de6bf871b8e5",
+            "m": "https://bs.plantnet.org/image/m/c6ca7e13bd7a3b698eb50b4d10e0de6bf871b8e5",
+            "s": "https://bs.plantnet.org/image/s/c6ca7e13bd7a3b698eb50b4d10e0de6bf871b8e5"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        }
+      ],
       "gbif": {
-        "id": "4166478"
+        "id": "7328287"
       }
     },
     {
-      "score": 0.1271,
+      "score": 0.31414,
       "species": {
-        "scientificNameWithoutAuthor": "Rhododendron campanulatum",
-        "scientificNameAuthorship": "D. Don",
+        "scientificNameWithoutAuthor": "Rhododendron minus",
+        "scientificNameAuthorship": "Michx.",
         "genus": {
           "scientificNameWithoutAuthor": "Rhododendron",
           "scientificNameAuthorship": "",
@@ -49,17 +83,79 @@
           "scientificName": "Ericaceae"
         },
         "commonNames": [],
-        "scientificName": "Rhododendron campanulatum D. Don"
+        "scientificName": "Rhododendron minus Michx."
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "hannah sheehy",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1621190709118,
+            "string": "16 mei 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/6b10e190fd421ed4c16df6c76d443c378e26687c",
+            "m": "https://bs.plantnet.org/image/m/6b10e190fd421ed4c16df6c76d443c378e26687c",
+            "s": "https://bs.plantnet.org/image/s/6b10e190fd421ed4c16df6c76d443c378e26687c"
+          },
+          "citation": "hannah sheehy / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "habit",
+          "author": "Philippe de Spoelberch",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1651319985419,
+            "string": "30 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/347499c1546b11b71871876f93a1ec154096596d",
+            "m": "https://bs.plantnet.org/image/m/347499c1546b11b71871876f93a1ec154096596d",
+            "s": "https://bs.plantnet.org/image/s/347499c1546b11b71871876f93a1ec154096596d"
+          },
+          "citation": "Philippe de Spoelberch / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Philippe de Spoelberch",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1651320028313,
+            "string": "30 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/50b62997de0a73aefd7df214cedc9e834d6746dd",
+            "m": "https://bs.plantnet.org/image/m/50b62997de0a73aefd7df214cedc9e834d6746dd",
+            "s": "https://bs.plantnet.org/image/s/50b62997de0a73aefd7df214cedc9e834d6746dd"
+          },
+          "citation": "Philippe de Spoelberch / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Philippe de Spoelberch",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1651319985419,
+            "string": "30 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/9ffaacbb7a215c42d616e790af76d0eac541dadf",
+            "m": "https://bs.plantnet.org/image/m/9ffaacbb7a215c42d616e790af76d0eac541dadf",
+            "s": "https://bs.plantnet.org/image/s/9ffaacbb7a215c42d616e790af76d0eac541dadf"
+          },
+          "citation": "Philippe de Spoelberch / Pl@ntNet, cc-by-sa"
+        }
+      ],
       "gbif": {
-        "id": "7327918"
+        "id": "2883076"
       }
     },
     {
-      "score": 0.07741,
+      "score": 0.10179,
       "species": {
-        "scientificNameWithoutAuthor": "Rhododendron zaleucum",
-        "scientificNameAuthorship": "Balf. f. & W.W. Sm.",
+        "scientificNameWithoutAuthor": "Rhododendron lapponicum",
+        "scientificNameAuthorship": "(L.) Wahlenb.",
         "genus": {
           "scientificNameWithoutAuthor": "Rhododendron",
           "scientificNameAuthorship": "",
@@ -71,17 +167,109 @@
           "scientificName": "Ericaceae"
         },
         "commonNames": [],
-        "scientificName": "Rhododendron zaleucum Balf. f. & W.W. Sm."
+        "scientificName": "Rhododendron lapponicum (L.) Wahlenb."
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "shelly posey",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1636748073185,
+            "string": "12 november 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/3211cd615ae74cd2e8f320b652f1937a0e18a2cd",
+            "m": "https://bs.plantnet.org/image/m/3211cd615ae74cd2e8f320b652f1937a0e18a2cd",
+            "s": "https://bs.plantnet.org/image/s/3211cd615ae74cd2e8f320b652f1937a0e18a2cd"
+          },
+          "citation": "shelly posey / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "leaf",
+          "author": "shelly posey",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1636748073185,
+            "string": "12 november 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/6eabee9112f14efa08aa1c7c27cc208f41696de6",
+            "m": "https://bs.plantnet.org/image/m/6eabee9112f14efa08aa1c7c27cc208f41696de6",
+            "s": "https://bs.plantnet.org/image/s/6eabee9112f14efa08aa1c7c27cc208f41696de6"
+          },
+          "citation": "shelly posey / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "K O",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1616779303471,
+            "string": "26 maart 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/6ac0dd1e5019c5d6b119b30860551b4c66039ea2",
+            "m": "https://bs.plantnet.org/image/m/6ac0dd1e5019c5d6b119b30860551b4c66039ea2",
+            "s": "https://bs.plantnet.org/image/s/6ac0dd1e5019c5d6b119b30860551b4c66039ea2"
+          },
+          "citation": "K O / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "leaf",
+          "author": "shelly posey",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1636748073185,
+            "string": "12 november 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/aaebea2c5f5ddcf91718c028ad289a51f423a1db",
+            "m": "https://bs.plantnet.org/image/m/aaebea2c5f5ddcf91718c028ad289a51f423a1db",
+            "s": "https://bs.plantnet.org/image/s/aaebea2c5f5ddcf91718c028ad289a51f423a1db"
+          },
+          "citation": "shelly posey / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Bianca Legault",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1590775768523,
+            "string": "29 mei 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/f7da5f5056d31e27d9d66fafa4f4b9658e0cfe59",
+            "m": "https://bs.plantnet.org/image/m/f7da5f5056d31e27d9d66fafa4f4b9658e0cfe59",
+            "s": "https://bs.plantnet.org/image/s/f7da5f5056d31e27d9d66fafa4f4b9658e0cfe59"
+          },
+          "citation": "Bianca Legault / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Matthew DreamsOfBunnies",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1649943164691,
+            "string": "14 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/589c7e439b0fb134956e223f48228e84e62cf821",
+            "m": "https://bs.plantnet.org/image/m/589c7e439b0fb134956e223f48228e84e62cf821",
+            "s": "https://bs.plantnet.org/image/s/589c7e439b0fb134956e223f48228e84e62cf821"
+          },
+          "citation": "Matthew DreamsOfBunnies / Pl@ntNet, cc-by-sa"
+        }
+      ],
       "gbif": {
-        "id": "7328714"
+        "id": "2883075"
       }
     },
     {
-      "score": 0.05004,
+      "score": 0.03573,
       "species": {
-        "scientificNameWithoutAuthor": "Rhododendron wallichii",
-        "scientificNameAuthorship": "Hook. f.",
+        "scientificNameWithoutAuthor": "Rhododendron rubropilosum",
+        "scientificNameAuthorship": "Hayata",
         "genus": {
           "scientificNameWithoutAuthor": "Rhododendron",
           "scientificNameAuthorship": "",
@@ -93,17 +281,49 @@
           "scientificName": "Ericaceae"
         },
         "commonNames": [],
-        "scientificName": "Rhododendron wallichii Hook. f."
+        "scientificName": "Rhododendron rubropilosum Hayata"
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Paula Pardo",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1638159121137,
+            "string": "29 november 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/d4517d16700e7e09bb596649c13cd729642c8271",
+            "m": "https://bs.plantnet.org/image/m/d4517d16700e7e09bb596649c13cd729642c8271",
+            "s": "https://bs.plantnet.org/image/s/d4517d16700e7e09bb596649c13cd729642c8271"
+          },
+          "citation": "Paula Pardo / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Fiona Inches",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982689,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/f0e337de0d428b3a1cb7c42cb12ebf89172c8791",
+            "m": "https://bs.plantnet.org/image/m/f0e337de0d428b3a1cb7c42cb12ebf89172c8791",
+            "s": "https://bs.plantnet.org/image/s/f0e337de0d428b3a1cb7c42cb12ebf89172c8791"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Fiona Inches / Pl@ntNet, cc-by-nc"
+        }
+      ],
       "gbif": {
-        "id": "4936724"
+        "id": "7327783"
       }
     },
     {
-      "score": 0.04448,
+      "score": 0.03391,
       "species": {
-        "scientificNameWithoutAuthor": "Rhododendron lindleyi",
-        "scientificNameAuthorship": "T. Moore",
+        "scientificNameWithoutAuthor": "Rhododendron dauricum",
+        "scientificNameAuthorship": "L.",
         "genus": {
           "scientificNameWithoutAuthor": "Rhododendron",
           "scientificNameAuthorship": "",
@@ -115,17 +335,94 @@
           "scientificName": "Ericaceae"
         },
         "commonNames": [],
-        "scientificName": "Rhododendron lindleyi T. Moore"
+        "scientificName": "Rhododendron dauricum L."
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624039819028,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/0dde7354e9dea5c280deaa134e7157aa5c0ce213",
+            "m": "https://bs.plantnet.org/image/m/0dde7354e9dea5c280deaa134e7157aa5c0ce213",
+            "s": "https://bs.plantnet.org/image/s/0dde7354e9dea5c280deaa134e7157aa5c0ce213"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Яна",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1649527697021,
+            "string": "9 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/452937455dd58071158e1d94cbf0f954a874a5a2",
+            "m": "https://bs.plantnet.org/image/m/452937455dd58071158e1d94cbf0f954a874a5a2",
+            "s": "https://bs.plantnet.org/image/s/452937455dd58071158e1d94cbf0f954a874a5a2"
+          },
+          "citation": "Яна / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "habit",
+          "author": "huy HO",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1648023265677,
+            "string": "23 maart 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/f0e17b8dc02b5c18798e2d8966d69674d6230030",
+            "m": "https://bs.plantnet.org/image/m/f0e17b8dc02b5c18798e2d8966d69674d6230030",
+            "s": "https://bs.plantnet.org/image/s/f0e17b8dc02b5c18798e2d8966d69674d6230030"
+          },
+          "citation": "huy HO / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "huy HO",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1648023265677,
+            "string": "23 maart 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/0066a80c23e2b0e9c619aee308d8de3221e0baab",
+            "m": "https://bs.plantnet.org/image/m/0066a80c23e2b0e9c619aee308d8de3221e0baab",
+            "s": "https://bs.plantnet.org/image/s/0066a80c23e2b0e9c619aee308d8de3221e0baab"
+          },
+          "citation": "huy HO / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624039819028,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/b5358a22d6145957a1f539e6736bc9236eca773a",
+            "m": "https://bs.plantnet.org/image/m/b5358a22d6145957a1f539e6736bc9236eca773a",
+            "s": "https://bs.plantnet.org/image/s/b5358a22d6145957a1f539e6736bc9236eca773a"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        }
+      ],
       "gbif": {
-        "id": "4171546"
+        "id": "7327670"
       }
     },
     {
-      "score": 0.02574,
+      "score": 0.02427,
       "species": {
-        "scientificNameWithoutAuthor": "Rhododendron scopulorum",
-        "scientificNameAuthorship": "Hutch.",
+        "scientificNameWithoutAuthor": "Rhododendron catawbiense",
+        "scientificNameAuthorship": "Michx.",
         "genus": {
           "scientificNameWithoutAuthor": "Rhododendron",
           "scientificNameAuthorship": "",
@@ -137,104 +434,108 @@
           "scientificName": "Ericaceae"
         },
         "commonNames": [],
-        "scientificName": "Rhododendron scopulorum Hutch."
+        "scientificName": "Rhododendron catawbiense Michx."
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "K O",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1617116211205,
+            "string": "30 maart 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/d9ae07da913a433b76fa641c941c9af78109abf2",
+            "m": "https://bs.plantnet.org/image/m/d9ae07da913a433b76fa641c941c9af78109abf2",
+            "s": "https://bs.plantnet.org/image/s/d9ae07da913a433b76fa641c941c9af78109abf2"
+          },
+          "citation": "K O / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Joe Cregan",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1557247440889,
+            "string": "7 mei 2019"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/06064ac0f44bd6d2a0e52e9e1cbb6fe13d706ad8",
+            "m": "https://bs.plantnet.org/image/m/06064ac0f44bd6d2a0e52e9e1cbb6fe13d706ad8",
+            "s": "https://bs.plantnet.org/image/s/06064ac0f44bd6d2a0e52e9e1cbb6fe13d706ad8"
+          },
+          "citation": "Joe Cregan / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "j lay",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1618680627707,
+            "string": "17 april 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/3bfe86f8876c4133f85c8381d259123edbf1f261",
+            "m": "https://bs.plantnet.org/image/m/3bfe86f8876c4133f85c8381d259123edbf1f261",
+            "s": "https://bs.plantnet.org/image/s/3bfe86f8876c4133f85c8381d259123edbf1f261"
+          },
+          "citation": "j lay / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "msfabulousnyc",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1619476576926,
+            "string": "26 april 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/1876b5c8da52450d13caac16a1cc1b7a1abfe6eb",
+            "m": "https://bs.plantnet.org/image/m/1876b5c8da52450d13caac16a1cc1b7a1abfe6eb",
+            "s": "https://bs.plantnet.org/image/s/1876b5c8da52450d13caac16a1cc1b7a1abfe6eb"
+          },
+          "citation": "msfabulousnyc / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Tela Botanica − _",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1496807265000,
+            "string": "7 juni 2017"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/9f6b30c73a0bcab6a267bf7ee7314f369417c682",
+            "m": "https://bs.plantnet.org/image/m/9f6b30c73a0bcab6a267bf7ee7314f369417c682",
+            "s": "https://bs.plantnet.org/image/s/9f6b30c73a0bcab6a267bf7ee7314f369417c682"
+          },
+          "citation": "Tela Botanica − _ / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Allison Allison",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1586116496047,
+            "string": "5 april 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e269c6336de66fdda93c4e3014602662a74a3b2b",
+            "m": "https://bs.plantnet.org/image/m/e269c6336de66fdda93c4e3014602662a74a3b2b",
+            "s": "https://bs.plantnet.org/image/s/e269c6336de66fdda93c4e3014602662a74a3b2b"
+          },
+          "citation": "Allison Allison / Pl@ntNet, cc-by-sa"
+        }
+      ],
       "gbif": {
-        "id": "4165514"
+        "id": "2883047"
       }
     },
     {
-      "score": 0.01887,
+      "score": 0.02272,
       "species": {
-        "scientificNameWithoutAuthor": "Rhododendron cinnabarinum",
-        "scientificNameAuthorship": "Hook. f.",
-        "genus": {
-          "scientificNameWithoutAuthor": "Rhododendron",
-          "scientificNameAuthorship": "",
-          "scientificName": "Rhododendron"
-        },
-        "family": {
-          "scientificNameWithoutAuthor": "Ericaceae",
-          "scientificNameAuthorship": "",
-          "scientificName": "Ericaceae"
-        },
-        "commonNames": [],
-        "scientificName": "Rhododendron cinnabarinum Hook. f."
-      },
-      "gbif": {
-        "id": "7327797"
-      }
-    },
-    {
-      "score": 0.01681,
-      "species": {
-        "scientificNameWithoutAuthor": "Rhododendron taggianum",
-        "scientificNameAuthorship": "Hutch.",
-        "genus": {
-          "scientificNameWithoutAuthor": "Rhododendron",
-          "scientificNameAuthorship": "",
-          "scientificName": "Rhododendron"
-        },
-        "family": {
-          "scientificNameWithoutAuthor": "Ericaceae",
-          "scientificNameAuthorship": "",
-          "scientificName": "Ericaceae"
-        },
-        "commonNames": [],
-        "scientificName": "Rhododendron taggianum Hutch."
-      },
-      "gbif": {
-        "id": "4164232"
-      }
-    },
-    {
-      "score": 0.01506,
-      "species": {
-        "scientificNameWithoutAuthor": "Rhododendron maddenii",
-        "scientificNameAuthorship": "Hook. f.",
-        "genus": {
-          "scientificNameWithoutAuthor": "Rhododendron",
-          "scientificNameAuthorship": "",
-          "scientificName": "Rhododendron"
-        },
-        "family": {
-          "scientificNameWithoutAuthor": "Ericaceae",
-          "scientificNameAuthorship": "",
-          "scientificName": "Ericaceae"
-        },
-        "commonNames": [],
-        "scientificName": "Rhododendron maddenii Hook. f."
-      },
-      "gbif": {
-        "id": "7328418"
-      }
-    },
-    {
-      "score": 0.01381,
-      "species": {
-        "scientificNameWithoutAuthor": "Rhododendron adenogynum",
-        "scientificNameAuthorship": "Diels",
-        "genus": {
-          "scientificNameWithoutAuthor": "Rhododendron",
-          "scientificNameAuthorship": "",
-          "scientificName": "Rhododendron"
-        },
-        "family": {
-          "scientificNameWithoutAuthor": "Ericaceae",
-          "scientificNameAuthorship": "",
-          "scientificName": "Ericaceae"
-        },
-        "commonNames": [],
-        "scientificName": "Rhododendron adenogynum Diels"
-      },
-      "gbif": {
-        "id": "4169509"
-      }
-    },
-    {
-      "score": 0.01299,
-      "species": {
-        "scientificNameWithoutAuthor": "Rhododendron vernicosum",
+        "scientificNameWithoutAuthor": "Rhododendron rubiginosum",
         "scientificNameAuthorship": "Franch.",
         "genus": {
           "scientificNameWithoutAuthor": "Rhododendron",
@@ -247,14 +548,169 @@
           "scientificName": "Ericaceae"
         },
         "commonNames": [],
-        "scientificName": "Rhododendron vernicosum Franch."
+        "scientificName": "Rhododendron rubiginosum Franch."
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1623945411810,
+            "string": "17 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/b4f9bcb876aaf5da141ec124fcd36223835623b6",
+            "m": "https://bs.plantnet.org/image/m/b4f9bcb876aaf5da141ec124fcd36223835623b6",
+            "s": "https://bs.plantnet.org/image/s/b4f9bcb876aaf5da141ec124fcd36223835623b6"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1623945356304,
+            "string": "17 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/c61dd827126f37baaab0c9568a319ffad531d84a",
+            "m": "https://bs.plantnet.org/image/m/c61dd827126f37baaab0c9568a319ffad531d84a",
+            "s": "https://bs.plantnet.org/image/s/c61dd827126f37baaab0c9568a319ffad531d84a"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        }
+      ],
       "gbif": {
-        "id": "4174595"
+        "id": "7327799"
       }
     },
     {
-      "score": 0.01253,
+      "score": 0.01952,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron davidsonianum",
+        "scientificNameAuthorship": "Rehder & E.H. Wilson",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron davidsonianum Rehder & E.H. Wilson"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1621640625593,
+            "string": "21 mei 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/ad2b72aee86495378840d08630df22f4d2767d26",
+            "m": "https://bs.plantnet.org/image/m/ad2b72aee86495378840d08630df22f4d2767d26",
+            "s": "https://bs.plantnet.org/image/s/ad2b72aee86495378840d08630df22f4d2767d26"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Philippe de Spoelberch",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1617888087902,
+            "string": "8 april 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/accd3c01221c29da49e56b372d304e874dda38ca",
+            "m": "https://bs.plantnet.org/image/m/accd3c01221c29da49e56b372d304e874dda38ca",
+            "s": "https://bs.plantnet.org/image/s/accd3c01221c29da49e56b372d304e874dda38ca"
+          },
+          "citation": "Philippe de Spoelberch / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "4165276"
+      }
+    },
+    {
+      "score": 0.01267,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron ovatum",
+        "scientificNameAuthorship": "(Lindl.) Planch. ex Maxim.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron ovatum (Lindl.) Planch. ex Maxim."
+      },
+      "images": [
+        {
+          "organ": "habit",
+          "author": "Royal Botanic Garden Edinburgh - Hanoi, Logan, Kew, Glasgow, Cambridge Expedition to Vietnam (LGCKH)",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982688,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/339d7ba9e78997a50430bdb8ea2569623a8bf7c8",
+            "m": "https://bs.plantnet.org/image/m/339d7ba9e78997a50430bdb8ea2569623a8bf7c8",
+            "s": "https://bs.plantnet.org/image/s/339d7ba9e78997a50430bdb8ea2569623a8bf7c8"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Hanoi, Logan, Kew, Glasgow, Cambridge Expedition to Vietnam (LGCKH) / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "leaf",
+          "author": "Royal Botanic Garden Edinburgh - Hanoi, Logan, Kew, Glasgow, Cambridge Expedition to Vietnam (LGCKH)",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982688,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/6e60a0515e389d99cd5f40009d68b4817cd673d9",
+            "m": "https://bs.plantnet.org/image/m/6e60a0515e389d99cd5f40009d68b4817cd673d9",
+            "s": "https://bs.plantnet.org/image/s/6e60a0515e389d99cd5f40009d68b4817cd673d9"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Hanoi, Logan, Kew, Glasgow, Cambridge Expedition to Vietnam (LGCKH) / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "leaf",
+          "author": "Royal Botanic Garden Edinburgh - Hanoi, Logan, Kew, Glasgow, Cambridge Expedition to Vietnam (LGCKH)",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982688,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/829fd3953409e9384b610c74ca1e389a5747e62e",
+            "m": "https://bs.plantnet.org/image/m/829fd3953409e9384b610c74ca1e389a5747e62e",
+            "s": "https://bs.plantnet.org/image/s/829fd3953409e9384b610c74ca1e389a5747e62e"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Hanoi, Logan, Kew, Glasgow, Cambridge Expedition to Vietnam (LGCKH) / Pl@ntNet, cc-by-nc"
+        }
+      ],
+      "gbif": {
+        "id": "7328085"
+      }
+    },
+    {
+      "score": 0.00729,
       "species": {
         "scientificNameWithoutAuthor": "Rhododendron oreotrephes",
         "scientificNameAuthorship": "W.W. Sm.",
@@ -271,15 +727,107 @@
         "commonNames": [],
         "scientificName": "Rhododendron oreotrephes W.W. Sm."
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Maarten Vanhove",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1636665167238,
+            "string": "11 november 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/a3deaa7e5784a88986b8874520fa892471d55e7f",
+            "m": "https://bs.plantnet.org/image/m/a3deaa7e5784a88986b8874520fa892471d55e7f",
+            "s": "https://bs.plantnet.org/image/s/a3deaa7e5784a88986b8874520fa892471d55e7f"
+          },
+          "citation": "Maarten Vanhove / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "habit",
+          "author": "manuseitz",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1653755462848,
+            "string": "28 mei 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/7ceeebe2a785ae7d117a64d4ab8437cdf4e1697e",
+            "m": "https://bs.plantnet.org/image/m/7ceeebe2a785ae7d117a64d4ab8437cdf4e1697e",
+            "s": "https://bs.plantnet.org/image/s/7ceeebe2a785ae7d117a64d4ab8437cdf4e1697e"
+          },
+          "citation": "manuseitz / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - David Purvis",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982688,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/0845ac31c4af7927ea81fe5478deb2c3b8c89aa2",
+            "m": "https://bs.plantnet.org/image/m/0845ac31c4af7927ea81fe5478deb2c3b8c89aa2",
+            "s": "https://bs.plantnet.org/image/s/0845ac31c4af7927ea81fe5478deb2c3b8c89aa2"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - David Purvis / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Peter Baxter",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982688,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/a651c89e0f798ec48caffa35f7450b5c9c80a34f",
+            "m": "https://bs.plantnet.org/image/m/a651c89e0f798ec48caffa35f7450b5c9c80a34f",
+            "s": "https://bs.plantnet.org/image/s/a651c89e0f798ec48caffa35f7450b5c9c80a34f"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Peter Baxter / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "habit",
+          "author": "Royal Botanic Garden Edinburgh - Robyn Drinkwater",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982688,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/d48926a178201ac9dc880a6209040859a2b03ff5",
+            "m": "https://bs.plantnet.org/image/m/d48926a178201ac9dc880a6209040859a2b03ff5",
+            "s": "https://bs.plantnet.org/image/s/d48926a178201ac9dc880a6209040859a2b03ff5"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Robyn Drinkwater / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "habit",
+          "author": "Royal Botanic Garden Edinburgh - Robyn Drinkwater",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982688,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/b5dbe782e76d0b1304930871a78b90d38f1c917c",
+            "m": "https://bs.plantnet.org/image/m/b5dbe782e76d0b1304930871a78b90d38f1c917c",
+            "s": "https://bs.plantnet.org/image/s/b5dbe782e76d0b1304930871a78b90d38f1c917c"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Robyn Drinkwater / Pl@ntNet, cc-by-nc"
+        }
+      ],
       "gbif": {
         "id": "4168628"
       }
     },
     {
-      "score": 0.01163,
+      "score": 0.00508,
       "species": {
-        "scientificNameWithoutAuthor": "Rhododendron dendricola",
-        "scientificNameAuthorship": "Hutch.",
+        "scientificNameWithoutAuthor": "Rhododendron aureum",
+        "scientificNameAuthorship": "Georgi",
         "genus": {
           "scientificNameWithoutAuthor": "Rhododendron",
           "scientificNameAuthorship": "",
@@ -291,17 +839,79 @@
           "scientificName": "Ericaceae"
         },
         "commonNames": [],
-        "scientificName": "Rhododendron dendricola Hutch."
+        "scientificName": "Rhododendron aureum Georgi"
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Dieter Albrecht",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1651309933387,
+            "string": "30 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/442537a18e0c776bf84d8e7fba626dc27f67ef54",
+            "m": "https://bs.plantnet.org/image/m/442537a18e0c776bf84d8e7fba626dc27f67ef54",
+            "s": "https://bs.plantnet.org/image/s/442537a18e0c776bf84d8e7fba626dc27f67ef54"
+          },
+          "citation": "Dieter Albrecht / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Dieter Albrecht",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1651309933387,
+            "string": "30 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e34a0e0b54584a0190e4c8f11b4ae564a55cd45f",
+            "m": "https://bs.plantnet.org/image/m/e34a0e0b54584a0190e4c8f11b4ae564a55cd45f",
+            "s": "https://bs.plantnet.org/image/s/e34a0e0b54584a0190e4c8f11b4ae564a55cd45f"
+          },
+          "citation": "Dieter Albrecht / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Andrzej Konstantynowicz",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1652117325899,
+            "string": "9 mei 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/6cd63615feb5a0a18be0cb00b488dfd684fbf5fd",
+            "m": "https://bs.plantnet.org/image/m/6cd63615feb5a0a18be0cb00b488dfd684fbf5fd",
+            "s": "https://bs.plantnet.org/image/s/6cd63615feb5a0a18be0cb00b488dfd684fbf5fd"
+          },
+          "citation": "Andrzej Konstantynowicz / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Andrzej Konstantynowicz",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1652117325899,
+            "string": "9 mei 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/fa57fcc40157eb3199d7d4e5150f5f67f9d32b7c",
+            "m": "https://bs.plantnet.org/image/m/fa57fcc40157eb3199d7d4e5150f5f67f9d32b7c",
+            "s": "https://bs.plantnet.org/image/s/fa57fcc40157eb3199d7d4e5150f5f67f9d32b7c"
+          },
+          "citation": "Andrzej Konstantynowicz / Pl@ntNet, cc-by-sa"
+        }
+      ],
       "gbif": {
-        "id": "4165071"
+        "id": "7644878"
       }
     },
     {
-      "score": 0.01142,
+      "score": 0.00353,
       "species": {
-        "scientificNameWithoutAuthor": "Rhododendron cyanocarpum",
-        "scientificNameAuthorship": "(Franch.) Franch. ex W.W. Sm.",
+        "scientificNameWithoutAuthor": "Rhododendron ciliatum",
+        "scientificNameAuthorship": "Hook. f.",
         "genus": {
           "scientificNameWithoutAuthor": "Rhododendron",
           "scientificNameAuthorship": "",
@@ -313,11 +923,1820 @@
           "scientificName": "Ericaceae"
         },
         "commonNames": [],
-        "scientificName": "Rhododendron cyanocarpum (Franch.) Franch. ex W.W. Sm."
+        "scientificName": "Rhododendron ciliatum Hook. f."
       },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Irmgard Groß",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1640551824486,
+            "string": "26 december 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/7e66dbd06c527d2d5811198de883242caf702ba9",
+            "m": "https://bs.plantnet.org/image/m/7e66dbd06c527d2d5811198de883242caf702ba9",
+            "s": "https://bs.plantnet.org/image/s/7e66dbd06c527d2d5811198de883242caf702ba9"
+          },
+          "citation": "Irmgard Groß / Pl@ntNet, cc-by-sa"
+        }
+      ],
       "gbif": {
-        "id": "7877646"
+        "id": "4166478"
+      }
+    },
+    {
+      "score": 0.00289,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron augustinii",
+        "scientificNameAuthorship": "Hemsl.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron augustinii Hemsl."
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624028583891,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/36da78f75de11eea7671b6911703bcc803abae6f",
+            "m": "https://bs.plantnet.org/image/m/36da78f75de11eea7671b6911703bcc803abae6f",
+            "s": "https://bs.plantnet.org/image/s/36da78f75de11eea7671b6911703bcc803abae6f"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Egon Krogsgaard",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1639239974807,
+            "string": "11 december 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/18a5eb588042718ccc6bd7c1476ab981e6426408",
+            "m": "https://bs.plantnet.org/image/m/18a5eb588042718ccc6bd7c1476ab981e6426408",
+            "s": "https://bs.plantnet.org/image/s/18a5eb588042718ccc6bd7c1476ab981e6426408"
+          },
+          "citation": "Egon Krogsgaard / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624028477187,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/697b3aabc2ff5e951f703a80caef51d713576240",
+            "m": "https://bs.plantnet.org/image/m/697b3aabc2ff5e951f703a80caef51d713576240",
+            "s": "https://bs.plantnet.org/image/s/697b3aabc2ff5e951f703a80caef51d713576240"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "7328064"
+      }
+    },
+    {
+      "score": 0.00277,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron triflorum",
+        "scientificNameAuthorship": "Hook. f.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron triflorum Hook. f."
+      },
+      "images": [
+        {
+          "organ": "leaf",
+          "author": "Maarten Vanhove",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1636916927089,
+            "string": "14 november 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/c15d93f08b64ad460793542dd62f77bbdc78f7e8",
+            "m": "https://bs.plantnet.org/image/m/c15d93f08b64ad460793542dd62f77bbdc78f7e8",
+            "s": "https://bs.plantnet.org/image/s/c15d93f08b64ad460793542dd62f77bbdc78f7e8"
+          },
+          "citation": "Maarten Vanhove / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "7328965"
+      }
+    },
+    {
+      "score": 0.00263,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron macrophyllum",
+        "scientificNameAuthorship": "D. Don ex G. Don",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron macrophyllum D. Don ex G. Don"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Daniel Barthelemy",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1600939370575,
+            "string": "24 september 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/a45fdccf47f4ca041f55a967b99238e399f29379",
+            "m": "https://bs.plantnet.org/image/m/a45fdccf47f4ca041f55a967b99238e399f29379",
+            "s": "https://bs.plantnet.org/image/s/a45fdccf47f4ca041f55a967b99238e399f29379"
+          },
+          "citation": "Daniel Barthelemy / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Daniel Barthelemy",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1600939370575,
+            "string": "24 september 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/95076d689bb4e159b46debe456b15a6c2152c746",
+            "m": "https://bs.plantnet.org/image/m/95076d689bb4e159b46debe456b15a6c2152c746",
+            "s": "https://bs.plantnet.org/image/s/95076d689bb4e159b46debe456b15a6c2152c746"
+          },
+          "citation": "Daniel Barthelemy / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Daniel Barthelemy",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1600939370575,
+            "string": "24 september 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e4384eb481a613f710cda6d5abe135b23eaa5703",
+            "m": "https://bs.plantnet.org/image/m/e4384eb481a613f710cda6d5abe135b23eaa5703",
+            "s": "https://bs.plantnet.org/image/s/e4384eb481a613f710cda6d5abe135b23eaa5703"
+          },
+          "citation": "Daniel Barthelemy / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Daniel Barthelemy",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1600939370575,
+            "string": "24 september 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/125a0a7b2e90f326a0b2eb8b157a0fe5698e0df3",
+            "m": "https://bs.plantnet.org/image/m/125a0a7b2e90f326a0b2eb8b157a0fe5698e0df3",
+            "s": "https://bs.plantnet.org/image/s/125a0a7b2e90f326a0b2eb8b157a0fe5698e0df3"
+          },
+          "citation": "Daniel Barthelemy / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Daniel Barthelemy",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1600939370575,
+            "string": "24 september 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/dbf6d7258c4b3335d4499dfc03d8b4e24708852a",
+            "m": "https://bs.plantnet.org/image/m/dbf6d7258c4b3335d4499dfc03d8b4e24708852a",
+            "s": "https://bs.plantnet.org/image/s/dbf6d7258c4b3335d4499dfc03d8b4e24708852a"
+          },
+          "citation": "Daniel Barthelemy / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Daniel Barthelemy",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1600939370575,
+            "string": "24 september 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/3662922effdcfc8a47939c280b5fe1e9a94a1fa4",
+            "m": "https://bs.plantnet.org/image/m/3662922effdcfc8a47939c280b5fe1e9a94a1fa4",
+            "s": "https://bs.plantnet.org/image/s/3662922effdcfc8a47939c280b5fe1e9a94a1fa4"
+          },
+          "citation": "Daniel Barthelemy / Pl@ntNet, cc-by-nc"
+        }
+      ],
+      "gbif": {
+        "id": "7894533"
+      }
+    },
+    {
+      "score": 0.00259,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron yunnanense",
+        "scientificNameAuthorship": "Franch.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron yunnanense Franch."
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Kim Eype",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1652612725373,
+            "string": "15 mei 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/ab8b5c262bac07878634e313f273f7f172c77ea4",
+            "m": "https://bs.plantnet.org/image/m/ab8b5c262bac07878634e313f273f7f172c77ea4",
+            "s": "https://bs.plantnet.org/image/s/ab8b5c262bac07878634e313f273f7f172c77ea4"
+          },
+          "citation": "Kim Eype / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Derek Black",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982690,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/135472ef8ab8e907782a8a55b9155f4266cdfbb2",
+            "m": "https://bs.plantnet.org/image/m/135472ef8ab8e907782a8a55b9155f4266cdfbb2",
+            "s": "https://bs.plantnet.org/image/s/135472ef8ab8e907782a8a55b9155f4266cdfbb2"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Derek Black / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Peter Baxter",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982690,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/48821d2e09ebe59fd25821a611963a2710a99e1f",
+            "m": "https://bs.plantnet.org/image/m/48821d2e09ebe59fd25821a611963a2710a99e1f",
+            "s": "https://bs.plantnet.org/image/s/48821d2e09ebe59fd25821a611963a2710a99e1f"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Peter Baxter / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Derek Black",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982690,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/cb9f2e2600c35bec1e5ff673e48b649a385f58ef",
+            "m": "https://bs.plantnet.org/image/m/cb9f2e2600c35bec1e5ff673e48b649a385f58ef",
+            "s": "https://bs.plantnet.org/image/s/cb9f2e2600c35bec1e5ff673e48b649a385f58ef"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Derek Black / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Robyn Drinkwater",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982690,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/9859282325a843798a6fe1c682763663960b50c2",
+            "m": "https://bs.plantnet.org/image/m/9859282325a843798a6fe1c682763663960b50c2",
+            "s": "https://bs.plantnet.org/image/s/9859282325a843798a6fe1c682763663960b50c2"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Robyn Drinkwater / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Robyn Drinkwater",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982690,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/06a3c216e06d2730ae3e47203c0a4fed44cdce70",
+            "m": "https://bs.plantnet.org/image/m/06a3c216e06d2730ae3e47203c0a4fed44cdce70",
+            "s": "https://bs.plantnet.org/image/s/06a3c216e06d2730ae3e47203c0a4fed44cdce70"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Robyn Drinkwater / Pl@ntNet, cc-by-nc"
+        }
+      ],
+      "gbif": {
+        "id": "4173483"
+      }
+    },
+    {
+      "score": 0.0025,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron tatsienense",
+        "scientificNameAuthorship": "Franch.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron tatsienense Franch."
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Maarten Vanhove",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1644722991807,
+            "string": "13 februari 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/34d9892c5bc282a135ed957f9ca3793a8b65d9da",
+            "m": "https://bs.plantnet.org/image/m/34d9892c5bc282a135ed957f9ca3793a8b65d9da",
+            "s": "https://bs.plantnet.org/image/s/34d9892c5bc282a135ed957f9ca3793a8b65d9da"
+          },
+          "citation": "Maarten Vanhove / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Maarten Vanhove",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1636917327295,
+            "string": "14 november 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/2883e1e201dd0a7172c78ed47257089862c414d9",
+            "m": "https://bs.plantnet.org/image/m/2883e1e201dd0a7172c78ed47257089862c414d9",
+            "s": "https://bs.plantnet.org/image/s/2883e1e201dd0a7172c78ed47257089862c414d9"
+          },
+          "citation": "Maarten Vanhove / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Gavin Harris",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982690,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/8a753f1dc7efedbc42cc9d199c349fb2604b1614",
+            "m": "https://bs.plantnet.org/image/m/8a753f1dc7efedbc42cc9d199c349fb2604b1614",
+            "s": "https://bs.plantnet.org/image/s/8a753f1dc7efedbc42cc9d199c349fb2604b1614"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Gavin Harris / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "habit",
+          "author": "Royal Botanic Garden Edinburgh - Debbie White",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982690,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/d698d74f528d4c00678890f8ff85b458cbc6026a",
+            "m": "https://bs.plantnet.org/image/m/d698d74f528d4c00678890f8ff85b458cbc6026a",
+            "s": "https://bs.plantnet.org/image/s/d698d74f528d4c00678890f8ff85b458cbc6026a"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Debbie White / Pl@ntNet, cc-by-nc"
+        }
+      ],
+      "gbif": {
+        "id": "7327496"
+      }
+    },
+    {
+      "score": 0.00239,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron searsiae",
+        "scientificNameAuthorship": "Rehder & E.H. Wilson",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron searsiae Rehder & E.H. Wilson"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1623970831577,
+            "string": "17 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/2603c0678c8da970b4022235db9e58e2de3cf316",
+            "m": "https://bs.plantnet.org/image/m/2603c0678c8da970b4022235db9e58e2de3cf316",
+            "s": "https://bs.plantnet.org/image/s/2603c0678c8da970b4022235db9e58e2de3cf316"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1623970831577,
+            "string": "17 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/4b3217c3af1930cf6430a8db633156e8432fe40c",
+            "m": "https://bs.plantnet.org/image/m/4b3217c3af1930cf6430a8db633156e8432fe40c",
+            "s": "https://bs.plantnet.org/image/s/4b3217c3af1930cf6430a8db633156e8432fe40c"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1623971117884,
+            "string": "17 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e5ac3149bb5d007e76380afa7d3afa720ca4a381",
+            "m": "https://bs.plantnet.org/image/m/e5ac3149bb5d007e76380afa7d3afa720ca4a381",
+            "s": "https://bs.plantnet.org/image/s/e5ac3149bb5d007e76380afa7d3afa720ca4a381"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "leaf",
+          "author": "Maarten Vanhove",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1650247967020,
+            "string": "18 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/90d3d82cf2ea2fc2a33331538aa471004b29bd5e",
+            "m": "https://bs.plantnet.org/image/m/90d3d82cf2ea2fc2a33331538aa471004b29bd5e",
+            "s": "https://bs.plantnet.org/image/s/90d3d82cf2ea2fc2a33331538aa471004b29bd5e"
+          },
+          "citation": "Maarten Vanhove / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1623970929267,
+            "string": "17 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/c0eda94fa3b13b646a9fea1bf90b7ee0cdc1ccb9",
+            "m": "https://bs.plantnet.org/image/m/c0eda94fa3b13b646a9fea1bf90b7ee0cdc1ccb9",
+            "s": "https://bs.plantnet.org/image/s/c0eda94fa3b13b646a9fea1bf90b7ee0cdc1ccb9"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "4165481"
+      }
+    },
+    {
+      "score": 0.00237,
+      "species": {
+        "scientificNameWithoutAuthor": "Kalmia microphylla",
+        "scientificNameAuthorship": "(Hook.) A. Heller",
+        "genus": {
+          "scientificNameWithoutAuthor": "Kalmia",
+          "scientificNameAuthorship": "",
+          "scientificName": "Kalmia"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Kalmia microphylla (Hook.) A. Heller"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "that's someguy",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1566025284971,
+            "string": "17 augustus 2019"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/fffec4ca4a3cc3416d42bda49f73604db98111a2",
+            "m": "https://bs.plantnet.org/image/m/fffec4ca4a3cc3416d42bda49f73604db98111a2",
+            "s": "https://bs.plantnet.org/image/s/fffec4ca4a3cc3416d42bda49f73604db98111a2"
+          },
+          "citation": "that's someguy / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Chase Witmer",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1608647153333,
+            "string": "22 december 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/a92b03e3ea502c9fc2affb31971c2d811a468a31",
+            "m": "https://bs.plantnet.org/image/m/a92b03e3ea502c9fc2affb31971c2d811a468a31",
+            "s": "https://bs.plantnet.org/image/s/a92b03e3ea502c9fc2affb31971c2d811a468a31"
+          },
+          "citation": "Chase Witmer / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "John John Hardham",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1566228737151,
+            "string": "19 augustus 2019"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/66d37a2feca3b7f954b52ff2c89ae6dbf5788677",
+            "m": "https://bs.plantnet.org/image/m/66d37a2feca3b7f954b52ff2c89ae6dbf5788677",
+            "s": "https://bs.plantnet.org/image/s/66d37a2feca3b7f954b52ff2c89ae6dbf5788677"
+          },
+          "citation": "John John Hardham / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "2882998"
+      }
+    },
+    {
+      "score": 0.00209,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron cinnabarinum",
+        "scientificNameAuthorship": "Hook. f.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron cinnabarinum Hook. f."
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Maarten Vanhove",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1653606775421,
+            "string": "26 mei 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/12918f7d56af187107ae7d58ba75ef8745797339",
+            "m": "https://bs.plantnet.org/image/m/12918f7d56af187107ae7d58ba75ef8745797339",
+            "s": "https://bs.plantnet.org/image/s/12918f7d56af187107ae7d58ba75ef8745797339"
+          },
+          "citation": "Maarten Vanhove / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "7327797"
+      }
+    },
+    {
+      "score": 0.00208,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron concinnum",
+        "scientificNameAuthorship": "Hemsl.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron concinnum Hemsl."
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Maarten Vanhove",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1636663319312,
+            "string": "11 november 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e15890d180f05d621a9052c7fbba5b73c89ddde8",
+            "m": "https://bs.plantnet.org/image/m/e15890d180f05d621a9052c7fbba5b73c89ddde8",
+            "s": "https://bs.plantnet.org/image/s/e15890d180f05d621a9052c7fbba5b73c89ddde8"
+          },
+          "citation": "Maarten Vanhove / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Robyn Drinkwater",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982686,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/ed99f300afa07ec1a22f18e0abcf30cb858b85c2",
+            "m": "https://bs.plantnet.org/image/m/ed99f300afa07ec1a22f18e0abcf30cb858b85c2",
+            "s": "https://bs.plantnet.org/image/s/ed99f300afa07ec1a22f18e0abcf30cb858b85c2"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Robyn Drinkwater / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "habit",
+          "author": "Royal Botanic Garden Edinburgh - Debbie White",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982686,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/ce2ef0df14da4ffe10e0aacf94be13f91d3d5142",
+            "m": "https://bs.plantnet.org/image/m/ce2ef0df14da4ffe10e0aacf94be13f91d3d5142",
+            "s": "https://bs.plantnet.org/image/s/ce2ef0df14da4ffe10e0aacf94be13f91d3d5142"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Debbie White / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "habit",
+          "author": "Royal Botanic Garden Edinburgh - Robyn Drinkwater",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982686,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/c2bfdf4d02730e4bf7be5ff25ab79f3b9f1c197f",
+            "m": "https://bs.plantnet.org/image/m/c2bfdf4d02730e4bf7be5ff25ab79f3b9f1c197f",
+            "s": "https://bs.plantnet.org/image/s/c2bfdf4d02730e4bf7be5ff25ab79f3b9f1c197f"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Robyn Drinkwater / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Robyn Drinkwater",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982686,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/f4c60be0d8f19f51bffc8f4d16defb6564b40370",
+            "m": "https://bs.plantnet.org/image/m/f4c60be0d8f19f51bffc8f4d16defb6564b40370",
+            "s": "https://bs.plantnet.org/image/s/f4c60be0d8f19f51bffc8f4d16defb6564b40370"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Robyn Drinkwater / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Robyn Drinkwater",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982686,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e8cc9b0b41969ebf1dffc44ca24f7d8a13056272",
+            "m": "https://bs.plantnet.org/image/m/e8cc9b0b41969ebf1dffc44ca24f7d8a13056272",
+            "s": "https://bs.plantnet.org/image/s/e8cc9b0b41969ebf1dffc44ca24f7d8a13056272"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Robyn Drinkwater / Pl@ntNet, cc-by-nc"
+        }
+      ],
+      "gbif": {
+        "id": "4165894"
+      }
+    },
+    {
+      "score": 0.00206,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron campanulatum",
+        "scientificNameAuthorship": "D. Don",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron campanulatum D. Don"
+      },
+      "images": [
+        {
+          "organ": "leaf",
+          "author": "Philippe de Spoelberch",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1650813081542,
+            "string": "24 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/4220b562787509f3092281da4ae10a179af6b89e",
+            "m": "https://bs.plantnet.org/image/m/4220b562787509f3092281da4ae10a179af6b89e",
+            "s": "https://bs.plantnet.org/image/s/4220b562787509f3092281da4ae10a179af6b89e"
+          },
+          "citation": "Philippe de Spoelberch / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "7327918"
+      }
+    },
+    {
+      "score": 0.00197,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron racemosum",
+        "scientificNameAuthorship": "Franch.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron racemosum Franch."
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Daniel Barthelemy",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1605692856551,
+            "string": "18 november 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/39905f2116a70ef3868f1d2f16f06d05cec3d92f",
+            "m": "https://bs.plantnet.org/image/m/39905f2116a70ef3868f1d2f16f06d05cec3d92f",
+            "s": "https://bs.plantnet.org/image/s/39905f2116a70ef3868f1d2f16f06d05cec3d92f"
+          },
+          "citation": "Daniel Barthelemy / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Daniel Barthelemy",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1605692856551,
+            "string": "18 november 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/7a518a0fd4320da49022789ad3191d298699f692",
+            "m": "https://bs.plantnet.org/image/m/7a518a0fd4320da49022789ad3191d298699f692",
+            "s": "https://bs.plantnet.org/image/s/7a518a0fd4320da49022789ad3191d298699f692"
+          },
+          "citation": "Daniel Barthelemy / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624560094095,
+            "string": "24 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/eb3ceeb2a2a3fb6549114555f0bf2f44f5f1b376",
+            "m": "https://bs.plantnet.org/image/m/eb3ceeb2a2a3fb6549114555f0bf2f44f5f1b376",
+            "s": "https://bs.plantnet.org/image/s/eb3ceeb2a2a3fb6549114555f0bf2f44f5f1b376"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624560832865,
+            "string": "24 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/0db6afae5c31a4288fef354df52e6e253b2c3677",
+            "m": "https://bs.plantnet.org/image/m/0db6afae5c31a4288fef354df52e6e253b2c3677",
+            "s": "https://bs.plantnet.org/image/s/0db6afae5c31a4288fef354df52e6e253b2c3677"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624560094095,
+            "string": "24 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/8363ab1061e872ab5e66cc6b1f35692c25362741",
+            "m": "https://bs.plantnet.org/image/m/8363ab1061e872ab5e66cc6b1f35692c25362741",
+            "s": "https://bs.plantnet.org/image/s/8363ab1061e872ab5e66cc6b1f35692c25362741"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624560094095,
+            "string": "24 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/d3e17cee7b3351c18d2360a33855aff667d771ac",
+            "m": "https://bs.plantnet.org/image/m/d3e17cee7b3351c18d2360a33855aff667d771ac",
+            "s": "https://bs.plantnet.org/image/s/d3e17cee7b3351c18d2360a33855aff667d771ac"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "4166913"
+      }
+    },
+    {
+      "score": 0.00188,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron columbianum",
+        "scientificNameAuthorship": "(Piper) Harmaja",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron columbianum (Piper) Harmaja"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "fresiak",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1632953773617,
+            "string": "29 september 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/86b2a631b20a6deebee22ae6eff52ec80d73c916",
+            "m": "https://bs.plantnet.org/image/m/86b2a631b20a6deebee22ae6eff52ec80d73c916",
+            "s": "https://bs.plantnet.org/image/s/86b2a631b20a6deebee22ae6eff52ec80d73c916"
+          },
+          "citation": "fresiak / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "assil matthews",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1623428811654,
+            "string": "11 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/71d9c24edda28c038b59ffee85008705a11c9b59",
+            "m": "https://bs.plantnet.org/image/m/71d9c24edda28c038b59ffee85008705a11c9b59",
+            "s": "https://bs.plantnet.org/image/s/71d9c24edda28c038b59ffee85008705a11c9b59"
+          },
+          "citation": "assil matthews / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Scott",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1589929581884,
+            "string": "19 mei 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/58b5e3f587f49acb9b697fa5f6f2f2e4c044a035",
+            "m": "https://bs.plantnet.org/image/m/58b5e3f587f49acb9b697fa5f6f2f2e4c044a035",
+            "s": "https://bs.plantnet.org/image/s/58b5e3f587f49acb9b697fa5f6f2f2e4c044a035"
+          },
+          "citation": "Scott / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Andrew Mallady",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1591409504153,
+            "string": "6 juni 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/1f5c5f44f2ed30cf3e0ffe9af90ef32adb27b550",
+            "m": "https://bs.plantnet.org/image/m/1f5c5f44f2ed30cf3e0ffe9af90ef32adb27b550",
+            "s": "https://bs.plantnet.org/image/s/1f5c5f44f2ed30cf3e0ffe9af90ef32adb27b550"
+          },
+          "citation": "Andrew Mallady / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "4165978"
+      }
+    },
+    {
+      "score": 0.00176,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron vaseyi",
+        "scientificNameAuthorship": "A. Gray",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron vaseyi A. Gray"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Ilesha",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1559077466042,
+            "string": "28 mei 2019"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/1f8e7289fd373ce0f0c080f1b7608c17e3a9e737",
+            "m": "https://bs.plantnet.org/image/m/1f8e7289fd373ce0f0c080f1b7608c17e3a9e737",
+            "s": "https://bs.plantnet.org/image/s/1f8e7289fd373ce0f0c080f1b7608c17e3a9e737"
+          },
+          "citation": "Ilesha / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Adriana Kamerbeek",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1623052537767,
+            "string": "7 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/10c7cf8bebb89c469debee63c93a4a55e5ef75da",
+            "m": "https://bs.plantnet.org/image/m/10c7cf8bebb89c469debee63c93a4a55e5ef75da",
+            "s": "https://bs.plantnet.org/image/s/10c7cf8bebb89c469debee63c93a4a55e5ef75da"
+          },
+          "citation": "Adriana Kamerbeek / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Katie Steel",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1554564920455,
+            "string": "6 april 2019"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e5e90bb99d09f8b0c3bf46219f50d1aae60827f6",
+            "m": "https://bs.plantnet.org/image/m/e5e90bb99d09f8b0c3bf46219f50d1aae60827f6",
+            "s": "https://bs.plantnet.org/image/s/e5e90bb99d09f8b0c3bf46219f50d1aae60827f6"
+          },
+          "citation": "Katie Steel / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "bio 99",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1617198420564,
+            "string": "31 maart 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/4e1777fd6828750f8d3774ebe80c98f91dad7ac4",
+            "m": "https://bs.plantnet.org/image/m/4e1777fd6828750f8d3774ebe80c98f91dad7ac4",
+            "s": "https://bs.plantnet.org/image/s/4e1777fd6828750f8d3774ebe80c98f91dad7ac4"
+          },
+          "citation": "bio 99 / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "2883085"
+      }
+    },
+    {
+      "score": 0.00173,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron ponticum",
+        "scientificNameAuthorship": "L.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [
+          "Pontische rododendron"
+        ],
+        "scientificName": "Rhododendron ponticum L."
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "francois tissot",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1588496999771,
+            "string": "3 mei 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/596e177b44a46725d59e19074244f42ffae0786d",
+            "m": "https://bs.plantnet.org/image/m/596e177b44a46725d59e19074244f42ffae0786d",
+            "s": "https://bs.plantnet.org/image/s/596e177b44a46725d59e19074244f42ffae0786d"
+          },
+          "citation": "francois tissot / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Goku M.",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1588955742916,
+            "string": "8 mei 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/da85a09b2a40818d52cf7f4f573fa79cae4b34e0",
+            "m": "https://bs.plantnet.org/image/m/da85a09b2a40818d52cf7f4f573fa79cae4b34e0",
+            "s": "https://bs.plantnet.org/image/s/da85a09b2a40818d52cf7f4f573fa79cae4b34e0"
+          },
+          "citation": "Goku M. / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Paula Lagiewski",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1558205035054,
+            "string": "18 mei 2019"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e97f765cbd1543e909a71c0cc6db4d437ed6bb73",
+            "m": "https://bs.plantnet.org/image/m/e97f765cbd1543e909a71c0cc6db4d437ed6bb73",
+            "s": "https://bs.plantnet.org/image/s/e97f765cbd1543e909a71c0cc6db4d437ed6bb73"
+          },
+          "citation": "Paula Lagiewski / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Manchenko Kristina",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1583294873993,
+            "string": "4 maart 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/32d38de9356b523e27b91c96acbdf9aad7d055ec",
+            "m": "https://bs.plantnet.org/image/m/32d38de9356b523e27b91c96acbdf9aad7d055ec",
+            "s": "https://bs.plantnet.org/image/s/32d38de9356b523e27b91c96acbdf9aad7d055ec"
+          },
+          "citation": "Manchenko Kristina / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Emil Emil Ytreøy",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1556647522637,
+            "string": "30 april 2019"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/a67db41ec3525667889bdd369eb5892100877c44",
+            "m": "https://bs.plantnet.org/image/m/a67db41ec3525667889bdd369eb5892100877c44",
+            "s": "https://bs.plantnet.org/image/s/a67db41ec3525667889bdd369eb5892100877c44"
+          },
+          "citation": "Emil Emil Ytreøy / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Rémi Saez",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1610488452093,
+            "string": "12 januari 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/9a6ee10b40b9fc56536a883c1751cd7ba270b14f",
+            "m": "https://bs.plantnet.org/image/m/9a6ee10b40b9fc56536a883c1751cd7ba270b14f",
+            "s": "https://bs.plantnet.org/image/s/9a6ee10b40b9fc56536a883c1751cd7ba270b14f"
+          },
+          "citation": "Rémi Saez / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "7327990"
+      }
+    },
+    {
+      "score": 0.00168,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron siderophyllum",
+        "scientificNameAuthorship": "Franch.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron siderophyllum Franch."
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624007372922,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/bf3b32313418a343fd80af94f2815339ab0e395b",
+            "m": "https://bs.plantnet.org/image/m/bf3b32313418a343fd80af94f2815339ab0e395b",
+            "s": "https://bs.plantnet.org/image/s/bf3b32313418a343fd80af94f2815339ab0e395b"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624007372922,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/4e377bb75511a29ae891af16dd5a510f03bc8de9",
+            "m": "https://bs.plantnet.org/image/m/4e377bb75511a29ae891af16dd5a510f03bc8de9",
+            "s": "https://bs.plantnet.org/image/s/4e377bb75511a29ae891af16dd5a510f03bc8de9"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624007372922,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/54d18085d3c25f61a1f2f823638a3279dd46ce69",
+            "m": "https://bs.plantnet.org/image/m/54d18085d3c25f61a1f2f823638a3279dd46ce69",
+            "s": "https://bs.plantnet.org/image/s/54d18085d3c25f61a1f2f823638a3279dd46ce69"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624008253556,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/cc8168952a51474692e45ffc13ec89b8878ddb0c",
+            "m": "https://bs.plantnet.org/image/m/cc8168952a51474692e45ffc13ec89b8878ddb0c",
+            "s": "https://bs.plantnet.org/image/s/cc8168952a51474692e45ffc13ec89b8878ddb0c"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "4165156"
+      }
+    },
+    {
+      "score": 0.00151,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron pseudochrysanthum",
+        "scientificNameAuthorship": "Hayata",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron pseudochrysanthum Hayata"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - David Purvis",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982689,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/20b14ae9874039533ffa9d0f69157958bcd5b412",
+            "m": "https://bs.plantnet.org/image/m/20b14ae9874039533ffa9d0f69157958bcd5b412",
+            "s": "https://bs.plantnet.org/image/s/20b14ae9874039533ffa9d0f69157958bcd5b412"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - David Purvis / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - David Knott",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982689,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/69f6fc0430fd90de400d029c2ffddf4721d4f83a",
+            "m": "https://bs.plantnet.org/image/m/69f6fc0430fd90de400d029c2ffddf4721d4f83a",
+            "s": "https://bs.plantnet.org/image/s/69f6fc0430fd90de400d029c2ffddf4721d4f83a"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - David Knott / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - David Purvis",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982689,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/4fc953d5f9771b4089142b2f3d11391877f89dfa",
+            "m": "https://bs.plantnet.org/image/m/4fc953d5f9771b4089142b2f3d11391877f89dfa",
+            "s": "https://bs.plantnet.org/image/s/4fc953d5f9771b4089142b2f3d11391877f89dfa"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - David Purvis / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - David Purvis",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982689,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/a8900a4b2e606d159406f951c66bae68ef9a30bc",
+            "m": "https://bs.plantnet.org/image/m/a8900a4b2e606d159406f951c66bae68ef9a30bc",
+            "s": "https://bs.plantnet.org/image/s/a8900a4b2e606d159406f951c66bae68ef9a30bc"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - David Purvis / Pl@ntNet, cc-by-nc"
+        }
+      ],
+      "gbif": {
+        "id": "7327928"
+      }
+    },
+    {
+      "score": 0.00146,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron calostrotum",
+        "scientificNameAuthorship": "Balf. f. & Kingdon-Ward",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron calostrotum Balf. f. & Kingdon-Ward"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624034734053,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/271ddda3fd62cd2cbd2d28c803c796c9d06b5f3d",
+            "m": "https://bs.plantnet.org/image/m/271ddda3fd62cd2cbd2d28c803c796c9d06b5f3d",
+            "s": "https://bs.plantnet.org/image/s/271ddda3fd62cd2cbd2d28c803c796c9d06b5f3d"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624034777685,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/0b932ee24bd871d63261296782863ef27fe875bf",
+            "m": "https://bs.plantnet.org/image/m/0b932ee24bd871d63261296782863ef27fe875bf",
+            "s": "https://bs.plantnet.org/image/s/0b932ee24bd871d63261296782863ef27fe875bf"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624034734053,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/770568d4a246071129214019def2b9fe5746fd1d",
+            "m": "https://bs.plantnet.org/image/m/770568d4a246071129214019def2b9fe5746fd1d",
+            "s": "https://bs.plantnet.org/image/s/770568d4a246071129214019def2b9fe5746fd1d"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624034777685,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/4ea59c1516ed363e52a557288ca08e093973c63e",
+            "m": "https://bs.plantnet.org/image/m/4ea59c1516ed363e52a557288ca08e093973c63e",
+            "s": "https://bs.plantnet.org/image/s/4ea59c1516ed363e52a557288ca08e093973c63e"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Jia Xu",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1624034734053,
+            "string": "18 juni 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/1348260c1e1b33b1ed80f291a0fae4a9ea32a09f",
+            "m": "https://bs.plantnet.org/image/m/1348260c1e1b33b1ed80f291a0fae4a9ea32a09f",
+            "s": "https://bs.plantnet.org/image/s/1348260c1e1b33b1ed80f291a0fae4a9ea32a09f"
+          },
+          "citation": "Jia Xu / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "7327925"
+      }
+    },
+    {
+      "score": 0.00143,
+      "species": {
+        "scientificNameWithoutAuthor": "Bejaria aestuans",
+        "scientificNameAuthorship": "Mutis ex L.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Bejaria",
+          "scientificNameAuthorship": "",
+          "scientificName": "Bejaria"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Bejaria aestuans Mutis ex L."
+      },
+      "images": [
+        {
+          "organ": "fruit",
+          "author": "Calderón Caldas Douglas",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1627886228749,
+            "string": "2 augustus 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/319e5530170719d6e6e664a3604965cd301c34ae",
+            "m": "https://bs.plantnet.org/image/m/319e5530170719d6e6e664a3604965cd301c34ae",
+            "s": "https://bs.plantnet.org/image/s/319e5530170719d6e6e664a3604965cd301c34ae"
+          },
+          "citation": "Calderón Caldas Douglas / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "leaf",
+          "author": "Calderón Caldas Douglas",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1627886228749,
+            "string": "2 augustus 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/3eeebf1598edd83bc0e1a2684375fe46712e28fa",
+            "m": "https://bs.plantnet.org/image/m/3eeebf1598edd83bc0e1a2684375fe46712e28fa",
+            "s": "https://bs.plantnet.org/image/s/3eeebf1598edd83bc0e1a2684375fe46712e28fa"
+          },
+          "citation": "Calderón Caldas Douglas / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "other",
+          "author": "Calderón Caldas Douglas",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1627886228749,
+            "string": "2 augustus 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/297d5abc159f91d948275320d253861472cb4fe1",
+            "m": "https://bs.plantnet.org/image/m/297d5abc159f91d948275320d253861472cb4fe1",
+            "s": "https://bs.plantnet.org/image/s/297d5abc159f91d948275320d253861472cb4fe1"
+          },
+          "citation": "Calderón Caldas Douglas / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "2882720"
+      }
+    },
+    {
+      "score": 0.00141,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron hyperythrum",
+        "scientificNameAuthorship": "Hayata",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron hyperythrum Hayata"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Maarten Vanhove",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1641343705928,
+            "string": "5 januari 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/bf8f95e68c64174114e3131acc0449c883512fb6",
+            "m": "https://bs.plantnet.org/image/m/bf8f95e68c64174114e3131acc0449c883512fb6",
+            "s": "https://bs.plantnet.org/image/s/bf8f95e68c64174114e3131acc0449c883512fb6"
+          },
+          "citation": "Maarten Vanhove / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "4173704"
+      }
+    },
+    {
+      "score": 0.00126,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron campylocarpum",
+        "scientificNameAuthorship": "Hook. f.",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron campylocarpum Hook. f."
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Maarten Vanhove",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1653606912667,
+            "string": "26 mei 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/1393ddb6700f2d766dbcbfe3ecd5dc9068e41773",
+            "m": "https://bs.plantnet.org/image/m/1393ddb6700f2d766dbcbfe3ecd5dc9068e41773",
+            "s": "https://bs.plantnet.org/image/s/1393ddb6700f2d766dbcbfe3ecd5dc9068e41773"
+          },
+          "citation": "Maarten Vanhove / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Dieter Albrecht",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1587913858798,
+            "string": "26 april 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/7eb0f76bc12bf63ba5944d0b978f1a79577076da",
+            "m": "https://bs.plantnet.org/image/m/7eb0f76bc12bf63ba5944d0b978f1a79577076da",
+            "s": "https://bs.plantnet.org/image/s/7eb0f76bc12bf63ba5944d0b978f1a79577076da"
+          },
+          "citation": "Dieter Albrecht / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Dieter Albrecht",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1587913858798,
+            "string": "26 april 2020"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/b333db6b16aa4721c3f525ddda3e7e5d2113019b",
+            "m": "https://bs.plantnet.org/image/m/b333db6b16aa4721c3f525ddda3e7e5d2113019b",
+            "s": "https://bs.plantnet.org/image/s/b333db6b16aa4721c3f525ddda3e7e5d2113019b"
+          },
+          "citation": "Dieter Albrecht / Pl@ntNet, cc-by-sa"
+        },
+        {
+          "organ": "flower",
+          "author": "Philippe de Spoelberch",
+          "license": "cc-by-sa",
+          "date": {
+            "timestamp": 1651324968755,
+            "string": "30 april 2022"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/83e7fca5e09a72c3a3a52a8cb10c924f1b6efb91",
+            "m": "https://bs.plantnet.org/image/m/83e7fca5e09a72c3a3a52a8cb10c924f1b6efb91",
+            "s": "https://bs.plantnet.org/image/s/83e7fca5e09a72c3a3a52a8cb10c924f1b6efb91"
+          },
+          "citation": "Philippe de Spoelberch / Pl@ntNet, cc-by-sa"
+        }
+      ],
+      "gbif": {
+        "id": "7327914"
+      }
+    },
+    {
+      "score": 0.00103,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron hirtipes",
+        "scientificNameAuthorship": "Tagg",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron hirtipes Tagg"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Slide Library",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982687,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e61f3355f4df9445892eea5fc321612a10baeccd",
+            "m": "https://bs.plantnet.org/image/m/e61f3355f4df9445892eea5fc321612a10baeccd",
+            "s": "https://bs.plantnet.org/image/s/e61f3355f4df9445892eea5fc321612a10baeccd"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Slide Library / Pl@ntNet, cc-by-nc"
+        }
+      ],
+      "gbif": {
+        "id": "4174004"
+      }
+    },
+    {
+      "score": 0.00101,
+      "species": {
+        "scientificNameWithoutAuthor": "Rhododendron amesiae",
+        "scientificNameAuthorship": "Rehder & E.H. Wilson",
+        "genus": {
+          "scientificNameWithoutAuthor": "Rhododendron",
+          "scientificNameAuthorship": "",
+          "scientificName": "Rhododendron"
+        },
+        "family": {
+          "scientificNameWithoutAuthor": "Ericaceae",
+          "scientificNameAuthorship": "",
+          "scientificName": "Ericaceae"
+        },
+        "commonNames": [],
+        "scientificName": "Rhododendron amesiae Rehder & E.H. Wilson"
+      },
+      "images": [
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Peter Baxter",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982683,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/c5911103a51e8a3753c863569156cc3c9ead03a1",
+            "m": "https://bs.plantnet.org/image/m/c5911103a51e8a3753c863569156cc3c9ead03a1",
+            "s": "https://bs.plantnet.org/image/s/c5911103a51e8a3753c863569156cc3c9ead03a1"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Peter Baxter / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Peter Baxter",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982683,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e6cae65e7697632f97fbfe9a409967a3c5d56c13",
+            "m": "https://bs.plantnet.org/image/m/e6cae65e7697632f97fbfe9a409967a3c5d56c13",
+            "s": "https://bs.plantnet.org/image/s/e6cae65e7697632f97fbfe9a409967a3c5d56c13"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Peter Baxter / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Peter Baxter",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982683,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/d254e68652460dce350d819a48d16307285cc583",
+            "m": "https://bs.plantnet.org/image/m/d254e68652460dce350d819a48d16307285cc583",
+            "s": "https://bs.plantnet.org/image/s/d254e68652460dce350d819a48d16307285cc583"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Peter Baxter / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Peter Baxter",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982683,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/1429df4117e4cba826e24eb352f677b19edb22cc",
+            "m": "https://bs.plantnet.org/image/m/1429df4117e4cba826e24eb352f677b19edb22cc",
+            "s": "https://bs.plantnet.org/image/s/1429df4117e4cba826e24eb352f677b19edb22cc"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Peter Baxter / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Peter Baxter",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982683,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/e69415412fd4ca79b96f495c3fb0e275fb319f21",
+            "m": "https://bs.plantnet.org/image/m/e69415412fd4ca79b96f495c3fb0e275fb319f21",
+            "s": "https://bs.plantnet.org/image/s/e69415412fd4ca79b96f495c3fb0e275fb319f21"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Peter Baxter / Pl@ntNet, cc-by-nc"
+        },
+        {
+          "organ": "flower",
+          "author": "Royal Botanic Garden Edinburgh - Peter Baxter",
+          "license": "cc-by-nc",
+          "date": {
+            "timestamp": 1626444982683,
+            "string": "16 juli 2021"
+          },
+          "url": {
+            "o": "https://bs.plantnet.org/image/o/ddfcf9f31ef1950ee00148b33dd66030643ec294",
+            "m": "https://bs.plantnet.org/image/m/ddfcf9f31ef1950ee00148b33dd66030643ec294",
+            "s": "https://bs.plantnet.org/image/s/ddfcf9f31ef1950ee00148b33dd66030643ec294"
+          },
+          "citation": "Royal Botanic Garden Edinburgh - Peter Baxter / Pl@ntNet, cc-by-nc"
+        }
+      ],
+      "gbif": {
+        "id": "4169063"
       }
     }
-  ]
+  ],
+  "version": "2022-05-12 (6.0)",
+  "remainingIdentificationRequests": 493
 }

@@ -134,7 +134,7 @@ namespace Function.Tests
 
             // Assert
             ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
-            Assert.AreEqual("Error receiving plantdetails from plantrequest", ex.Message);
+            Assert.AreEqual("Error adding plants from plantrequest", ex.Message);
         }
 
         [Test]
@@ -150,7 +150,7 @@ namespace Function.Tests
 
             // Assert
             ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
-            Assert.AreEqual("Error receiving plantdetails from plantrequest", ex.Message);
+            Assert.AreEqual("Error adding plants from plantrequest", ex.Message);
         }
 
         [Test]
@@ -166,7 +166,7 @@ namespace Function.Tests
 
             // Assert
             ProgramError ex = Assert.ThrowsAsync<ProgramError>(async () => await service.AddPlants(requestData));
-            Assert.AreEqual("Error receiving plantdetails from plantrequest", ex.Message);
+            Assert.AreEqual("Error adding plants from plantrequest", ex.Message);
         }
 
         private static async Task<(PlantNetService service, Mock<IPlantRepository> repo, Mock<IPlantRequest> request)> ArrangePlantNetServiceMock(string fileName, HttpStatusCode httpStatusCode)
