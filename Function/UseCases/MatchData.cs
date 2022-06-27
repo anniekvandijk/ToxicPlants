@@ -1,6 +1,7 @@
 ﻿using Function.Interfaces;
 using Function.MiddleWare.ExceptionHandler;
 using Function.Models;
+using Function.Models.Response;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,11 @@ namespace Function.UseCases
             _toxicPlantAnimalService = toxicPlantAnimalService;
         }
 
-        public List<ToxicPlantAnimal> MatchToxicPlantsForAnimals()
+        public List<PlantResponse> MatchToxicPlantsForAnimals()
         {
             _toxicPlantAnimalService.LoadToxicPlantAnimalData();
 
-            var plantResponseList = new List<ToxicPlantAnimal>();
+            var plantResponseList = new List<PlantResponse>();
             foreach (var animal in _animalRepository.Get())
             {
                 foreach (var plant in _plantRepository.Get())
@@ -40,19 +41,44 @@ namespace Function.UseCases
                         case 1:
                             {
                                 var toxicPlant = toxicPlantList.First();
-                                toxicPlant.PlantDetail = plant.PlantDetail;
-                                plantResponseList.Add(toxicPlant);
+
+                                var infoList = new List<Models.Response.InformationReference>();
+                                foreach(var information in toxicPlant.InformationReferences)
+                                {
+                                    var info = new Models.Response.InformationReference
+                                    {
+                                        Reference = information.Reference,
+                                        Information = information.Information,
+                                    };
+                                    infoList.Add(info);
+                                }
+
+                                var plantResponse = new PlantResponse
+                                {
+                                    Animal = animal.ToString(),
+                                    ScientificClassification = toxicPlant.ScientificClassification.ToString(),
+                                    HowToxic = toxicPlant.HowToxic,
+                                    Summary = toxicPlant.Summary,
+                                    InformationReferences = infoList,
+                                    ScientificName = plant.ScientificName,
+                                    CommonNames = plant.CommonNames,
+                                    Score = plant.Score,
+                                    ImagesUrls = plant.ImagesUrls
+
+                                };
+
+                                plantResponseList.Add(plantResponse);
                                 break;
                             }
                         case 0:
-                            var nonToxicPlant = new ToxicPlantAnimal
+                            var nonToxicPlant = new PlantResponse
                             {
-                                Animal = animal,
-                                Species = plant.Species,
-                                Genus = plant.Genus,
-                                Family = plant.Family,
-                                PlantDetail = plant.PlantDetail,
+                                Animal = animal.ToString(),
                                 HowToxic = 0,
+                                ScientificName = plant.ScientificName,
+                                CommonNames = plant.CommonNames,
+                                Score = plant.Score,
+                                ImagesUrls = plant.ImagesUrls
                             };
                             plantResponseList.Add(nonToxicPlant);
                             break;

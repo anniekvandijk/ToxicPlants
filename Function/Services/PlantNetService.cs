@@ -27,48 +27,65 @@ namespace Function.Services
 
         public async Task AddPlants(RequestData data)
         {
-            var results = await GetPlantRequestResults(data);
+            var plants = await GetPlantRequestResults(data);
 
-            if (results.GetArrayLength() > 0)
+            if (plants.results.Count > 0)
             {
-                foreach (var result in results.EnumerateArray())
+                foreach (var result in plants.results)
                 {
-                    GetResultDetails(result, out var species, out var genus, out var family);
-                    AddPlantToRepository(species, genus, family, result);
+                    AddPlantToRepository(result);
                 }
             }
             else
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "No results received from plantrequest");
         }
 
-        private void AddPlantToRepository(string species, string genus, string family, JsonElement result)
+        private void AddPlantToRepository(Result result)
         {
-            var plant = new Plant
+            
+            var urls = new List<string>();
+            foreach (var image in result.images)
             {
-                Species = species,
-                Genus = genus,
-                Family = family,
-                PlantDetail = result
-            };
-            _plantRepository.Add(plant);
+                var url = image.url.o;
+                urls.Add(url);
+            }
+
+            try
+            {
+                var plant = new Plant
+                {
+                    Species = result.species.scientificNameWithoutAuthor,
+                    Genus = result.species.genus.scientificNameWithoutAuthor,
+                    Family = result.species.family.scientificNameWithoutAuthor,
+                    ScientificName = result.species.scientificName,
+                    CommonNames = result.species.commonNames,
+                    Score = result.score,
+                    ImagesUrls = urls,
+                };
+                _plantRepository.Add(plant);
+            }
+            catch (Exception ex)
+            {
+                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "Error adding plants from plantrequest",
+                    ex);
+            }
         }
 
-        private async Task<JsonElement> GetPlantRequestResults(RequestData data)
+        private async Task<PlantNet> GetPlantRequestResults(RequestData data)
         {
             var content = CreateMultipartFormDataContentAsync(data);
             var language = GetLanguage(data);
 
-            JsonElement results = default;
             var responseContent = await MakePlantNetRequest(content, language);
             try
             {
-                var json = JsonSerializer.Deserialize<JsonElement>(responseContent);
-                results = json.GetProperty("results");
+                return JsonSerializer.Deserialize<PlantNet>(responseContent);
             }
             catch (Exception ex) {
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, "Error receiving plants from plantrequest",
-                    ex); }
-            return results;
+                    ex);
+                return null;
+            }
         }
 
         private static MultipartFormDataContent CreateMultipartFormDataContentAsync(RequestData data)
@@ -141,35 +158,6 @@ namespace Function.Services
                 
                 ProgramError.CreateProgramError(statusCode, message, 1); // quit
                 return null;
-            }
-        }
-
-        private static void GetResultDetails(JsonElement result, out string species, out string genus, out string family)
-        {
-            species = null;
-            genus = null;
-            family = null;
-
-            try
-            {
-                species = result.GetProperty("species")
-                    .GetProperty("scientificNameWithoutAuthor")
-                    .GetString();
-
-                genus = result.GetProperty("species")
-                    .GetProperty("genus")
-                    .GetProperty("scientificNameWithoutAuthor")
-                    .GetString();
-
-                family = result.GetProperty("species")
-                    .GetProperty("family")
-                    .GetProperty("scientificNameWithoutAuthor")
-                    .GetString();
-            }
-            catch (Exception ex)
-            {
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError,
-                    "Error receiving plantdetails from plantrequest", ex);
             }
         }
     }

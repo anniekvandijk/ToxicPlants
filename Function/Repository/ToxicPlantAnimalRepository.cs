@@ -18,13 +18,7 @@ namespace Function.Repository
 
             plantAnimal.Summary?.Trim();
 
-            if (plantAnimal.ScientificClassification == ScientificClassification.Species && string.IsNullOrEmpty(plantAnimal.Species?.Trim()))
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Species can not be empty");
-            else if (plantAnimal.ScientificClassification == ScientificClassification.Genus && string.IsNullOrEmpty(plantAnimal.Genus?.Trim()))
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Genus can not be empty");
-            else if (plantAnimal.ScientificClassification == ScientificClassification.Family && string.IsNullOrEmpty(plantAnimal.Family?.Trim()))
-                ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Family can not be empty");
-            else if (plantAnimal.HowToxic is < mimimumClass or > maximumClass)
+            if (plantAnimal.HowToxic is < mimimumClass or > maximumClass)
                 ProgramError.CreateProgramError(HttpStatusCode.InternalServerError, $"Toxicclass is not in range of {mimimumClass}-{maximumClass}");
             else _toxicPlantAnimals.Add(plantAnimal);
 
